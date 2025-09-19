@@ -33,25 +33,25 @@
           counters.forEach(counter => {
             const updateCounter = () => {
               const target = +counter.getAttribute('data-target');
-              const count = +counter.innerText;
+              const count = +counter.innerText.replace(/\./g, '') || 0; // strip points before parsing
               const increment = target / 200; // Adjust speed here
 
               if (count < target) {
-                counter.innerText = Math.ceil(count + increment);
+                counter.innerText = Math.ceil(count + increment).toLocaleString('de-DE');
                 setTimeout(updateCounter, 1);
               } else {
-                counter.innerText = target;
+                counter.innerText = target.toLocaleString('de-DE');
               }
             };
             updateCounter();
           });
 
           // Disconnect the observer after the animation starts
-          // to prevent it from re-running on subsequent scrolls
           observer.disconnect();
         }
       });
     };
+
 
     // Create a new IntersectionObserver
     observer = new IntersectionObserver(startCounting, {
