@@ -987,6 +987,31 @@ section,
 .services .service-item .icon {
   margin-bottom: 10px;
 }
+.map-container {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+.map {
+  flex: 1;
+  min-height: 350px;
+  border: 1px solid #ccc;
+  flex-shrink: 0;
+}
+.content-box{
+  flex: 1;
+  border: 1px solid #ccc;
+  padding: 15px;
+  
+}
+@media (max-width: 768px) {
+  .map-container {
+    flex-direction: column;
+  }
+  .map {
+    min-height: 250px;
+  }
+}
 
 .services .service-item .icon i {
   color: var(--accent-color);
@@ -1861,7 +1886,3 @@ section,
             font-size: 1.2rem;
             color: #6c757d;
         }
-#map {
-  width: 100%;
-  height: 90vh;
-}

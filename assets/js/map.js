@@ -15,7 +15,7 @@ function normalizeRegionName(name) {
 }
 
 // --- 1. Initialize the map ---
-const map = L.map('map').setView([41.87194, 12.56738], 6);
+const map = L.map('map').setView([41.87194, 12.56738], 5);
 
 // Add a base tile layer
 L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
@@ -26,8 +26,8 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
 
 // --- 2. Load the data ---
 Promise.all([
-    d3.csv('https://raw.githubusercontent.com/InfoViz-ItalianHeritage/CHRS/refs/heads/main/data/OpenCoesione.csv?token=GHSAT0AAAAAADJHPZCBCPSHNXI3CVCHCSWS2GUBHKA'),
-    d3.json('assets/data/italy_regions.geojson')
+    d3.csv('data/OpenCoesione.csv'),
+    d3.json('data/italy_regions.geojson')
 ]).then(([csvData, geojsonData]) => {
 
     // --- 3. Process the CSV data and normalize region names ---
