@@ -43,7 +43,7 @@ Promise.all([
 
     // --- 4. Create a color scale based on the data ---
     const maxFunding = d3.max(Array.from(regionData.values()));
-    const colorScale = d3.scaleSequential(d3.interpolateBlues).domain([0, maxFunding]);
+    const colorScale = d3.scaleSequential(d3.interpolateYlOrRd).domain([0, maxFunding]);
 
     // --- 5. Add the GeoJSON layer to the map ---
     const geoJsonLayer = L.geoJson(geojsonData, {
