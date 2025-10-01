@@ -998,6 +998,11 @@ section,
   border: 1px solid #ccc;
   flex-shrink: 0;
 }
+.chart { flex: 1;
+  min-height: 350px;
+  border: 1px solid #ccc;
+  flex-shrink: 0;
+}
 .content-box{
   flex: 1;
   border: 1px solid #ccc;
