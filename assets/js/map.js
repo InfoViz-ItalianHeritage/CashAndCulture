@@ -26,7 +26,7 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
 
 // --- 2. Load the data ---
 Promise.all([
-    d3.csv('data/OpenCoesione.csv'),
+    d3.csv('data/open_coesione.csv'),
     d3.json('data/italy_regions.geojson')
 ]).then(([csvData, geojsonData]) => {
 

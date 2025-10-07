@@ -19,7 +19,7 @@ function extractYear(dateStr) {
     return match ? +match[0] : null;
 }
 
-d3.csv("data/OpenCoesione.csv").then(data => {
+d3.csv("data/open_coesione.csv").then(data => {
     const sums = d3.rollups(
         data,
         v => {
