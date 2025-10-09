@@ -282,7 +282,209 @@ function createVisitorMap() {
     }).catch(err => console.error("Error loading visitor data:", err));
 }
 
+// --------------------------------------------------------------------------------
+// --- 3. COMBINED MAP (Funding Choropleth + Visitor Proportional Symbols) ---
+// --------------------------------------------------------------------------------
+function createCombinedMap() {
+    const map3 = L.map('map3').setView([41.87194, 12.56738], 5); // Initialize on 'map3'
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+        subdomains: 'abcd',
+        maxZoom: 19
+    }).addTo(map3);
 
-// --- 3. Initialize both maps ---
+    if (typeof turf === 'undefined') {
+        console.error("Turf.js is required for centroid calculations. Please include the script.");
+        return;
+    }
+
+    Promise.all([
+        d3.csv('data/open_coesione.csv'),
+        d3.csv('data/mic_visitors.csv'),
+        d3.json('data/italy_regions.geojson')
+    ]).then(([fundingCsvData, visitorCsvData, geojsonData]) => {
+
+        // --- Data Processing: Funding (Same as createFundingMap) ---
+        const fundingLongData = [];
+        fundingCsvData.forEach(d => {
+            const dateStr = d["OC_DATA_INIZIO_PROGETTO"];
+            const year = dateStr ? +dateStr.substring(0, 4) : null;
+            if (year) {
+                const cleanFunding = d["FINANZ_TOTALE_PUBBLICO"]
+                    ? d["FINANZ_TOTALE_PUBBLICO"].replace(/\./g, '').replace(',', '.')
+                    : '0';
+
+                fundingLongData.push({
+                    Year: year,
+                    Region: d["DEN_REGIONE"],
+                    Funding: parseFloat(cleanFunding) || 0,
+                    region_norm: normalizeRegionName(d["DEN_REGIONE"])
+                });
+            }
+        });
+
+        const yearlyFundingData = d3.rollups(
+            fundingLongData,
+            v => d3.sum(v, d => d.Funding),
+            d => `${d.region_norm}-${d.Year}`
+        );
+
+        const getFunding = (region, year) => {
+            const key = `${region}-${year}`;
+            const item = yearlyFundingData.find(([k]) => k === key);
+            return item ? item[1] : 0;
+        };
+
+        const maxFunding = d3.max(fundingLongData.map(d => d.Funding));
+        // Use a different color scale for contrast
+        const fundingColorScale = d3.scaleSequential(d3.interpolateYlOrBr).domain([0, maxFunding]);
+
+        // --- Data Processing: Visitors (Same as createVisitorMap) ---
+        const visitorLongData = [];
+        const idCol = visitorCsvData.columns && visitorCsvData.columns.includes('Unnamed: 0') ? 'Unnamed: 0' : '';
+        const idKey = idCol || visitorCsvData.columns[0];
+        const allowedRegions = [
+            'ABRUZZO', 'BASILICATA', 'CALABRIA', 'CAMPANIA', 'EMILIA ROMAGNA',
+            'FRIULI-VENEZIA GIULIA', 'LAZIO', 'LIGURIA', 'LOMBARDIA', 'MARCHE',
+            'MOLISE', 'PIEMONTE', 'PUGLIA', 'SARDEGNA', 'TOSCANA', 'UMBRIA', 'VENETO'
+        ];
+
+        visitorCsvData.forEach(row => {
+            const id = row[idKey];
+            if (!id) return;
+
+            const trimmedId = id.trim().toLowerCase();
+            if (trimmedId.startsWith('totale_regione')) {
+                const yearMatch = trimmedId.match(/\d{4}$/);
+                const year = yearMatch ? +yearMatch[0] : null;
+                if (!year) return;
+
+                Object.entries(row).forEach(([region, value]) => {
+                    if (allowedRegions.includes(region.toUpperCase())) {
+                        const clean = (value || '0').replace(/\./g, '').replace(',', '.');
+                        const visitors = parseFloat(clean) || 0;
+                        visitorLongData.push({
+                            Year: year,
+                            Region: region,
+                            Visitors: visitors,
+                            region_norm: normalizeRegionName(region)
+                        });
+                    }
+                });
+            }
+        });
+
+        const maxVisitors = d3.max(visitorLongData, d => d.Visitors);
+        const minRadius = 4, maxRadius = 30;
+        const scaleRadius = v => v <= 0 ? 0 : minRadius + Math.sqrt(v / maxVisitors) * (maxRadius - minRadius);
+
+        const yearlyVisitorData = d3.rollups(
+            visitorLongData,
+            v => d3.sum(v, d => d.Visitors),
+            d => `${d.region_norm}-${d.Year}`
+        );
+
+        const getVisitors = (region, year) => {
+            const key = `${region}-${year}`;
+            const item = yearlyVisitorData.find(([k]) => k === key);
+            return item ? item[1] : 0;
+        };
+
+        // --- Combined Draw Map Function ---
+        let geoJsonLayer = null;
+
+        function drawCombinedMap(selectedYear) {
+            // 1. Remove previous layers (Choropleth and Markers)
+            if (geoJsonLayer) map3.removeLayer(geoJsonLayer);
+            map3.eachLayer(layer => {
+                if (layer instanceof L.CircleMarker) map3.removeLayer(layer);
+            });
+
+            // 2. Draw Funding Choropleth (Polygons)
+            geoJsonLayer = L.geoJson(geojsonData, {
+                style: feature => {
+                    const name = feature.properties.name || feature.properties.reg_name || '';
+                    const region = normalizeRegionName(name);
+                    const fundingValue = getFunding(region, selectedYear);
+                    return {
+                        fillColor: fundingColorScale(fundingValue),
+                        weight: 2,
+                        opacity: 1,
+                        color: 'white',
+                        dashArray: '3',
+                        fillOpacity: 0.7
+                    };
+                },
+                onEachFeature: (feature, layer) => {
+                    const name = feature.properties.name || feature.properties.reg_name || '';
+                    const norm = normalizeRegionName(name);
+                    const fundingValue = getFunding(norm, selectedYear);
+                    const visitorsValue = getVisitors(norm, selectedYear); // Get visitors for the popup
+
+                    layer.bindPopup(
+                        `<b>${name}</b><br>` +
+                        `Year: ${selectedYear}<br>` +
+                        `Funding: €${fundingValue.toLocaleString('it-IT', { minimumFractionDigits: 2 })}<br>` +
+                        `Visitors: ${visitorsValue.toLocaleString()}`
+                    );
+
+                    layer.on({
+                        mouseover: e => {
+                            e.target.setStyle({ weight: 5, color: '#666', dashArray: '', fillOpacity: 0.9 });
+                            if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) e.target.bringToFront();
+                        },
+                        mouseout: e => geoJsonLayer.resetStyle(e.target)
+                    });
+                }
+            }).addTo(map3);
+
+            // 3. Draw Visitor Proportional Symbols (CircleMarkers)
+            const yearVisitorData = visitorLongData.filter(d => d.Year === selectedYear);
+            const totalVisitors = d3.sum(yearVisitorData, d => d.Visitors);
+
+            geojsonData.features.forEach(feature => {
+                const props = feature.properties;
+                const regionName = props.name || props.reg_name || '';
+                const norm = normalizeRegionName(regionName);
+                const visitors = getVisitors(norm, selectedYear);
+
+                if (visitors > 0) {
+                    const centroid = turf.centroid(feature).geometry.coordinates;
+                    const percentage = (visitors / totalVisitors) * 100;
+
+                    L.circleMarker([centroid[1], centroid[0]], {
+                        radius: scaleRadius(visitors),
+                        color: '#3186cc',
+                        fillColor: '#3186cc',
+                        fillOpacity: 0.8 // Higher opacity so it stands out over the choropleth
+                    })
+                        .bindPopup(`<b>${regionName}</b><br>Year: ${selectedYear}<br>Visitors: ${visitors.toLocaleString()} (${percentage.toFixed(1)}%)`)
+                        .addTo(map3);
+                }
+            });
+        }
+
+        // 4. Slider Setup (Using the union of available years)
+        const allowedYears = [2016, 2017, 2018, 2019, 2022];
+        const allYears = [
+            ...fundingLongData.map(d => d.Year),
+            ...visitorLongData.map(d => d.Year)
+        ];
+
+        const years = Array.from(new Set(allYears))
+            .filter(year => allowedYears.includes(year))
+            .sort((a, b) => a - b);
+
+        if (years.length > 0) {
+            createYearSliderControl(map3, years, drawCombinedMap);
+        } else {
+            console.warn("No matching years found for combined map data after filtering.");
+        }
+
+    }).catch(err => console.error("Error loading combined data:", err));
+}
+
+// --- 4. Initialize all maps ---
 createFundingMap();
 createVisitorMap();
+createCombinedMap();
