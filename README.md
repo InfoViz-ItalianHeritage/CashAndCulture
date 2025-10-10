@@ -5,10 +5,13 @@ This project analyzes how public funding for cultural-heritage and tourism proje
 
 # Research questions
 RQ1
+In the time scope of the project,2014-2024, which years/regions witnessed the highest amount of funding(public) allocated to cultural heritage?
 
 RQ2
+In the selected years, which region received the highest share of funding each year?
 
 RQ3
+How were the regional visitors’ participation in the selected years
 
 # Libraries used
 pandas
