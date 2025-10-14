@@ -52,7 +52,7 @@
       <a href="index.html" class="logo d-flex align-items-center me-auto">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 class="sitename">Cash & Culture: Who gets funded, who gets visited</h1>
+        <h1 class="sitename">Cash & Culture</h1>
 
       </a>
 
@@ -82,7 +82,7 @@
       <div class="container">
         <div class="row gy-4">
           <div class="col-lg-7 order-2 order-lg-1 d-flex flex-column justify-content-center">
-            <h1>Welcome</h1>
+            <h1>Cash & Culture: Who gets funded, who gets visited</h1>
             <p>Do you know which
               <p-blue>region</p-blue> in Italy has received the highest <p-blue>funding</p-blue> for <p-blue>cultural
                 heritage</p-blue>
@@ -173,7 +173,8 @@
             <div class="service-item position-relative">
               <div class="icon"><i class="bi bi-bar-chart-line"></i></div>
               <h4><a href="#graphing-data" class="stretched-link">Data Visualization</a></h4>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+              <p>Created different types of graphs and maps to visualize the data in accordance with the research
+                questions.</p>
             </div>
           </div>
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
@@ -324,16 +325,96 @@
                 class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
                 <h3>Data Cleaning </h3>
                 <p class="fst-italic">
-                  In this step, we extract all relevant data and transform them into useable data structures to be
-                  visualized using python libraries
+                  Once our scope and source datasets were selected, we proceeded to prepare them for analysis and
+                  visualization. This began with data ingestion and ended with clean, normalized CSVs ready for
+                  plotting. Steps included:
                 </p>
                 <ul>
-                  <li><i class="bi bi-check2-all"></i> <span>Removing any duplicate entries from the tables.</span></li>
-                  <li><i class="bi bi-check2-all"></i> <span>Changing the data formats of some columns (date using the
-                      format Day-Month-Year).</span></li>
-                  <li><i class="bi bi-check2-all"></i> <span>Merging tables that contain yearly data.</span></li>
-                  <li><i class="bi bi-check2-all"></i> <span>Separating the type of funding received by cultural
-                      institutions (public funding, private funding).</span></li>
+                  <li>
+                    <i class="bi bi-check2-all"></i>
+                    <span class="dynamic-link" onclick="toggleDetails(this)">Ingesting raw data</span>
+                    <div class="details-text" hidden>
+                      <ul style="list-style-type:circle; margin-left:20px">
+                        <li>Downloaded the OpenCoesione “Culture & Tourism” project datasets (for both 2014–2020 and
+                          2021–2027 ranges).
+                        </li>
+                        <li>Downloaded or retrieved visitor/participation datasets from MiC / Ufficio Statistica.</li>
+                        <li>Stored these raw datasets(CSV), originally in xls/csv, in the data folder of the repository.
+                          (note: add the link to the repo here)</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li>
+                    <i class="bi bi-check2-all"></i>
+                    <span class="dynamic-link" onclick="toggleDetails(this)">Deduplication & filtering
+                    </span>
+                    <div class="details-text" hidden>
+                      <ul style="list-style-type: circle; margin-left:20px">
+                        <li>Removed duplicate rows (based on unique project IDs) and NaN values.</li>
+                        <li>
+                          Filtered to only include projects with cultural heritage or tourism relevance (excluding
+                          unrelated sectors).
+                        </li>
+                        <li>
+                          Filtered the data to years between 2014 and 2024, inclusive, to match the analysis window.
+                        </li>
+                        <li>
+                          Date conversion & formatting
+                        </li>
+                        <li>
+                          Transformed date columns ( <code>;`DATA_INIZIO_PREV_STUDIO_FATT`,
+                            `OC_DATA_INIZIO_PROGETTO`,
+                            `OC_DATA_FINE_PROGETTO_EFFETTIVA`</code>) into datetime objects in Python, standardizing to
+                          Day-Month-Year format.
+                        </li>
+                        <li>
+                          Extracted the year component of dates to facilitate yearly aggregations.
+                        </li>
+                      </ul>
+                  <li>
+                    <i class="bi bi-check2-all"></i>
+                    <span class="dynamic-link" onclick="toggleDetails(this)">Normalization of categorical variables
+                    </span>
+                    <div class="details-text" hidden>
+                      <ul style="list-style-type:circle; margin-left:20px">
+                        <li>Unified regional names (e.g. “Sicilia” vs “Sicily” or inconsistent abbreviations).
+                        </li>
+                        <li>Harmonized project classification codes (if multiple naming schemes) into a master
+                          classification for “cultural heritage/tourism”.</li>
+                        <li>Merging and aggregating tables
+                        </li>
+                        <li>
+                          Joined the project data (funding, project count) with regional visitor/participation data by
+                          region + year.
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li>
+                    <i class="bi bi-check2-all"></i>
+                    <span class="dynamic-link" onclick="toggleDetails(this)">Output to CSV for visualization</span>
+                    <div class="details-text" hidden>
+                      <ul style="list-style-type:circle; margin-left:20px">
+                        <li>Exported cleaned and merged tables as CSV files in the data folder. (e.g.
+                          `open_coesione.csv`, `mic_visitors.csv`).
+                        </li>
+
+                      </ul>
+
+                      At the end of this phase, we had two sets of tidy, analysis-ready CSVs with consistent region/year
+                      keys and aligned variables (funding, project counts, visitor participation), enabling the next
+                      step of creating visualizations and performing the comparisons.
+
+
+
+
+
+
+                    </div>
+                  </li>
+                  <li>
+
+                  </li>
                 </ul>
               </div>
               <div class="col-lg-6 order-1 order-lg-2 text-center">
