@@ -5,7 +5,20 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
+// JavaScript to toggle the visibility of the details text
+function toggleDetails(element) {
+  // 1. Find the parent <li> element
+  const parentListItem = element.closest('li');
 
+  // 2. Find the hidden details-text <div> within that <li>
+  const detailsDiv = parentListItem.querySelector('.details-text');
+
+  // 3. Toggle the 'hidden' attribute
+  if (detailsDiv) {
+    // The 'hidden' attribute controls visibility in HTML5
+    detailsDiv.hidden = !detailsDiv.hidden;
+  }
+}
 (function () {
   "use strict";
 

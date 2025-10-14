@@ -52,7 +52,8 @@
       <a href="index.html" class="logo d-flex align-items-center me-auto">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 class="sitename">Cultural Institutions and </h1>
+        <h1 class="sitename">Cash & Culture: Who gets funded, who gets visited</h1>
+
       </a>
 
       <nav id="navmenu" class="navmenu">
@@ -81,8 +82,14 @@
       <div class="container">
         <div class="row gy-4">
           <div class="col-lg-7 order-2 order-lg-1 d-flex flex-column justify-content-center">
-            <h1>Welcome to Our Website</h1>
-            <p>We are team of talented designers making websites with Bootstrap</p>
+            <h1>Welcome</h1>
+            <p>Do you know which
+              <p-blue>region</p-blue> in Italy has received the highest <p-blue>funding</p-blue> for <p-blue>cultural
+                heritage</p-blue>
+              in <p-blue>the past 10 years(2014-2024)</p-blue>? Do you think the same region was
+              <p-blue>visited</p-blue> the most for
+              its <p-blue>cultural heritage</p-blue> assets?
+            </p>
             <div class="d-flex">
               <a href="#about" class="btn-get-started">Get Started</a>
 
@@ -109,10 +116,12 @@
           <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
             <div class="content">
               <h3>About the Project</h3>
-              <h2>The project is aimed at analyzing and dissaminating data extracted from datasets available online</h2>
+              <h2> This project analyzes the distribution of public funding for cultural heritage and tourism projects
+                across Italian regions, and compares those investments with the number of visitors each region received
+                in the same years (2014 → 2024).</h2>
               <p>
-                Starting from a research question: Does institutional funding influence cultural participation over time
-                and across regions?
+                The goal is to trace the connection, mismatches (e.g., high funding / low visitation or vice versa),
+                temporal trends, and possible explanations that can lead to policy discussion and further research.
               </p>
               <div class="text-center text-lg-start">
                 <a href="#"
@@ -146,9 +155,8 @@
             <div class="service-item position-relative">
               <div class="icon"><i class="bi bi-activity icon"></i></div>
               <h4><a href="#picking-data" class="stretched-link">Data Preparation</a></h4>
-              <p style="text-align: justify;">Starting from dataset from opencoesione, project funding information was
-                extracted between the years
-                2014-2027 </p>
+              <p style="text-align: justify;">Identified the data sources, evaluated each for its relevance and
+                feasibility, and selected the raw data for extraction.</p>
             </div>
           </div>
 
@@ -156,7 +164,8 @@
             <div class="service-item position-relative">
               <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div>
               <h4><a href="#data-cleaning" class="stretched-link">Data Extraction</a></h4>
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+              <p>Ingested the raw data, cleaned the rows of any duplicate or empty values, normalized the variable
+                names, and saved a clean CSV file for visualization.</p>
             </div>
           </div>
 
@@ -222,16 +231,85 @@
                 class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
                 <h3>Picking the data</h3>
                 <p class="fst-italic">
-                  We started by extracting the number of projects and their funding details from the Opencoesione
-                  datasets available and split according to years. Also extracting participation in cultural events from
-                  the dataset available
+                  In the preparation phase, we structured our approach around the central research questions and defined
+                  the scope of the analysis. Our objective was to explore how public funding for cultural heritage and
+                  tourism projects (2014 - 2024) was distributed across Italian regions and how these investments
+                  compared with the actual number of visitors in the same period.
+                  Key tasks included:
                 </p>
                 <ul>
-                  <li><i class="bi bi-check2-all"></i> <span>Compile a count of projects and their funding</span></li>
-                  <li><i class="bi bi-check2-all"></i> <span>Compile people's participation in cultural events</span>
+                  <li>
+                    <i class="bi bi-check2-all"></i>
+                    <span class="dynamic-link" onclick="toggleDetails(this)">Identifying candidate data sources
+                    </span>
+                    <div class="details-text" hidden>
+                      We surveyed multiple public datasets that might provide insight into cultural funding, heritage,
+                      tourism, and social or cultural participation:
+                      <ul style="list-style-type:circle; margin-left:20px">
+                        <li>The ArCo Knowledge Graph (to query dati.beniculturali.it), which provides linked open data
+                          on Italian cultural heritage through ontologies and catalog records.
+                        </li>
+                        <li>OpenCoesione _ Culture & Tourism Project Data (2014–2020, 2021–2027)</li>
+                        <li>Ministero della Cultura _ Cultural income statistics (MiC Income)</li>
+                        <li>Ministero della Cultura _ Visitor and Participation Statistics (MIC Visitors)</li>
+                        <li>The ISTAT “Aspects of Daily Life” (AVQ) survey, which captures household- and
+                          individual-level variables on cultural consumption, social participation, and quality-of-life
+                          metrics.</li>
+                      </ul>
+                    </div>
                   </li>
-                  <li><i class="bi bi-check2-all"></i> <span>Determine which policies influenced cultural
-                      participation</span></li>
+                  <li>
+                    <i class="bi bi-check2-all"></i>
+                    <span class="dynamic-link" onclick="toggleDetails(this)">Evaluating relevance & feasibility</span>
+                    <div class="details-text" hidden>
+                      For each candidate dataset, we assessed whether it aligned with our project’s objectives and
+                      whether we could access or extract it sufficiently:
+                      <ul style="list-style-type: circle; margin-left:20px">
+                        <li>The ArCo / CIS knowledge graph is a rich semantic resource that models Italian cultural
+                          heritage with ontology modules and supports SPARQL queries. However, automatic extraction and
+                          integration were too complex for our time frame, especially given potential issues of
+                          coverage, query complexity, and alignment with our funding/visitor datasets.</li>
+                        <li>
+                          The MiC “income/budget” datasets were initially considered as a complementary source for
+                          analysis of financial trends in the cultural sector. However, they were excluded because the
+                          available data are too aggregated: they do not distinguish between different cultural domains
+                          (e.g., heritage, libraries, performing arts) or provide consistent regional and yearly
+                          breakdowns. As a result, it was not possible to align them with the OpenCoesione data, which
+                          is organized by project, region, and year.
+                        </li>
+                        <li>
+                          The ISTAT “Aspects of Daily Life” survey is broad and includes items about cultural
+                          consumption, but it is in the form of microdata (household-level survey), which requires
+                          careful sampling treatment, potential licensing restrictions, and may not align regionally or
+                          temporally with our main funding data (open coesione).
+                        </li>
+                      </ul>
+
+                      Instead, we concentrated on OpenCoesione project/funding data and visitor/participation
+                      datasets from MiC, which better matched our regional-year analysis needs.
+                      <ul style="list-style-type: circle; margin-left:20px">
+                        <li>
+                          OpenCoesione – Culture & Tourism Project Data (2014–2020, 2021–2027) provides detailed
+                          information on individual public-funded projects, including total funding, funding source
+                          (public/private/foreign), start and end dates, and geographic scope. They are openly available
+                          and regularly updated.
+                        </li>
+                        <li>
+                          Ministero della Cultura – Visitor and Participation Statistics
+                          publishes official statistics on annual visitors to cultural heritage sites, including
+                          museums, monuments, and archaeological areas, broken down by region and institution type. This
+                          dataset enabled us to measure regional participation in cultural heritage and to compare it
+                          with the level of public investment recorded by OpenCoesione.
+                        </li>
+                      </ul>
+                      We began by extracting and organizing data from OpenCoesione (funding and project information) and
+                      Ministero della Cultura (MiC) datasets (visitor and participation statistics).
+
+                    </div>
+                  </li>
+                  <li>
+
+                  </li>
                 </ul>
               </div>
               <div class="col-lg-6 order-1 order-lg-2 text-center">

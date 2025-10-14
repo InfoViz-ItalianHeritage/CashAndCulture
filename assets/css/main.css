@@ -160,7 +160,7 @@ h6 {
 }
 
 .header .logo h1 {
-  font-size: 30px;
+  font-size: 25px;
   margin: 0;
   font-weight: 700;
   color: var(--heading-color);
@@ -765,6 +765,26 @@ section,
   margin: 5px 0 30px 0;
   font-size: 20px;
   font-weight: 400;
+}
+.hero p-blue {
+  color: #009cea;
+  margin: 5px 0 30px 0;
+  font-size: 20px;
+  font-weight: 400;
+}
+.dynamic-link {
+    cursor: pointer; /* Changes the cursor to a hand to indicate it's clickable */
+     /* Standard link blue, you can adjust this */
+    text-decoration: underline; /* Makes it look like a traditional link */
+}
+
+/* Optional: To make the details text visually distinct */
+.details-text {
+    margin-top: 5px;
+    padding-left: 25px; /* Indent the text to align it visually */
+    font-size: 0.9em;
+    color: #6c757d;
+    font-style: italic;
 }
 
 .hero .btn-get-started {
