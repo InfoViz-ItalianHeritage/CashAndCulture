@@ -471,21 +471,49 @@
                 class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
                 <h3>Graphing Data</h3>
                 <p class="fst-italic">
-                  To answer the research questions, graphs are created to showcase trends and highlight useful figures:
+                  To answer the research questions, visualizations were produced to investigate the funding/visitor
+                  trends and their connections across Italian regions.
                 </p>
                 <ul>
-                  <li><i class="bi bi-check2-all"></i> <span></span>The regions with the highest funding received for
-                    cultural heritage projects</li>
-                  <li><i class="bi bi-check2-all"></i> <span>The regions with the highest participation in cultural
-                      heritage projects and events</span></li>
-                  <li><i class="bi bi-check2-all"></i> <span>The trend of funding and how it changed through the years
-                      2014-2024</span></li>
-                </ul>
-                <p class="fst-italic">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                  dolore
-                  magna aliqua.
-                </p>
+                  <li>
+                    <i class="bi bi-check2-all"></i>
+                    <span class="dynamic-link" onclick="toggleDetails(this)">Funding allocated to cultural heritage
+                      projects in each region (2014–2024)
+                    </span>
+                    <div class="details-text" hidden>
+                      <ul style="list-style-type:circle; margin-left:20px">
+                        <li>By analyzing the first general graphs, the funding source, time scope, and top-funded
+                          regions were sampled to gain a clearer view of the connection between the datasets.
+                          To achieve this, we began by mapping the numbers in the dataset to gain a clear understanding
+                          of the temporal/regional inputs that stand out.
+                          Namely, the first barchart on the notebook (fig.1.1) directed us to a narrower time scope(Top
+                          5 years), and the regional geographical map (fig.2.1), showing the distribution of funding
+                          throughout the dataset, led us to the selected regions (Top 5 regions).
+
+                          To make sure the selected regions were truly the top-funded ones in recent years, we plotted a
+                          bargraph with a confined time scope to show consistency in the results (fig.3).
+
+                          To depict the actual trend in the allocation of funds, we used heatmaps to show the amount
+                          each region received for its cultural heritage projects each year (fig.4.1).</li>
+
+                      </ul>
+                    </div>
+
+                  </li>
+                  <li>
+                    <i class="bi bi-check2-all"></i>
+                    <span class="dynamic-link" onclick="toggleDetails(this)">Visitor fluctuations within the years under
+                      study
+                    </span>
+                    <div class="details-text" hidden>
+                      <ul style="list-style-type:circle; margin-left:20px">
+                        <li>Moving on to the number of visitors, we used the second dataset (mic_visitors), and plotted
+                          a bubblemap which showed each region's share of yearly visits (fig.6).</li>
+
+                      </ul>
+                    </div>
+
+                  </li>
               </div>
               <div class="col-lg-6 order-1 order-lg-2 text-center">
                 <img src="assets/img/working-4.png" alt="" class="img-fluid">
@@ -498,17 +526,49 @@
               <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
                 <h3>Conclusions</h3>
                 <p class="fst-italic">
-                  From the previous steps, conclusions about
+                  Top 5 Funded Years (2014–2024)
+
                 </p>
                 <ul>
-                  <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo
-                      consequat.</span></li>
-                  <li><i class="bi bi-check2-all"></i> <span>Duis aute irure dolor in reprehenderit in voluptate
-                      velit.</span></li>
-                  <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu
-                      fugiat nulla pariatur.</span></li>
-                </ul>
+                  <li>
+                    <i class="bi bi-check2-all"></i>
+                    <span class="dynamic-link" onclick="toggleDetails(this)">Funding allocated to cultural heritage
+                      projects in each region (2014–2024)
+                    </span>
+                    <div class="details-text" hidden>
+                      <ul style="list-style-type:circle; margin-left:20px">
+                        <li>By analyzing the first general graphs, the funding source, time scope, and top-funded
+                          regions were sampled to gain a clearer view of the connection between the datasets.
+                          To achieve this, we began by mapping the numbers in the dataset to gain a clear understanding
+                          of the temporal/regional inputs that stand out.
+                          Namely, the first barchart on the notebook (fig.1.1) directed us to a narrower time scope(Top
+                          5 years), and the regional geographical map (fig.2.1), showing the distribution of funding
+                          throughout the dataset, led us to the selected regions (Top 5 regions).
+
+                          To make sure the selected regions were truly the top-funded ones in recent years, we plotted a
+                          bargraph with a confined time scope to show consistency in the results (fig.3).
+
+                          To depict the actual trend in the allocation of funds, we used heatmaps to show the amount
+                          each region received for its cultural heritage projects each year (fig.4.1).</li>
+
+                      </ul>
+                    </div>
+
+                  </li>
+                  <li>
+                    <i class="bi bi-check2-all"></i>
+                    <span class="dynamic-link" onclick="toggleDetails(this)">Visitor fluctuations within the years under
+                      study
+                    </span>
+                    <div class="details-text" hidden>
+                      <ul style="list-style-type:circle; margin-left:20px">
+                        <li>Moving on to the number of visitors, we used the second dataset (mic_visitors), and plotted
+                          a bubblemap which showed each region's share of yearly visits (fig.6).</li>
+
+                      </ul>
+                    </div>
+
+                  </li>
               </div>
               <div class="col-lg-6 order-1 order-lg-2 text-center">
                 <img src="assets/img/working-3.png" alt="" class="img-fluid">
@@ -565,8 +625,7 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Funding Per Region</h2>
-        <p>This map showcases project funding per region over the period present in the dataset</p>
+        <h2>Visualization</h2>
       </div><!-- End Section Title -->
       <section id="research-question" class="services section">
         <div class="container">
@@ -577,13 +636,58 @@
                 <div class="icon">
                   <i class="bi bi-bar-chart-fill"></i>
                 </div>
-                <h4><a href="" class="stretched-link">Funding Distribution per region</a></h4>
-                <p style="text-align: justify;">Which types of cultural institutions receive the largest share of
-                  funding,
-                  and how does this relate to their visitors' number?</p>
+                <h4><a href="" class="stretched-link">Funding Distribution per year</a></h4>
+                <p style="text-align: justify;">The bar chart (No. 1) shows the total funding allocated to cultural
+                  heritage within the scope of the entire open coesione dataset. This includes the sum of the total
+                  yearly budget of projects, which is divided into public, foreign, and private sources. </p>
               </div>
-            </div>
 
+            </div>
+            <div class="container" data-aos="fade-up">
+              <h2></h2>
+              <div class="service-item position-relative">
+                <div class="icon">
+                  <i class="bi bi-bar-chart-fill"></i>
+                </div>
+                <p style="text-align: justify;">The bar chart (No. 1) shows the total funding allocated to cultural
+                  heritage within the scope of the
+                  entire open coesione dataset. This includes the sum of the total yearly budget of projects, which is
+                  divided into public, foreign, and private sources. </p><br>
+                <p style="text-align: justify;">It is visually depictable that the years 2016, 2017,
+                  2018, 2019, and 2022 witnessed a larger sum of funding for cultural heritage projects compared to
+                  other
+                  years in the dataset. The gap between the years 2019 and 2022 is the COVID years, hence the drop in
+                  the
+                  slight drop in the allocation of budget is justifiable.</p><br>
+
+                <p style="text-align: justify;">Within the dataset of open coesione, some regions received more funds
+                  for
+                  their cultural heritage
+                  projects. The horizontal graph (No.3) and the regional geographical map(No.2) show how there are top 5
+                  regions in receiving the funds when compared in a general time scope within the dataset. These regions
+                  are: CAMPANIA, PUGLIA, SICILIA, TOSCANA, CALABRIA.</p><br>
+                <table class="center">
+                  <tr>
+                    <th>
+                      TOP 5 YEARS (in funding total)
+                    </th>
+                    <th>
+                      TOP 5 REGIONS(in funding total)
+                    </th>
+                  </tr>
+                  <tr>
+                    <td>
+                      2016, 2017, 2018, 2019, 2022
+                    </td>
+                    <td>
+                      CAMPANIA, PUGLIA, SICILIA, TOSCANA, CALABRIA
+                    </td>
+                  </tr>
+                </table>
+              </div>
+
+
+            </div><!-- End Section Title -->
           </div>
         </div>
 

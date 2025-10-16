@@ -62,7 +62,7 @@ d3.csv("data/open_coesione.csv").then(data => {
         hovertemplate: "<b>%{x}</b><br>Pubblico: €%{y:.2f} M<extra></extra>"
     };
 
-    // 🎯 CHANGE 3: Remove traceEstero and tracePrivato
+
 
     const desiredYears = dataset.map(d => d.year);
 
@@ -80,6 +80,6 @@ d3.csv("data/open_coesione.csv").then(data => {
         margin: { t: 40, l: 80, r: 30, b: 100 }
     };
 
-    // 🎯 CHANGE 4: Only plot tracePubblico
+
     Plotly.newPlot("chart", [tracePubblico], layout, { responsive: true });
 });
