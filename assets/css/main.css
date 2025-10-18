@@ -1052,6 +1052,21 @@ margin-left: auto;
 margin-right: auto;
 text-align: center;
 }
+.chart2{
+ flex: 1;
+  min-height: 350px;
+  flex-shrink: 0;
+  max-width: 100% !important;
+  max-height: none !important;
+}
+#chart2{
+ flex: 1;
+  min-height: 350px !important;
+  flex-shrink: 0 !important;
+  max-width: 100% !important;
+  max-height: none !important;
+}
+
 .content-box{
   flex: 1;
   border: 1px solid #ccc;
