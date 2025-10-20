@@ -23,9 +23,9 @@ function createCombinedMap() {
 
     // --- Load all data in parallel ---
     Promise.all([
-        d3.csv('CashAndCulture/data/open_coesione.csv'),
-        d3.csv('CashAndCulture/data/mic_visitors.csv'),
-        d3.json('CashAndCulture/data/italy_regions.geojson')
+        d3.csv('data/open_coesione.csv'),
+        d3.csv('data/mic_visitors.csv'),
+        d3.json('data/italy_regions.geojson')
     ]).then(([fundingData, visitorData, geoData]) => {
         // === 1. FUNDING CHOROPLETH ===
         const fundingRegionData = d3.rollup(fundingData,
