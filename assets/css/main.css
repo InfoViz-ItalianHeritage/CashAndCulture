@@ -1024,11 +1024,24 @@ section,
   border: 1px solid #ccc;
   flex-shrink: 0;
 }
-.map3 {
-  flex: 1;
+.heatmap{
+ flex: 1;
   min-height: 350px;
-  border: 1px solid #ccc;
   flex-shrink: 0;
+  max-width: 100% !important;
+  
+}
+#heatmap{
+ flex: 1;
+  min-height: 350px !important;
+  flex-shrink: 0 !important;
+  max-width: 100% !important;
+  
+}
+.svg-container{
+  width: unset !important;
+  min-width: unset !important;
+  min-height: unset !important;
 }
 .chart { flex: 1;
   min-height: 350px;
