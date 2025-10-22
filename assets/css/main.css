@@ -1072,6 +1072,12 @@ text-align: center;
   max-width: 100% !important;
   max-height: none !important;
 }
+.piechart{
+flex: 1;
+  min-height: 350px;
+  
+  flex-shrink: 0;
+}
 #chart2{
  flex: 1;
   min-height: 350px !important;
@@ -1336,7 +1342,7 @@ text-align: center;
 .testimonials .testimonial-item .quote-icon-left,
 .testimonials .testimonial-item .quote-icon-right {
   color: color-mix(in srgb, var(--accent-color), transparent 50%);
-  font-size: 26px;
+  font-size: 50px;
   line-height: 0;
 }
 
