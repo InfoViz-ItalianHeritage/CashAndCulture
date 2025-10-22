@@ -132,7 +132,7 @@ async function loadAndProcessData(csvPath) {
     }];
 
     const layout = {
-        title: "fig.10: Projects Start Timeliness",
+        title: "Fig.10: Projects' Start Timeliness",
         annotations: [
             {
                 text: `Total: ${total}`,

@@ -225,7 +225,7 @@ function processDataAndRenderChart(rawData) {
 
     let layout = {
         barmode: 'stack',
-        title: 'Fig.7: Top 5 Regions + Others: Yearly Visitor Distribution (2016–2019, 2022)',
+        title: 'Fig.7: Yearly Visitors Distribution',
         xaxis: {
             title: "Percentage of Total Visitors",
             automargin: true,

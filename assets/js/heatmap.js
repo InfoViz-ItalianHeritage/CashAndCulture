@@ -206,7 +206,7 @@ function processAndPlot(rawData) {
     }];
 
     const layout = {
-        title: 'fig.4.2: Total Public Funding per Region (Top 5 Years)<br>(top region per year shown as share of yearly total)',
+        title: 'Fig.4.2: Total Public Funding per Region',
 
         // MODIFICATION 2: Set axis types to 'category' for equal spacing and sorted display
         xaxis: {

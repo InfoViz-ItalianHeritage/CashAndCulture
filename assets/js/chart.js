@@ -68,7 +68,7 @@ d3.csv("data/open_coesione.csv").then(data => {
 
     const layout = {
         // No need for barmode: "stack" since there's only one trace
-        title: "Total Funding Per Year",
+        title: "Fig.1.2: Total Funding Per Year",
         xaxis: {
             title: "Year",
             type: 'category',
