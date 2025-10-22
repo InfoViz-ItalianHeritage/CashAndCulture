@@ -80,6 +80,39 @@ function toggleDetails(element) {
    * Mobile nav toggle
    */
   const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+  document.addEventListener('DOMContentLoaded', function () {
+    // Map service links (the top section) to their tab targets (in the features section)
+    const tabMap = {
+      '#features-tab-1': '#features-tab-1',
+      '#features-tab-2': '#features-tab-2',
+      '#features-tab-3': '#features-tab-3',
+      '#features-tab-4': '#features-tab-4'
+    };
+
+    Object.keys(tabMap).forEach(linkId => {
+      const link = document.querySelector(`a[href="${linkId}"]`);
+      if (link) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+
+          // Find the tab link with matching data-bs-target
+          const tabTrigger = document.querySelector(`a[data-bs-target="${tabMap[linkId]}"]`);
+          if (tabTrigger) {
+            // Use Bootstrap’s Tab API to show it
+            const tab = new bootstrap.Tab(tabTrigger);
+            tab.show();
+          }
+
+          // Smooth scroll to the section
+          const section = document.querySelector(tabMap[linkId]);
+          if (section) {
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      }
+    });
+  });
+
 
   function mobileNavToogle() {
     document.querySelector('body').classList.toggle('mobile-nav-active');

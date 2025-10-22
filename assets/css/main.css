@@ -1024,6 +1024,9 @@ section,
   border: 1px solid #ccc;
   flex-shrink: 0;
 }
+html {
+  scroll-behavior: smooth;
+}
 .heatmap{
  flex: 1;
   min-height: 350px;

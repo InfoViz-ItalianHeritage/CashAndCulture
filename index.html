@@ -148,16 +148,16 @@
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
             <div class="service-item position-relative">
               <div class="icon"><i class="bi bi-patch-question"></i></div>
-              <h4><a href="" class="stretched-link">Sub-question 1</a></h4>
-              <p style="text-align: justify;">Which years/regions (in 2014-2024) witnessed the highest amount of funding
-                (public) allocated to cultural heritage?</p>
+              <h4><a href="#chart" class="stretched-link">Sub-question 1</a></h4>
+              <p style="text-align: justify;">Which years witnessed the highest amount of public funding allocated to
+                cultural heritage projects?</p>
             </div>
           </div>
 
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
             <div class="service-item position-relative">
               <div class="icon"><i class="bi bi-patch-question"></i></div>
-              <h4><a href="" class="stretched-link">Sub-question 2</a></h4>
+              <h4><a href="#map" class="stretched-link">Sub-question 2</a></h4>
               <p style="text-align: justify;">Which regions received the highest share of funding each year?</p>
             </div>
           </div>
@@ -165,7 +165,7 @@
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
             <div class="service-item position-relative">
               <div class="icon"><i class="bi bi-patch-question"></i></div>
-              <h4><a href="" class="stretched-link">Sub-question 3</a></h4>
+              <h4><a href="#map1" class="stretched-link">Sub-question 3</a></h4>
               <p style="text-align: justify;">How were the regional visitors' participation in cultural heritage
                 events/activities?</p>
             </div>
@@ -199,8 +199,9 @@
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
             <div class="service-item position-relative">
               <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div>
-              <h4><a href="#data-cleaning" class="stretched-link">Data Extraction</a></h4>
-              <p>Ingested the raw data, cleaned the rows of any duplicate or empty values, normalized the variable
+              <h4><a href="#features-tab-2" class="stretched-link">Data Extraction</a></h4>
+              <p style="text-align: justify;">Ingested the raw data, cleaned the rows of any duplicate or empty values,
+                normalized the variable
                 names, and saved a clean CSV file for visualization.</p>
             </div>
           </div>
@@ -208,16 +209,18 @@
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
             <div class="service-item position-relative">
               <div class="icon"><i class="bi bi-bar-chart-line"></i></div>
-              <h4><a href="#graphing-data" class="stretched-link">Data Visualization</a></h4>
-              <p>Created different types of graphs and maps to visualize the data in accordance with the research
+              <h4><a href="#features-tab-3" class="stretched-link">Data Visualization</a></h4>
+              <p style="text-align: justify;">Created different types of graphs and maps to visualize the data in
+                accordance with the research
                 questions.</p>
             </div>
           </div>
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
             <div class="service-item position-relative">
               <div class="icon"><i class="bi bi-clipboard-data"></i></div>
-              <h4><a href="" class="stretched-link">Analysis</a></h4>
-              <p>Put together the results that stand out in each dataset to find a connection and a possible
+              <h4><a href="#features-tab-4" class="stretched-link">Analysis</a></h4>
+              <p style="text-align: justify;">Put together the results that stand out in each dataset to find a
+                connection and a possible
                 correlation.</p>
             </div>
           </div>
@@ -524,11 +527,10 @@
                 <ul>
                   <li>
                     <i class="bi bi-check2-all"></i>
-                    <span class="dynamic-link" onclick="toggleDetails(this)">Top 5 Funded Years (Overall)
-                    </span>
+                    <span class="dynamic-link" onclick="toggleDetails(this)">Top 5 Funded Years (Overall)</span>
                     <div class="details-text" hidden>
                       <ul style="list-style-type:circle; margin-left:20px">
-                        <li>CAMPANIA, PUGLIA, SICILIA, TOSCANA, CALABRIA</li>
+                        <li>2016, 2017, 2018, 2019, 2022</li>
                         <li>
                           These years record the highest total public funding for cultural heritage projects according
                           to OpenCoesione, which tracks public investments at project level.
@@ -542,28 +544,10 @@
                     </div>
 
                   </li>
+
                   <li>
                     <i class="bi bi-check2-all"></i>
-                    <span class="dynamic-link" onclick="toggleDetails(this)">Top 5 Funded Regions(Overall)
-
-                    </span>
-                    <div class="details-text" hidden>
-                      <ul style="list-style-type:circle; margin-left:20px">
-                        <li>CAMPANIA, PUGLIA, SICILIA, TOSCANA, CALABRIA
-                        </li>
-                        <li>
-                          These regions received the largest cumulative funding over the observed period (2014–2024).
-                          Their prominence reflects ongoing investment programs targeting the southern regions, often
-                          supported by European structural funds aimed at cultural and territorial cohesion.
-                        </li>
-
-                      </ul>
-                    </div>
-
-                  </li>
-                  <li>
-                    <i class="bi bi-check2-all"></i>
-                    <span class="dynamic-link" onclick="toggleDetails(this)">Top 5 Funded Regions in each Top 5 year:
+                    <span class="dynamic-link" onclick="toggleDetails(this)">Top 5 Funded Regions in each Top 5 year
 
                     </span>
                     <div class="details-text" hidden>
@@ -580,12 +564,12 @@
                   </li>
                   <li>
                     <i class="bi bi-check2-all"></i>
-                    <span class="dynamic-link" onclick="toggleDetails(this)">Top 5 Visited Regions in each Top 5 year:
+                    <span class="dynamic-link" onclick="toggleDetails(this)">Top 5 Visited Regions in each Top 5 year
 
                     </span>
                     <div class="details-text" hidden>
                       <ul style="list-style-type:circle; margin-left:20px">
-                        <li>LAZIO(2016) - CAMPANIA(2017) - TOSCANA(2018) - PIEMONTE(2019) - LOMBARDIA(2022)</li>
+                        <li>LAZIO - CAMPANIA - TOSCANA - PIEMONTE - LOMBARDIA</li>
                         <li>
                           Data from MiC_Visitors (Ministero della Cultura) show that visitor flows are concentrated in
                           regions with well-established cultural tourism circuits and major cities, particularly Lazio
