@@ -61,16 +61,16 @@
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="#hero" class="active">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#workflow">Workflow</a></li>
           <li><a href="#research-question">Research Question</a></li>
+          <li><a href="#workflow">Workflow</a></li> 
+          <li><a href="#visualization">Visualization</a></li>
           <li><a href="#team">Team</a></li>
 
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
       <div class="header-social-links">
-        <a href="#" class="twitter"><i class="bi bi-github"></i></a>
+        <a href="https://github.com/InfoViz-ItalianHeritage/CashAndCulture.git" class="twitter"><i class="bi bi-github"></i></a>
       </div>
 
     </div>
@@ -593,9 +593,7 @@
 
     </section>
     <div class="container section-title" data-aos="fade-up">
-      <h2>Cultural Heritage Projects</h2>
-      <p>From the years 2014-2024 we observed the following with regards to cultural heritage projects</p>
-
+      <h2>Highlights of Last Decade</h2>
 
 
 
@@ -610,8 +608,8 @@
             </div>
             <div class="col-md-3 col-sm-6 mb-4">
               <div class="counter-box">
-                <div class="counter-number" data-target="40">0</div>
-                <div class="counter-label">Projects started on time</div>
+                <div class="counter-number" data-target="46">0</div>
+                <div class="counter-label">% of projects on time</div>
               </div>
             </div>
             <div class="col-md-3 col-sm-6 mb-4">
@@ -623,7 +621,7 @@
             <div class="col-md-3 col-sm-6 mb-4">
               <div class="counter-box">
                 <div class="counter-number" data-target="486021340">0</div>
-                <div class="counter-label">Visitors over 10 years</div>
+                <div class="counter-label">CH Visitors</div>
               </div>
             </div>
           </div>
@@ -631,8 +629,8 @@
       </section>
     </div>
 
-    <!-- Pricing Section -->
-    <section id="pricing" class="pricing section">
+    <!-- visualization Section -->
+    <section id="visualization" class="visualization section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -644,13 +642,8 @@
             <div class="chart" id="chart"></div>
             <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
               <div class="service-item position-relative">
-                <div class="icon">
-                  <i class="bi bi-bar-chart-fill"></i>
-                </div>
-                <h4><a href="" class="stretched-link">Funding Distribution per year</a></h4>
-                <p style="text-align: justify;">The bar chart (No. 1) shows the total funding allocated to cultural
-                  heritage within the scope of the entire open coesione dataset. This includes the sum of the total
-                  yearly budget of projects, which is divided into public, foreign, and private sources. </p>
+                <h4><i class="bi bi-bar-chart-fill"></i><a href="" class="stretched-link"> Fig. 1.2</a></h4>
+                <p style="text-align: justify;">The barchart shows the sum of funding allocated to cultural heritage projects each year within the selected years. </p>
               </div>
 
             </div>
@@ -660,23 +653,9 @@
                 <div class="icon">
                   <i class="bi bi-bar-chart-fill"></i>
                 </div>
-                <p style="text-align: justify;">The bar chart (No. 1) shows the total funding allocated to cultural
-                  heritage within the scope of the
-                  entire open coesione dataset. This includes the sum of the total yearly budget of projects, which is
-                  divided into public, foreign, and private sources. </p><br>
-                <p style="text-align: justify;">It is visually depictable that the years 2016, 2017,
-                  2018, 2019, and 2022 witnessed a larger sum of funding for cultural heritage projects compared to
-                  other
-                  years in the dataset. The gap between the years 2019 and 2022 is the COVID years, hence the drop in
-                  the
-                  slight drop in the allocation of budget is justifiable.</p><br>
-
-                <p style="text-align: justify;">Within the dataset of open coesione, some regions received more funds
-                  for
-                  their cultural heritage
-                  projects. The horizontal graph (No.3) and the regional geographical map(No.2) show how there are top 5
-                  regions in receiving the funds when compared in a general time scope within the dataset. These regions
-                  are: CAMPANIA, PUGLIA, SICILIA, TOSCANA, CALABRIA.</p>
+                <p style="text-align: justify;">From the barchart (fig.1.1) showing the total funding allocated to cultural heritage within the scope of the entire open_coesione dataset, we extracted five instances of years with high total public funding (fig.1.2). </p><br>
+                <p style="text-align: justify;">In the original barchart (fig.1.1), it is visually depictable that the years <span style="color:#009cea;">2016</span>, <span style="color:#009cea;">2017</span>, <span style="color:#009cea;">2018</span>, <span style="color:#009cea;">2019</span>, and <span style="color:#009cea;">2022</span> witnessed a larger sum of funding for cultural heritage projects compared to other years in the dataset.</p><br>
+                <p style="text-align: justify;">The gap between the years 2019 and 2022 is the COVID years, hence the slight drop in the allocation of the budget is justifiable.</p>
               </div>
 
 
@@ -692,11 +671,8 @@
 
             <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
               <div class="service-item position-relative">
-                <div class="icon">
-                  <i class="bi bi-map"></i>
-                </div>
-                <h4><a href="" class="stretched-link">Funding Distribution per region</a></h4>
-                <p style="text-align: justify;">Fig.2.2: The geographical map shows the total public funding allocated
+                <h4><i class="bi bi-map"></i><a href="" class="stretched-link"> Fig.2.2</a></h4>
+                <p style="text-align: justify;">The geographical map shows the total public funding allocated
                   to regions in Italy for their cultural heritage projects in each selected year.</p>
               </div>
             </div>
@@ -724,9 +700,8 @@
           <div class="heatmap" id="heatmap"></div>
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
             <div class="service-item position-relative">
-              <div class="icon"><i class="bi bi-thermometer-half"></i></div>
-              <h4><a href="" class="stretched-link">Funding Distribution per region</a></h4>
-              <p style="text-align: justify;">Fig.4.2: The heatmap shows the regions that received the highest share of
+              <h4><i class="bi bi-thermometer-half"></i><a href="" class="stretched-link"> Fig.4.2</a></h4>
+              <p style="text-align: justify;">The heatmap shows the regions that received the highest share of
                 funding each year within the selected years.</p>
             </div>
           </div>
@@ -745,12 +720,12 @@
             received the highest share of funding each year.
             Each region’s share is calculated in percentage of the total funding each year:</p><br>
 
-
-          <p>2016: CAMPANIA(37.6%)</p>
-          <p>2017: CAMPANIA(23.4%)</p>
-          <p>2018: PUGLIA(16.1%)</p>
-          <p>2019: MOLISE(20.1%)</p>
-          <p>2022: CAMPANIA(60.8%)</p>
+          
+          <p>2016: <span style="color:#009cea;">CAMPANIA</span> (37.6%)</p>
+          <p>2017: <span style="color:#009cea;">CAMPANIA</span> (23.4%)</p>
+          <p>2018: <span style="color:#009cea;">PUGLIA</span> (16.1%)</p>
+          <p>2019: <span style="color:#009cea;">MOLISE</span> (20.1%)</p>
+          <p>2022: <span style="color:#009cea;">CAMPANIA</span> (60.8%)</p>
           </p>
 
 
@@ -765,13 +740,8 @@
           <div class="map1" id="map1"></div>
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
             <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-map"></i>
-              </div>
-              <h4><a href="" class="stretched-link">Funding Distribution per region</a></h4>
-              <p style="text-align: justify;">Which types of cultural institutions receive the largest share of
-                funding,
-                and how does this relate to their visitors' number?</p>
+              <h4><i class="bi bi-map"></i><a href="" class="stretched-link"> Fig.6.2</a></h4>
+              <p style="text-align: justify;">The geographical bubblemap shows regional contribution of museum visitors in each year.</p>
             </div>
           </div>
 
@@ -786,7 +756,7 @@
           <p style="text-align: justify;">By sampling the top 5 years in which the highest amount of funding was
             allocated, we approached the other dataset (mic_visitors) to map the visitors’ contribution to the cultural
             heritage activities.
-            A geographical bubblemap (fig.6) is used to show a visual comparative analysis. By switching between the
+            A geographical bubblemap (fig.6.2) is used to show a visual comparative analysis. By switching between the
             yearly outputs of the map we detected an obvious difference in the proportion for some regions throughout
             the years. (Obvious highs)</p><br>
 
@@ -802,13 +772,8 @@
           <div class="chart2" id="chart2"></div>
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
             <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-bar-chart-steps"></i>
-              </div>
-              <h4><a href="" class="stretched-link">Funding Distribution per year</a></h4>
-              <p style="text-align: justify;">The bar chart (No. 1) shows the total funding allocated to cultural
-                heritage within the scope of the entire open coesione dataset. This includes the sum of the total
-                yearly budget of projects, which is divided into public, foreign, and private sources. </p>
+              <h4><i class="bi bi-bar-chart-steps"></i><a href="" class="stretched-link"> Fig.7</a></h4>
+              <p style="text-align: justify;">The stacked barchart shows the share of visitors in the top-visited regions in percentage in the selected years. </p>
             </div>
 
           </div>
@@ -818,41 +783,12 @@
               <div class="icon">
                 <i class="bi bi-bar-chart-steps"></i>
               </div>
-              <p style="text-align: justify;">The bar chart (No. 1) shows the total funding allocated to cultural
-                heritage within the scope of the
-                entire open coesione dataset. This includes the sum of the total yearly budget of projects, which is
-                divided into public, foreign, and private sources. </p><br>
-              <p style="text-align: justify;">It is visually depictable that the years 2016, 2017,
-                2018, 2019, and 2022 witnessed a larger sum of funding for cultural heritage projects compared to
-                other
-                years in the dataset. The gap between the years 2019 and 2022 is the COVID years, hence the drop in
-                the
-                slight drop in the allocation of budget is justifiable.</p><br>
-
-              <p style="text-align: justify;">Within the dataset of open coesione, some regions received more funds
-                for
-                their cultural heritage
-                projects. The horizontal graph (No.3) and the regional geographical map(No.2) show how there are top 5
-                regions in receiving the funds when compared in a general time scope within the dataset. These regions
-                are: CAMPANIA, PUGLIA, SICILIA, TOSCANA, CALABRIA.</p><br>
-              <table class="center">
-                <tr>
-                  <th>
-                    TOP 5 YEARS (in funding total)
-                  </th>
-                  <th>
-                    TOP 5 REGIONS(in funding total)
-                  </th>
-                </tr>
-                <tr>
-                  <td>
-                    2016, 2017, 2018, 2019, 2022
-                  </td>
-                  <td>
-                    CAMPANIA, PUGLIA, SICILIA, TOSCANA, CALABRIA
-                  </td>
-                </tr>
-              </table>
+              <p style="text-align: justify;">We decided to graph a horizontal stacked barchart (fig.7) to see the percentage rate of the regions with the highest participation compared to the rest of the regions. 
+              It is depicted that Lazio is the highest visited region in each year. </p><br>
+              <p style="text-align: justify;">The highest numbers for visitors’ participation each year were consistent and proportionate.  The Top 5 visitors for each year are mapped: </p>
+              <p style="text-align: justify;">
+              <span style="color:#009cea;">LAZIO</span> - <span style="color:#009cea;">CAMPANIA</span> - <span style="color:#009cea;">TOSCANA</span> - <span style="color:#009cea;">PIEMONTE</span> - <span style="color:#009cea;">LOMBARDIA</span>
+              </p>
             </div>
 
 
@@ -867,13 +803,8 @@
           <div class="piechart" id="piechart"></div>
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
             <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-bar-chart-steps"></i>
-              </div>
-              <h4><a href="" class="stretched-link">Funding Distribution per year</a></h4>
-              <p style="text-align: justify;">The bar chart (No. 1) shows the total funding allocated to cultural
-                heritage within the scope of the entire open coesione dataset. This includes the sum of the total
-                yearly budget of projects, which is divided into public, foreign, and private sources. </p>
+              <h4><i class="bi bi-bar-chart-steps"></i><a href="" class="stretched-link"> Fig.10</a></h4>
+              <p style="text-align: justify;">The piechart shows the projects in opencoesione dataset divided in terms of their start time compared with the estimated date of project initiation. </p>
             </div>
 
           </div>
@@ -883,41 +814,8 @@
               <div class="icon">
                 <i class="bi bi-bar-chart-steps"></i>
               </div>
-              <p style="text-align: justify;">The bar chart (No. 1) shows the total funding allocated to cultural
-                heritage within the scope of the
-                entire open coesione dataset. This includes the sum of the total yearly budget of projects, which is
-                divided into public, foreign, and private sources. </p><br>
-              <p style="text-align: justify;">It is visually depictable that the years 2016, 2017,
-                2018, 2019, and 2022 witnessed a larger sum of funding for cultural heritage projects compared to
-                other
-                years in the dataset. The gap between the years 2019 and 2022 is the COVID years, hence the drop in
-                the
-                slight drop in the allocation of budget is justifiable.</p><br>
-
-              <p style="text-align: justify;">Within the dataset of open coesione, some regions received more funds
-                for
-                their cultural heritage
-                projects. The horizontal graph (No.3) and the regional geographical map(No.2) show how there are top 5
-                regions in receiving the funds when compared in a general time scope within the dataset. These regions
-                are: CAMPANIA, PUGLIA, SICILIA, TOSCANA, CALABRIA.</p><br>
-              <table class="center">
-                <tr>
-                  <th>
-                    TOP 5 YEARS (in funding total)
-                  </th>
-                  <th>
-                    TOP 5 REGIONS(in funding total)
-                  </th>
-                </tr>
-                <tr>
-                  <td>
-                    2016, 2017, 2018, 2019, 2022
-                  </td>
-                  <td>
-                    CAMPANIA, PUGLIA, SICILIA, TOSCANA, CALABRIA
-                  </td>
-                </tr>
-              </table>
+              <p style="text-align: justify;">To have a clearer view of the actual project activation time and their expected usage, we mapped the projects in terms of their timeliness. </p>
+              <p style="text-align: justify;">From the graph we understood that only less than half of the projects started on time in the last 10 decades and the rest either started earlier or with delay. </p>
             </div>
 
 

@@ -1466,9 +1466,9 @@ flex: 1;
 }
 
 /*--------------------------------------------------------------
-# Pricing Section
+# visualization Section
 --------------------------------------------------------------*/
-.pricing .pricing-item {
+.visualization .visualization-item {
   background-color: var(--surface-color);
   padding: 60px 40px;
   box-shadow: 0 3px 20px -2px rgba(0, 0, 0, 0.1);
@@ -1476,29 +1476,29 @@ flex: 1;
   position: relative;
 }
 
-.pricing h3 {
+.visualization h3 {
   font-weight: 600;
   margin-bottom: 15px;
   font-size: 20px;
 }
 
-.pricing h4 {
+.visualization h4 {
   font-size: 48px;
   color: var(--accent-color);
   font-family: var(--heading-font);
   font-weight: 400;
 }
 
-.pricing h4 sup {
+.visualization h4 sup {
   font-size: 28px;
 }
 
-.pricing h4 span {
+.visualization h4 span {
   color: color-mix(in srgb, var(--default-color), transparent 60%);
   font-size: 18px;
 }
 
-.pricing ul {
+.visualization ul {
   padding: 20px 0;
   list-style: none;
   color: color-mix(in srgb, var(--default-color), transparent 30%);
@@ -1506,31 +1506,31 @@ flex: 1;
   line-height: 20px;
 }
 
-.pricing ul li {
+.visualization ul li {
   padding: 10px 0;
   display: flex;
   align-items: center;
 }
 
-.pricing ul i {
+.visualization ul i {
   color: #059652;
   font-size: 24px;
   padding-right: 3px;
 }
 
-.pricing ul .na {
+.visualization ul .na {
   color: color-mix(in srgb, var(--default-color), transparent 60%);
 }
 
-.pricing ul .na i {
+.visualization ul .na i {
   color: color-mix(in srgb, var(--default-color), transparent 60%);
 }
 
-.pricing ul .na span {
+.visualization ul .na span {
   text-decoration: line-through;
 }
 
-.pricing .buy-btn {
+.visualization .buy-btn {
   color: color-mix(in srgb, var(--default-color), transparent 40%);
   background-color: var(--background-color);
   display: inline-block;
@@ -1544,43 +1544,43 @@ flex: 1;
   transition: 0.3s;
 }
 
-.pricing .buy-btn:hover {
+.visualization .buy-btn:hover {
   background: var(--accent-color);
   border-color: var(--accent-color);
   color: var(--contrast-color);
 }
 
-.pricing .featured {
+.visualization .featured {
   z-index: 10;
 }
 
-.pricing .featured .pricing-item {
+.visualization .featured .visualization-item {
   background: var(--accent-color);
 }
 
 @media (min-width: 992px) {
-  .pricing .featured .pricing-item {
+  .visualization .featured .visualization-item {
     transform: scale(1.02, 1.1);
   }
 }
 
-.pricing .featured h3,
-.pricing .featured h4,
-.pricing .featured h4 span,
-.pricing .featured ul,
-.pricing .featured ul .na,
-.pricing .featured ul i,
-.pricing .featured ul .na i {
+.visualization .featured h3,
+.visualization .featured h4,
+.visualization .featured h4 span,
+.visualization .featured ul,
+.visualization .featured ul .na,
+.visualization .featured ul i,
+.visualization .featured ul .na i {
   color: var(--contrast-color);
 }
 
-.pricing .featured .buy-btn {
+.visualization .featured .buy-btn {
   background: var(--accent-color);
   color: var(--contrast-color);
   border-color: var(--contrast-color);
 }
 
-.pricing .featured .buy-btn:hover {
+.visualization .featured .buy-btn:hover {
   background: color-mix(in srgb, var(--background-color), transparent 92%);
 }
 
