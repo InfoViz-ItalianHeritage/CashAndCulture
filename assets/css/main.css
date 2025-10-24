@@ -1309,19 +1309,19 @@ flex: 1;
 }
 
 /*--------------------------------------------------------------
-# quotes Section
+# interpretations Section
 --------------------------------------------------------------*/
-.quotes .quotes-carousel,
-.quotes .quotes-slider {
+.interpretations .interpretations-carousel,
+.interpretations .interpretations-slider {
   overflow: hidden;
 }
 
-.quotes .quote-item {
+.interpretations .interpretation-item {
   box-sizing: content-box;
   min-height: 320px;
 }
 
-.quotes .quote-item .quote-img {
+.interpretations .interpretation-item .interpretation-img {
   width: 90px;
   border-radius: 50%;
   margin: -40px 0 0 40px;
@@ -1330,32 +1330,32 @@ flex: 1;
   border: 6px solid var(--background-color);
 }
 
-.quotes .quote-item h3 {
+.interpretations .interpretation-item h3 {
   font-size: 18px;
   font-weight: bold;
   margin: 10px 0 5px 45px;
 }
 
-.quotes .quote-item h4 {
+.interpretations .interpretation-item h4 {
   font-size: 14px;
   color: color-mix(in srgb, var(--default-color), transparent 20%);
   margin: 0 0 0 45px;
 }
 
-.quotes .quote-item .quote-icon-left,
-.quotes .quote-item .quote-icon-right {
+.interpretations .interpretation-item .interpretation-icon-left,
+.interpretations .interpretation-item .interpretation-icon-right {
   color: color-mix(in srgb, var(--accent-color), transparent 50%);
   font-size: 50px;
   line-height: 0;
 }
 
-.quotes .quote-item .quote-icon-left {
+.interpretations .interpretation-item .interpretation-icon-left {
   display: inline-block;
   left: -5px;
   position: relative;
 }
 
-.quotes .quote-item .quote-icon-right {
+.interpretations .interpretation-item .interpretation-icon-right {
   display: inline-block;
   right: -5px;
   position: relative;
@@ -1363,7 +1363,7 @@ flex: 1;
   transform: scale(-1, -1);
 }
 
-.quotes .quote-item p {
+.interpretations .interpretation-item p {
   font-style: italic;
   margin: 0 15px 0 15px;
   padding: 20px 20px 60px 20px;
@@ -1374,16 +1374,16 @@ flex: 1;
   z-index: 1;
 }
 
-.quotes .swiper-wrapper {
+.interpretations .swiper-wrapper {
   height: auto;
 }
 
-.quotes .swiper-pagination {
+.interpretations .swiper-pagination {
   margin-top: 20px;
   position: relative;
 }
 
-.quotes .swiper-pagination .swiper-pagination-bullet {
+.interpretations .swiper-pagination .swiper-pagination-bullet {
   width: 12px;
   height: 12px;
   background-color: var(--background-color);
@@ -1391,7 +1391,7 @@ flex: 1;
   border: 1px solid var(--accent-color);
 }
 
-.quotes .swiper-pagination .swiper-pagination-bullet-active {
+.interpretations .swiper-pagination .swiper-pagination-bullet-active {
   background-color: var(--accent-color);
 }
 
@@ -1585,13 +1585,13 @@ flex: 1;
 }
 
 /*--------------------------------------------------------------
-# Faq Section
+# fact Section
 --------------------------------------------------------------*/
-.faq .faq-container {
+.fact .fact-container {
   margin-top: 15px;
 }
 
-.faq .faq-container .faq-item {
+.fact .fact-container .fact-item {
   background-color: color-mix(in srgb, var(--default-color), transparent 96%);
   position: relative;
   padding: 20px;
@@ -1600,11 +1600,11 @@ flex: 1;
   transition: 0.3s;
 }
 
-.faq .faq-container .faq-item:last-child {
+.fact .fact-container .fact-item:last-child {
   margin-bottom: 0;
 }
 
-.faq .faq-container .faq-item h3 {
+.fact .fact-container .fact-item h3 {
   font-weight: 600;
   font-size: 18px;
   line-height: 24px;
@@ -1613,16 +1613,16 @@ flex: 1;
   cursor: pointer;
 }
 
-.faq .faq-container .faq-item h3 span {
+.fact .fact-container .fact-item h3 span {
   color: var(--accent-color);
   padding-right: 5px;
 }
 
-.faq .faq-container .faq-item h3:hover {
+.fact .fact-container .fact-item h3:hover {
   color: var(--accent-color);
 }
 
-.faq .faq-container .faq-item .faq-content {
+.fact .fact-container .fact-item .fact-content {
   display: grid;
   grid-template-rows: 0fr;
   transition: 0.3s ease-in-out;
@@ -1630,12 +1630,12 @@ flex: 1;
   opacity: 0;
 }
 
-.faq .faq-container .faq-item .faq-content p {
+.fact .fact-container .fact-item .fact-content p {
   margin-bottom: 0;
   overflow: hidden;
 }
 
-.faq .faq-container .faq-item .faq-icon {
+.fact .fact-container .fact-item .fact-icon {
   position: absolute;
   top: 22px;
   left: 20px;
@@ -1645,7 +1645,7 @@ flex: 1;
   color: var(--accent-color);
 }
 
-.faq .faq-container .faq-item .faq-toggle {
+.fact .fact-container .fact-item .fact-toggle {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -1655,31 +1655,31 @@ flex: 1;
   cursor: pointer;
 }
 
-.faq .faq-container .faq-item .faq-toggle:hover {
+.fact .fact-container .fact-item .fact-toggle:hover {
   color: var(--accent-color);
 }
 
-.faq .faq-container .faq-active {
+.fact .fact-container .fact-active {
   background-color: var(--accent-color);
   transition: 0.3s;
 }
 
-.faq .faq-container .faq-active h3,
-.faq .faq-container .faq-active h3:hover,
-.faq .faq-container .faq-active .faq-toggle,
-.faq .faq-container .faq-active .faq-icon,
-.faq .faq-container .faq-active .faq-content {
+.fact .fact-container .fact-active h3,
+.fact .fact-container .fact-active h3:hover,
+.fact .fact-container .fact-active .fact-toggle,
+.fact .fact-container .fact-active .fact-icon,
+.fact .fact-container .fact-active .fact-content {
   color: var(--contrast-color);
 }
 
-.faq .faq-container .faq-active .faq-content {
+.fact .fact-container .fact-active .fact-content {
   grid-template-rows: 1fr;
   visibility: visible;
   opacity: 1;
   padding-top: 10px;
 }
 
-.faq .faq-container .faq-active .faq-toggle {
+.fact .fact-container .fact-active .fact-toggle {
   transform: rotate(90deg);
 }
 

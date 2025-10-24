@@ -868,10 +868,11 @@
               </div>
               <p style="text-align: justify;">To have a clearer view of the actual project activation time and their
                 expected usage, we mapped the projects in terms of their timeliness. </p>
-              <p style="text-align: justify;">From the graph we understood that only less than half of the projects
-                started on time in the last 10 decades and the rest either started earlier or with delay. </p>
+              <p style="text-align: justify;">Given the nature of the opencoesione dataset with project expected start date, project actual start date, and the final finishing date, we saw the need to consider whether the forcasted start date and the actual started dates were matching. Doing that we noticed that most cells were empty. So we could only calculate the timeliness of the projects with a total of 2772 out of 14740. 
+              </p>
+              <br>
+              <p style="text-align: justify;">From the graph we understood that only <span style="color:#009cea;">less than half of the projects</span>started on time in the last 10 decades and the rest either started earlier or with delay. The average delay for the 32.8 percent of the projects with delay was calculated as <span style="color:#009cea;">3 years</span>.</p>
             </div>
-
 
           </div><!-- End Section Title -->
         </div>
@@ -880,132 +881,40 @@
     </section>
 
 
-    <section id="quotes" class="quotes section">
+  
 
-
+    <section id="research-question" class="services section">
+    <div class="container">
       <div class="container section-title" data-aos="fade-up">
-        <h2>Interpretation</h2>
-        <div class="service-item position-relative">
-            
-            <p style="text-align: justify;">A direct comparison between the OpenCoesione and MiC_Visitors datasets reveals a misalignment between regions receiving the highest funding and those with the highest visitor numbers. In other words, there is no direct correlation between high funding and high visitor numbers. </p>
-          </div>
+      <h2>Interpretation</h2>
       </div>
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="swiper init-swiper" data-speed="600" data-delay="5000"
-          data-breakpoints="{ &quot;320&quot;: { &quot;slidesPerView&quot;: 1, &quot;spaceBetween&quot;: 40 }, &quot;1200&quot;: { &quot;slidesPerView&quot;: 3, &quot;spaceBetween&quot;: 40 } }">
-          <script type="application/json" class="swiper-config">
-            {
-              "loop": true,
-              "speed": 600,
-              "autoplay": {
-                "delay": 5000
-              },
-              "slidesPerView": "auto",
-              "pagination": {
-                "el": ".swiper-pagination",
-                "type": "bullets",
-                "clickable": true
-              },
-              "breakpoints": {
-                "320": {
-                  "slidesPerView": 1,
-                  "spaceBetween": 40
-                },
-                "1200": {
-                  "slidesPerView": 3,
-                  "spaceBetween": 20
-                }
-              }
-            }
-          </script>
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="quote-item" "="">
-            <p>
-              <i class=" bi bi-quote quote-icon-left"></i>
-                <span>Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus.
-                  Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at
-                  semper.</span>
-                <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-                <img src="assets/img/quotes/quotes-1.jpg" class="quote-img" alt="">
-                <h3>Saul Goodman</h3>
-                <h4>Ceo &amp; Founder</h4>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="quote-item">
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid malis
-                    quorum
-                    velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-                <img src="assets/img/quotes/quotes-2.jpg" class="quote-img" alt="">
-                <h3>Sara Wilsson</h3>
-                <h4>Designer</h4>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="quote-item">
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam
-                    duis
-                    minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-                <img src="assets/img/quotes/quotes-3.jpg" class="quote-img" alt="">
-                <h3>Jena Karlis</h3>
-                <h4>Store Owner</h4>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="quote-item">
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat
-                    dolor
-                    enim
-                    duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-                <img src="assets/img/quotes/quotes-4.jpg" class="quote-img" alt="">
-                <h3>Matt Brandon</h3>
-                <h4>Freelancer</h4>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <div class="quote-item">
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam
-                    sunt
-                    culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-                <img src="assets/img/quotes/quotes-5.jpg" class="quote-img" alt="">
-                <h3>John Larson</h3>
-                <h4>Entrepreneur</h4>
-              </div>
-            </div>
-
-          </div>
-          <div class="swiper-pagination"></div>
+      <div class="row gy-4" style="justify-content: center;">
         </div>
+        <div class="container" data-aos="fade-up">
+          
+          <div class="service-item position-relative">
+            
+            <p style="text-align: justify;">A direct comparison between the OpenCoesione and MiC_Visitors datasets reveals a <span style="color:#009cea;">misalignment between regions receiving the highest funding and those with the highest visitor numbers</span>. </p>
+            <p style="text-align: justify;">In other words, there is no direct correlation between high funding and high visitor numbers. </p>
+            <br>
+            <p style="text-align: justify;"><span style="color:#009cea;">Campania</span> is the highest-funded region for three years within the selected five years, making it the region that received the highest funding. Considering visitors, it hosted a moderate amount of visitors in the years in question. Observation on this situation is that major restoration and infrastructure projects, often outside main tourist circuits might have been where the funds were directed towards.</p>
+            <br>
+            <p style="text-align: justify;"><span style="color:#009cea;">Lazio</span> received a low to moderate level of funding during the selected years, yet it ranked highest overall in visitor numbers. This suggests that the region’s cultural appeal, particularly Rome’s well-established heritage and tourism infrastructure, continues to attract visitors independently of new public funding initiatives.</p>
+            <br>
+            <p style="text-align: justify;"><span style="color:#009cea;">Molise</span> recorded its highest funding level in 2019, despite having a low ranking in visitor numbers. This pattern reflects the region’s focus on targeted heritage restoration and regional development projects rather than tourism-driven investment, with a few high-value initiatives contributing to the temporary funding spike.</p>
+            <br>
+            <p style="text-align: justify;"><span style="color:#009cea;">Toscana</span>, <span style="color:#009cea;">Piemonte</span>, and <span style="color:#009cea;">Lombardia</span> show moderate funding levels paired with high visitor rankings. These regions demonstrate a stable flow of cultural tourism that does not rely heavily on recent public funding, likely due to their already consolidated heritage infrastructure and sustained appeal among both domestic and international visitors.</p>
 
+          </div>
+
+
+        </div><!-- End Section Title -->
       </div>
+    </div>
 
-    </section>
+  </section>
 
-    <section id="faq" class="faq section light-background">
+    <section id="fact" class="fact section light-background">
 
 
       <div class="container section-title" data-aos="fade-up">
@@ -1018,33 +927,33 @@
 
           <div class="col-lg-8">
 
-            <div class="faq-container">
+            <div class="fact-container">
 
-              <div class="faq-item faq-active" data-aos="fade-up" data-aos-delay="200">
-                <i class="faq-icon bi bi-question-circle"></i>
+              <div class="fact-item fact-active" data-aos="fade-up" data-aos-delay="200">
+                <i class="fact-icon bi bi-question-circle"></i>
                 <h3>Funding allocation does not strictly follow tourism demand:</h3>
-                <div class="faq-content">
+                <div class="fact-content">
                   <p>Molise appears as the top-funded region in 2019, despite being one of Italy’s smallest and least populated regions with relatively modest visitor numbers. The anomaly reflects broader policy objectives, such as supporting regional equity, protecting cultural assets in peripheral areas, and implementing European cohesion initiatives.</p>
                 </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
+                <i class="fact-toggle bi bi-chevron-right"></i>
               </div>
 
-              <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
-                <i class="faq-icon bi bi-question-circle"></i>
+              <div class="fact-item" data-aos="fade-up" data-aos-delay="300">
+                <i class="fact-icon bi bi-question-circle"></i>
                 <h3>Where money is invested more, and where is mostly visited are not congruent:</h3>
-                <div class="faq-content">
+                <div class="fact-content">
                   <p>OpenCoesione shows where money is invested - often in restorations or infrastructure in less-visited areas, while MiC_Visitors shows where people actually go. High funding doesn’t guarantee high tourism; instead, it reflects policy goals like regional balance, cultural access, and heritage preservation.</p>
                 </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
+                <i class="fact-toggle bi bi-chevron-right"></i>
               </div>
 
-              <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
-                <i class="faq-icon bi bi-question-circle"></i>
+              <div class="fact-item" data-aos="fade-up" data-aos-delay="400">
+                <i class="fact-icon bi bi-question-circle"></i>
                 <h3> Cultural heritage projects don't always start and finish on time:</h3>
-                <div class="faq-content">
+                <div class="fact-content">
                   <p>Around 54% of the projects started at a time different from the expected year of initiation. This fact must be put into consideration when the relation between funds and participation is involved.</p>
                 </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
+                <i class="fact-toggle bi bi-chevron-right"></i>
               </div>
 
             </div>
@@ -1056,7 +965,7 @@
       </div>
 
 
-    </section><!-- /Faq Section -->
+    </section><!-- /fact Section -->
 
     <section id="team" class="team section light-background">
 

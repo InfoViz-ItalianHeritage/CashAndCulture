@@ -249,11 +249,11 @@ function toggleDetails(element) {
   window.addEventListener("load", initSwiper);
 
   /**
-   * Frequently Asked Questions Toggle
+   * Fact Toggle
    */
-  document.querySelectorAll('.faq-item h3, .faq-item .faq-toggle').forEach((faqItem) => {
-    faqItem.addEventListener('click', () => {
-      faqItem.parentNode.classList.toggle('faq-active');
+  document.querySelectorAll('.fact-item h3, .fact-item .fact-toggle').forEach((factItem) => {
+    factItem.addEventListener('click', () => {
+      factItem.parentNode.classList.toggle('fact-active');
     });
   });
 
