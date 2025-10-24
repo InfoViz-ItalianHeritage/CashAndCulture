@@ -5,13 +5,13 @@ This project analyzes how public funding for cultural-heritage and tourism proje
 
 # Research Questions
 RQ1
-In the time scope of the project, 2014-2024, which years/regions witnessed the highest amount of funding (public) allocated to cultural heritage?
+In the time scope of the project, 2014-2024, which years witnessed the highest amount of public funding allocated to cultural heritage?
 
 RQ2
-Which region received the highest share of funding each year?
+Which regions received the highest share of funding each year?
 
 RQ3
-How is the trends of regional visitors’ participation in the selected years?
+How were regional visitors’ participation in cultural heritage events/activities?
 
 # Libraries Used
 - pandas
@@ -23,21 +23,27 @@ How is the trends of regional visitors’ participation in the selected years?
 - mpld3
 - plotly
 
-# Workflow summary
+# Workflow Summary
 1. Data Preparation: identify the data sources, evaluate each for its relevance and feasibility, and select the raw data for extraction.
 2. Data Extraction: ingest the raw data, clean the rows of any duplicate or empty values, normalize the variable names, and save clean CSVs file for visualization.
-3. Data Visualization: create graphs and maps to visualize the data in accordance with the research questions.
-4. Analysis and Findings: ?????
+3. Data Visualization: graph the funding allocated to cultural heritage projects and in each region and the visitor fluctuations within the years under study.
+4. Data Analysis: observ from the graphs picks and interesting trends and extract useful information.
 
-# Key findings
-summary of our research answers
+# Key Findings
+The output of our analysis reveals a misalignment between the regions receiving the highest funding and those with the highest visitor numbers.
+Considering the years that received the largest amounts of funding: 2016, 2017, 2018, 2019, and 2022 and the regions that recorded the highest visitor numbers: Lazio, Campania, Toscana, Piemonte, and Lombardia we expected a correspondence between the most visited and the most funded regions.\
+Instead, the top-funded regions in those years are: Campania (2016), Campania (2017), Puglia (2018), Molise (2019), and Campania (2022).\
+In other words, there is no direct correlation between high funding and high visitor numbers.
+
+Furthermore, Molise appears as the top-funded region in 2019, despite being one of Italy’s smallest and least populated regions, with relatively modest visitor numbers. This anomaly reflects broader policy objectives, such as supporting regional equity, protecting cultural assets in peripheral areas, and implementing European cohesion initiatives.
 
 # Team
-- Anna Nicoletti - anna.nicoletti5@studio.unibo.it: Data Analysis
+- Anna Nicoletti - anna.nicoletti5@studio.unibo.it: Data Analysis, Web Communication
 - Mohamed Iheb Ouerghi - mohamediheb.ouerghi@studio.unibo.it: Data Visualization, Web Communication
 - Nazanin Fakharian - nazanin.fakharian@studio.unibo.it: Data Visualization, Web Communication
 
-# Licence
-OpenCoesione CC BY 4.0
-MiC CC BY 3.0 
-output ????
+# Licences
+- The website is published under a Free Licence: Designed by BootstrapMade; credits for icons and external images are shown in the footer of the website.
+- [OpenCoesione](https://opencoesione.gov.it/en/opendata/dataset/progetti_esteso_cultura_turismo_2014-2020/) datasource is published under CC BY 4.0 licence.
+- [Ministero della Cultura](https://statistica.cultura.gov.it/?page_id=500) datasource is published under CC BY 3.0 licence.
+- Our csv files [open_coesione.csv](data/open_coesione.csv), [mic_visitors.csv](data/mic_visitors.csv), [mic_income.csv](data/mic_visitors.csv) are published under CC BY 4.0 licence.
