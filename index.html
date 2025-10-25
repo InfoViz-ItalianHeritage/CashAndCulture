@@ -14,7 +14,7 @@
 
   <!-- Favicons -->
   <link href="assets/img/website.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -60,10 +60,11 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="#hero" class="active">Home</a></li>
-          <li><a href="#research-question">Research Question</a></li>
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#canvas">Research Questions</a></li>
           <li><a href="#workflow">Workflow</a></li>
           <li><a href="#visualization">Visualization</a></li>
+          <li><a href="#interpretation">Interpretation</a></li>
           <li><a href="#team">Team</a></li>
 
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -79,8 +80,8 @@
 
   <main class="main">
 
-
-    <section id="hero" class="hero section">
+    <!--home section-->
+    <section id="home" class="home section">
 
       <div class="container">
         <div class="row gy-4">
@@ -93,46 +94,41 @@
               <p-blue>visited</p-blue> the most for
               its <p-blue>cultural heritage</p-blue> assets?
             </p>
-
-          </div>
-          <div class="col-lg-5 order-1 order-lg-2 hero-img">
-            <img src="assets/img/hero-img.png" class="img-fluid" alt="">
           </div>
         </div>
       </div>
 
     </section>
 
-
+    <!--about section-->
     <section id="about" class="about section">
 
       <div class="container" data-aos="fade-up">
         <div class="row gx-0">
 
           <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
-            <img src="assets/img/about.jpg" class="img-fluid" alt="">
+            <img src="assets/img/about.png" class="img-fluid" alt="">
           </div>
 
           <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
             <div class="content">
               <h3>About the Project</h3>
               <p> This project analyzes the distribution of public funding for cultural heritage and tourism projects
-                across Italian regions, and compares those investments with the number of visitors each region received
-                in the same years (2014 → 2024).</p>
+              across Italian regions, and compares those investments with the number of visitors each region received
+              in the same years (2014 → 2024).</p>
               <p>
                 The goal is to trace the connection, mismatches (e.g., high funding / low visitation or vice versa),
                 temporal trends, and possible explanations that can lead to policy discussion and further research.
               </p>
-
             </div>
           </div>
-
         </div>
       </div>
 
     </section>
 
-    <section id="research-question" class="services section">
+    <!--research question section-->
+    <section id="canvas" class="canvas section">
 
 
       <div class="container section-title" data-aos="fade-up">
@@ -147,7 +143,7 @@
         <div class="row gy-4" style="justify-content: center;">
 
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-item position-relative">
+            <div class="canvas-item position-relative">
               <div class="icon"><i class="bi bi-patch-question"></i></div>
               <h4><a href="#chart" class="stretched-link">Sub-question 1</a></h4>
               <p style="text-align: justify;">Which years witnessed the highest amount of public funding allocated to
@@ -156,7 +152,7 @@
           </div>
 
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
-            <div class="service-item position-relative">
+            <div class="canvas-item position-relative">
               <div class="icon"><i class="bi bi-patch-question"></i></div>
               <h4><a href="#map" class="stretched-link">Sub-question 2</a></h4>
               <p style="text-align: justify;">Which regions received the highest share of funding each year?</p>
@@ -164,7 +160,7 @@
           </div>
 
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
-            <div class="service-item position-relative">
+            <div class="canvas-item position-relative">
               <div class="icon"><i class="bi bi-patch-question"></i></div>
               <h4><a href="#map1" class="stretched-link">Sub-question 3</a></h4>
               <p style="text-align: justify;">How were the regional visitors' participation in cultural heritage
@@ -177,8 +173,8 @@
 
     </section>
 
-    <section id="workflow" class="services section">
-
+    <!--workflow section-->
+    <section id="workflow" class="canvas section">
 
       <div class="container section-title" data-aos="fade-up">
         <h2>Workflow</h2>
@@ -189,7 +185,7 @@
         <div class="row gy-4">
 
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-item position-relative">
+            <div class="canvas-item position-relative">
               <div class="icon"><i class="bi bi-activity icon"></i></div>
               <h4><a href="#picking-data" class="stretched-link">Data Preparation</a></h4>
               <p style="text-align: justify;">Identified the data sources, evaluated each for its relevance and
@@ -198,7 +194,7 @@
           </div>
 
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
-            <div class="service-item position-relative">
+            <div class="canvas-item position-relative">
               <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div>
               <h4><a href="#features-tab-2" class="stretched-link">Data Extraction</a></h4>
               <p style="text-align: justify;">Ingested the raw data, cleaned the rows of any duplicate or empty values,
@@ -208,7 +204,7 @@
           </div>
 
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
-            <div class="service-item position-relative">
+            <div class="canvas-item position-relative">
               <div class="icon"><i class="bi bi-bar-chart-line"></i></div>
               <h4><a href="#features-tab-3" class="stretched-link">Data Visualization</a></h4>
               <p style="text-align: justify;">Created different types of graphs and maps to visualize the data in
@@ -217,7 +213,7 @@
             </div>
           </div>
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
-            <div class="service-item position-relative">
+            <div class="canvas-item position-relative">
               <div class="icon"><i class="bi bi-clipboard-data"></i></div>
               <h4><a href="#features-tab-4" class="stretched-link">Analysis</a></h4>
               <p style="text-align: justify;">Put together the results that stand out in each dataset to find a
@@ -232,7 +228,7 @@
 
     </section>
 
-
+    <!--features section-->
     <section id="features" class="features section">
 
       <div class="container">
@@ -446,11 +442,6 @@
                       keys and aligned variables (funding, project counts, visitor participation), enabling the next
                       step of creating visualizations and performing the comparisons.
 
-
-
-
-
-
                     </div>
                   </li>
                   <li>
@@ -523,7 +514,7 @@
           <div class="tab-pane fade" id="features-tab-4">
             <div class="row">
               <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
-                <h3>Conclusions</h3>
+                <h3>Observations</h3>
 
                 <ul>
                   <li>
@@ -593,43 +584,7 @@
       </div>
 
     </section>
-    <div class="container section-title" data-aos="fade-up">
-      <h2>Highlights of Last Decade</h2>
-
-
-
-      <section class="counter-section">
-        <div class="container">
-          <div class="row text-center">
-            <div class="col-md-3 col-sm-6 mb-4">
-              <div class="counter-box">
-                <div class="counter-number" data-target="14740">0</div>
-                <div class="counter-label">Projects</div>
-              </div>
-            </div>
-            <div class="col-md-3 col-sm-6 mb-4">
-              <div class="counter-box">
-                <div class="counter-number" data-target="46">0</div>
-                <div class="counter-label">% of projects on time</div>
-              </div>
-            </div>
-            <div class="col-md-3 col-sm-6 mb-4">
-              <div class="counter-box">
-                <div class="counter-number" data-target="9892314158">0</div>
-                <div class="counter-label">Euros in funding</div>
-              </div>
-            </div>
-            <div class="col-md-3 col-sm-6 mb-4">
-              <div class="counter-box">
-                <div class="counter-number" data-target="486021340">0</div>
-                <div class="counter-label">CH Visitors</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-
+    
     <!-- visualization Section -->
     <section id="visualization" class="visualization section">
 
@@ -637,12 +592,12 @@
       <div class="container section-title" data-aos="fade-up">
         <h2>Visualization</h2>
       </div><!-- End Section Title -->
-      <section id="research-question" class="services section">
+      <section id="canvas" class="canvas section">
         <div class="container">
           <div class="row gy-4" style="justify-content: center;">
             <div class="chart" id="chart"></div>
             <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
-              <div class="service-item position-relative">
+              <div class="canvas-item position-relative">
                 <h4>
                   <div class="icon">
                     <i class="bi bi-bar-chart-fill"></i><a href="" class="stretched-link"> Fig. 1.2</a>
@@ -655,7 +610,7 @@
             </div>
             <div class="container" data-aos="fade-up">
               <h2></h2>
-              <div class="service-item position-relative">
+              <div class="canvas-item position-relative">
                 <div class="icon">
                   <h4>
                     <i class="bi bi-bar-chart-fill"></i>
@@ -680,13 +635,13 @@
         </div>
 
       </section>
-      <section id="research-question" class="services section">
+      <section id="canvas" class="canvas section">
         <div class="container">
           <div class="row gy-4" style="justify-content: center;">
             <div class="map" id="map"></div>
 
             <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
-              <div class="service-item position-relative">
+              <div class="canvas-item position-relative">
                 <h4>
                   <div class="icon"><i class="bi bi-map"></i><a href="" class="stretched-link"> Fig. 2.2</a></div>
                 </h4>
@@ -696,7 +651,7 @@
             </div>
             <div class="container" data-aos="fade-up">
               <h2></h2>
-              <div class="service-item position-relative">
+              <div class="canvas-item position-relative">
                 <div class="icon">
                   <h4>
                     <i class="bi bi-map"></i>
@@ -715,12 +670,12 @@
       </section>
 
     </section>
-    <section id="research-question" class="services section">
+    <section id="canvas" class="canvas section">
       <div class="container">
         <div class="row gy-4" style="justify-content: center;">
           <div class="heatmap" id="heatmap"></div>
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-item position-relative">
+            <div class="canvas-item position-relative">
               <h4>
                 <div class="icon"><i class="bi bi-thermometer-half"></i><a href="" class="stretched-link"> Fig. 4.2</a>
                 </div>
@@ -734,7 +689,7 @@
       </div>
       <div class="container" data-aos="fade-up">
         <h2></h2>
-        <div class="service-item position-relative">
+        <div class="canvas-item position-relative">
           <div class="icon">
             <h4>
               <i class="bi bi-thermometer-half"></i>
@@ -761,12 +716,12 @@
 
       </div>
     </section>
-    <section id="research-question" class="services section">
+    <section id="canvas" class="canvas section">
       <div class="container">
         <div class="row gy-4" style="justify-content: center;">
           <div class="map1" id="map1"></div>
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-item position-relative">
+            <div class="canvas-item position-relative">
               <h4>
                 <div class="icon"><i class="bi bi-map"></i><a href="" class="stretched-link"> Fig. 6.2</a></div>
               </h4>
@@ -779,7 +734,7 @@
       </div>
       <div class="container" data-aos="fade-up">
         <h2></h2>
-        <div class="service-item position-relative">
+        <div class="canvas-item position-relative">
           <div class="icon">
             <h4>
               <i class="bi bi-map"></i>
@@ -799,12 +754,12 @@
       </div>
     </section>
 
-    <section id="research-question" class="services section">
+    <section id="canvas" class="canvas section">
       <div class="container">
         <div class="row gy-4" style="justify-content: center;">
           <div class="chart2" id="chart2"></div>
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-item position-relative">
+            <div class="canvas-item position-relative">
               <h4>
                 <div class="icon"><i class="bi bi-bar-chart-steps"></i><a href="" class="stretched-link"> Fig. 7</a>
                 </div>
@@ -816,7 +771,7 @@
           </div>
           <div class="container" data-aos="fade-up">
             <h2></h2>
-            <div class="service-item position-relative">
+            <div class="canvas-item position-relative">
               <div class="icon">
                 <h4>
                   <i class="bi bi-bar-chart-steps"></i>
@@ -841,12 +796,12 @@
       </div>
 
     </section>
-    <section id="research-question" class="services section">
+    <section id="canvas" class="canvas section">
       <div class="container">
         <div class="row gy-4" style="justify-content: center;">
           <div class="piechart" id="piechart"></div>
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-item position-relative">
+            <div class="canvas-item position-relative">
               <h4>
                 <div class="icon"><i class="bi bi-pie-chart-fill"></i><a href="" class="stretched-link"> Fig. 10</a>
                 </div>
@@ -858,7 +813,7 @@
           </div>
           <div class="container" data-aos="fade-up">
             <h2></h2>
-            <div class="service-item position-relative">
+            <div class="canvas-item position-relative">
               <div class="icon">
                 <h4>
                   <i class="bi bi-pie-chart-fill"></i>
@@ -882,8 +837,8 @@
 
 
   
-
-    <section id="research-question" class="services section">
+    <!-- Interpretation Section -->
+    <section id="canvas" class="canvas section">
     <div class="container">
       <div class="container section-title" data-aos="fade-up">
       <h2>Interpretation</h2>
@@ -892,7 +847,7 @@
         </div>
         <div class="container" data-aos="fade-up">
           
-          <div class="service-item position-relative">
+          <div class="canvas-item position-relative">
             
             <p style="text-align: justify;">A direct comparison between the OpenCoesione and MiC_Visitors datasets reveals a <span style="color:#009cea;">misalignment between regions receiving the highest funding and those with the highest visitor numbers</span>. </p>
             <p style="text-align: justify;">In other words, there is no direct correlation between high funding and high visitor numbers. </p>
@@ -967,15 +922,47 @@
 
     </section><!-- /fact Section -->
 
-    <section id="team" class="team section light-background">
+    <!--highlight section-->
+    <section class="counter-section">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Highlights of Last Decade</h2>
+      </div>
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div class="counter-box">
+              <div class="counter-number" data-target="14740">0</div>
+              <div class="counter-label">Projects</div>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div class="counter-box">
+              <div class="counter-number" data-target="46">0</div>
+              <div class="counter-label">% of projects on time</div>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div class="counter-box">
+              <div class="counter-number" data-target="9892314158">0</div>
+              <div class="counter-label">Euros in funding</div>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div class="counter-box">
+              <div class="counter-number" data-target="486021340">0</div>
+              <div class="counter-label">CH Visitors</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!--team section-->
+    <section id="team" class="team section light-background">
 
       <div class="container section-title" data-aos="fade-up">
         <h2>Team</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
       </div>
-
-
       <div class="container">
 
         <div class="row gy-5">
@@ -1018,114 +1005,15 @@
               </div>
             </div>
           </div>
-
         </div>
-
       </div>
 
     </section>
 
 
-
-    
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Contact</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-6">
-
-            <div class="row gy-4">
-              <div class="col-md-6">
-                <div class="info-item" data-aos="fade" data-aos-delay="200">
-                  <i class="bi bi-geo-alt"></i>
-                  <h3>Address</h3>
-                  <p>A108 Adam Street</p>
-                  <p>New York, NY 535022</p>
-                </div>
-              </div><!-- End Info Item -->
-
-              <div class="col-md-6">
-                <div class="info-item" data-aos="fade" data-aos-delay="300">
-                  <i class="bi bi-telephone"></i>
-                  <h3>Call Us</h3>
-                  <p>+1 5589 55488 55</p>
-                  <p>+1 6678 254445 41</p>
-                </div>
-              </div><!-- End Info Item -->
-
-              <div class="col-md-6">
-                <div class="info-item" data-aos="fade" data-aos-delay="400">
-                  <i class="bi bi-envelope"></i>
-                  <h3>Email Us</h3>
-                  <p>info@example.com</p>
-                  <p>contact@example.com</p>
-                </div>
-              </div><!-- End Info Item -->
-
-              <div class="col-md-6">
-                <div class="info-item" data-aos="fade" data-aos-delay="500">
-                  <i class="bi bi-clock"></i>
-                  <h3>Open Hours</h3>
-                  <p>Monday - Friday</p>
-                  <p>9:00AM - 05:00PM</p>
-                </div>
-              </div><!-- End Info Item -->
-
-            </div>
-
-          </div>
-
-          <div class="col-lg-6">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up"
-              data-aos-delay="200">
-              <div class="row gy-4">
-
-                <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
-                </div>
-
-                <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
-                </div>
-
-                <div class="col-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
-                </div>
-
-                <div class="col-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
-                </div>
-
-                <div class="col-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                  <button type="submit">Send Message</button>
-                </div>
-
-              </div>
-            </form>
-          </div><!-- End Contact Form -->
-
-        </div>
-
-      </div>
-
-    </section><!-- /Contact Section -->
-
   </main>
 
+  <!--footer section-->
   <footer id="footer" class="footer light-background">
 
     <div class="footer-top">
@@ -1148,14 +1036,14 @@
             <ul>
               <li><a href="#">Home</a></li>
               <li><a href="#">About us</a></li>
-              <li><a href="#">Services</a></li>
-              <li><a href="#">Terms of service</a></li>
+              <li><a href="#">canvas</a></li>
+              <li><a href="#">Terms of canva</a></li>
               <li><a href="#">Privacy policy</a></li>
             </ul>
           </div>
 
           <div class="col-lg-2 col-md-3 footer-links">
-            <h4>Our Services</h4>
+            <h4>Our canvas</h4>
             <ul>
               <li><a href="#">Web Design</a></li>
               <li><a href="#">Web Development</a></li>
@@ -1203,7 +1091,7 @@
             <!-- All the links in the footer should remain intact. -->
             <!-- You can delete the links only if you purchased the pro version. -->
             <!-- Licensing information: https://bootstrapmade.com/license/ -->
-            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/herobiz-bootstrap-business-template/ -->
+            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/homebiz-bootstrap-business-template/ -->
             Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
             <a href="https://www.flaticon.com/free-stickers/report" title="report stickers">Report stickers created by
               Stickers - Flaticon</a>
@@ -1218,7 +1106,6 @@
           <a href=""><i class="bi bi-instagram"></i></a>
           <a href=""><i class="bi bi-linkedin"></i></a>
         </div>
-
       </div>
     </div>
 
