@@ -110,7 +110,21 @@ function createYearSliderControl(containerId, yearsArray, onChangeCallback) {
 // --- 1. FUNDING MAP (OpenCoesione) - CHOROPLETH ---
 // --------------------------------------------------------------------------------
 function createFundingMap() {
-    const map = L.map('map').setView([41.87194, 12.56738], 5);
+    const MAP_CONTAINER_ID = 'map';
+    // --- UPDATED: Define IDs for your HTML elements ---
+    const TITLE_CONTAINER_ID = 'funding-map-title'; // <-- ID for your title div
+    const TITLE_TEXT = 'Public Funding Per Region';
+
+    // --- UPDATED: Find title container and set text ---
+    const titleContainer = document.getElementById(TITLE_CONTAINER_ID);
+    if (titleContainer) {
+        titleContainer.innerHTML = `<div class="map-title">${TITLE_TEXT}</div>`;
+    } else {
+        console.warn(`Title container not found: #${TITLE_CONTAINER_ID}`);
+    }
+    // --- End of update ---
+
+    const map = L.map(MAP_CONTAINER_ID).setView([41.87194, 12.56738], 5);
     mapInstance1 = map;
 
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
@@ -206,7 +220,21 @@ function createFundingMap() {
 // --- 2. VISITOR MAP (MiC data) - REVISED TO CHOROPLETH (SAME COLOR) ---
 // --------------------------------------------------------------------------------
 function createVisitorMap() {
-    const map1 = L.map('map1').setView([41.87194, 12.56738], 5);
+    const MAP_CONTAINER_ID = 'map1';
+    // --- UPDATED: Define IDs for your HTML elements ---
+    const TITLE_CONTAINER_ID = 'visitor-map-title'; // <-- ID for your title div
+    const TITLE_TEXT = 'Visitors Per Region';
+
+    // --- UPDATED: Find title container and set text ---
+    const titleContainer = document.getElementById(TITLE_CONTAINER_ID);
+    if (titleContainer) {
+        titleContainer.innerHTML = `<div class="map-title">${TITLE_TEXT}</div>`;
+    } else {
+        console.warn(`Title container not found: #${TITLE_CONTAINER_ID}`);
+    }
+    // --- End of update ---
+
+    const map1 = L.map(MAP_CONTAINER_ID).setView([41.87194, 12.56738], 5);
     mapInstance2 = map1;
 
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {

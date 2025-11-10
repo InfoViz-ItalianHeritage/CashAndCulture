@@ -1013,6 +1013,16 @@ section,
   flex-shrink: 4;
   gap: 30px;
 }
+.map-title{
+  display: flex;
+  gap: 50px;
+  justify-content: space-around;
+  flex-direction: row;
+  font-size: 25px;
+  font-weight: 700;
+  font-family: var(--heading-font);
+  color: var(--heading-color);
+}
 .map-container {
   display: flex;
   height: 50vh;
