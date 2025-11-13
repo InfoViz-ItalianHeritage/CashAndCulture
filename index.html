@@ -47,6 +47,7 @@
 </head>
 
 <body class="index-page">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container position-relative d-flex align-items-center">
@@ -627,6 +628,7 @@
         <h2>Visualization</h2>
       </div><!-- End Section Title -->
 
+
       <section id="canvas" class="canvas section">
         <div class="container">
           <div class="row gy-4" style="justify-content: center;">
@@ -660,7 +662,33 @@
           </div>
 
       </section>
+      <section id="canvas" class="canvas section">
+        <div class="container">
+          <div class="row gy-4" style="justify-content: center;">
+            <div class="chart-title"></div>
+            <div class="chart-container">
+              <canvas id="chart"></canvas>
+            </div>
+            <div id="synchronized-slider-container"></div>
+            <div class="container" data-aos="fade-up">
+              <h2></h2>
+              <div class="canvas-item position-relative">
+                <div class="icon">
+                  <h4>
+                    <i class="bi bi-map"></i>
+                    Fig. 2.2
+                  </h4>
+                </div>
+                <p style="text-align: justify;">In the selected years, some regions received more funds for their
+                  cultural heritage projects. From the regional geographical map (fig.2.2) each year’s highest funded
+                  region visually stands out.</p><br>
 
+              </div>
+
+            </div>
+          </div>
+
+      </section>
     </section>
     <section id="canvas" class="canvas section">
       <div class="container">
@@ -707,86 +735,6 @@
 
 
       </div>
-    </section>
-    <section id="canvas" class="canvas section">
-      <div class="container">
-        <div class="row gy-4" style="justify-content: center;">
-          <div class="map1" id="map1"></div>
-          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
-            <div class="canvas-item position-relative">
-              <h4>
-                <div class="icon"><i class="bi bi-map"></i><a href="" class="stretched-link"> Fig. 6.2</a></div>
-              </h4>
-              <p style="text-align: justify;">The geographical bubblemap shows regional contribution of museum visitors
-                in each year.</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-      <div class="container" data-aos="fade-up">
-        <h2></h2>
-        <div class="canvas-item position-relative">
-          <div class="icon">
-            <h4>
-              <i class="bi bi-map"></i>
-              Fig. 6.2
-            </h4>
-          </div>
-          <p style="text-align: justify;">By sampling the top 5 years in which the highest amount of funding was
-            allocated, we approached the other dataset (mic_visitors) to map the visitors’ contribution to the cultural
-            heritage activities.
-            A geographical bubblemap (fig.6.2) is used to show a visual comparative analysis. By switching between the
-            yearly outputs of the map we detected an obvious difference in the proportion for some regions throughout
-            the years. (Obvious highs)</p><br>
-
-        </div>
-
-
-      </div>
-    </section>
-
-    <section id="canvas" class="canvas section">
-      <div class="container">
-        <div class="row gy-4" style="justify-content: center;">
-          <div class="chart2" id="chart2"></div>
-          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
-            <div class="canvas-item position-relative">
-              <h4>
-                <div class="icon"><i class="bi bi-bar-chart-steps"></i><a href="" class="stretched-link"> Fig. 7</a>
-                </div>
-              </h4>
-              <p style="text-align: justify;">The stacked barchart shows the share of visitors in the top-visited
-                regions in percentage in the selected years. </p>
-            </div>
-
-          </div>
-          <div class="container" data-aos="fade-up">
-            <h2></h2>
-            <div class="canvas-item position-relative">
-              <div class="icon">
-                <h4>
-                  <i class="bi bi-bar-chart-steps"></i>
-                  Fig. 7
-                </h4>
-              </div>
-              <p style="text-align: justify;">We decided to graph a horizontal stacked barchart (fig. 7) to see the
-                percentage rate of the regions with the highest participation compared to the rest of the regions.
-                It is depicted that Lazio is the highest visited region in each year. </p><br>
-              <p style="text-align: justify;">The highest numbers for visitors’ participation each year were consistent
-                and proportionate. The Top 5 visitors for each year are mapped: </p>
-              <p style="text-align: justify;">
-                <span style="color:#009cea;">LAZIO</span> - <span style="color:#009cea;">CAMPANIA</span> - <span
-                  style="color:#009cea;">TOSCANA</span> - <span style="color:#009cea;">PIEMONTE</span> - <span
-                  style="color:#009cea;">LOMBARDIA</span>
-              </p>
-            </div>
-
-
-          </div><!-- End Section Title -->
-        </div>
-      </div>
-
     </section>
     <section id="canvas" class="canvas section">
       <div class="container">
@@ -1085,13 +1033,13 @@
   <script src="assets/js/map.js"></script>
   <script src="assets/js/map1.js"></script>
   <script src="assets/js/heatmap.js"></script>
-  <script src="assets/js/chart2.js"></script>
+  <script src="assets/js/chart.js"></script>
   <script src="assets/js/piechart.js"></script>
 
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
-  <script src="assets/js/chart.js"></script>
+
 
 </body>
 

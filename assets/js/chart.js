@@ -1,85 +1,220 @@
-function parseNumber(value) {
-    if (!value) return 0;
-    let s = String(value).trim();
-    s = s.replace(/\s+/g, '').replace(/€/g, '');
-    if (s.indexOf(',') > -1 && s.indexOf('.') > -1) {
-        s = s.replace(/\./g, '').replace(',', '.');
-    } else {
-        s = s.replace(',', '.');
+// This is an IIFE (Immediately Invoked Function Expression)
+// It runs automatically as soon as the file is loaded.
+(async function () {
+
+    // --- A predefined list of darker, distinct colors ---
+    const DISTINCT_COLORS = [
+        'rgba(170, 0, 0, 0.9)',    // Dark Red
+        'rgba(0, 100, 0, 0.9)',    // Dark Green
+        'rgba(0, 0, 128, 0.9)',    // Navy
+        'rgba(128, 0, 128, 0.9)',  // Purple
+        'rgba(230, 120, 0, 0.9)',  // Dark Orange
+        'rgba(0, 128, 128, 0.9)',  // Teal
+        'rgba(128, 0, 0, 0.9)',    // Maroon
+        'rgba(75, 0, 130, 0.9)',   // Indigo
+        'rgba(139, 69, 19, 0.9)',  // Saddle Brown
+        'rgba(0, 0, 0, 0.9)',      // Black
+        'rgba(100, 100, 100, 0.9)',// Dark Grey
+        'rgba(0, 200, 150, 0.9)',  // Dark Cyan/Green
+        'rgba(210, 0, 210, 0.9)',  // Dark Magenta
+        'rgba(128, 128, 0, 0.9)',  // Olive
+        'rgba(180, 180, 0, 0.9)',  // Dark Yellow
+        'rgba(0, 150, 255, 0.9)',  // Strong Blue
+        'rgba(190, 0, 90, 0.9)',   // Dark Pink
+        'rgba(90, 130, 0, 0.9)',   // Dark Lime
+        'rgba(255, 0, 0, 0.9)',    // Bright Red
+        'rgba(0, 200, 0, 0.9)'     // Bright Green
+    ];
+
+    // --- Helper function to parse the specific currency format ---
+    // "1.234,50" -> 1234.50
+    function parseCurrency(str) {
+        if (!str) return 0;
+        // Remove thousands dots, replace decimal comma with a dot
+        return parseFloat(
+            str.replace(/\./g, '').replace(',', '.')
+        ) || 0; // Return 0 if parsing fails
     }
-    const n = parseFloat(s);
-    return isNaN(n) ? 0 : n;
-}
 
-function extractYear(dateStr) {
-    if (!dateStr) return null;
-    if (/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) return +dateStr.slice(0, 4);
-    if (/^\d{2}\/\d{2}\/\d{4}$/.test(dateStr)) return +dateStr.slice(-4);
-    const match = dateStr.match(/(19|20)\d{2}/);
-    return match ? +match[0] : null;
-}
+    try {
+        // --- 1. Fetch the CSV data ---
+        const response = await fetch('data/mic_income.csv');
+        if (!response.ok) {
+            throw new Error(`Failed to fetch CSV: ${response.statusText}`);
+        }
+        const csvText = await response.text();
 
-d3.csv("data/open_coesione.csv").then(data => {
-    const sums = d3.rollups(
-        data,
-        v => {
-            return {
-                // 🎯 CHANGE 1: Only aggregate 'pubblico'
-                pubblico: d3.sum(v, d => parseNumber(d["FINANZ_TOTALE_PUBBLICO"])),
-            };
-        },
-        d => extractYear(d["OC_DATA_INIZIO_PROGETTO"])
-    );
+        // --- 2. Parse the CSV text ---
+        const parsed = Papa.parse(csvText, {
+            header: true,
+            skipEmptyLines: true
+        });
 
-    const targetYears = [2016, 2017, 2018, 2019, 2022];
+        if (parsed.errors.length) {
+            console.error("Errors parsing CSV:", parsed.errors);
+            throw new Error("Could not parse CSV file.");
+        }
 
-    let dataset = sums
-        .map(([year, values]) => ({
-            year,
-            // 🎯 CHANGE 2: Only include 'pubblico' in the mapped object
-            pubblico: values.pubblico / 1e6,
-        }))
-        .filter(d =>
-            d.year &&
-            targetYears.includes(d.year) &&
-            // Filter out years with zero public funding
-            d.pubblico > 0
+        const data = parsed.data;
+
+        // --- 3. Process and Aggregate Data ---
+        const yearlyTotals = {};
+
+        const regions = parsed.meta.fields.filter(field =>
+            field && field !== 'Totale complessivo'
         );
 
-    dataset.sort((a, b) => a.year - b.year);
+        for (const row of data) {
+            const period = row[""]; // The first column
 
-    if (!dataset.length) {
-        document.getElementById("chart").innerHTML = "<p style='color:red'>No valid data found for selected years.</p>";
-        return;
+            if (!period || !period.includes('_')) {
+                continue; // Skip invalid rows
+            }
+
+            const year = parseInt(period.split('_')[1], 10);
+
+            if (isNaN(year) || year < 2014 || year > 2024) {
+                continue;
+            }
+
+            if (!yearlyTotals[year]) {
+                yearlyTotals[year] = {};
+                for (const region of regions) {
+                    yearlyTotals[year][region] = 0;
+                }
+            }
+
+            for (const region of regions) {
+                yearlyTotals[year][region] += parseCurrency(row[region]);
+            }
+        }
+
+        // --- 4. Identify Top 5 Regions ---
+        const regionTotalIncomes = {};
+        for (const region of regions) {
+            regionTotalIncomes[region] = 0;
+            // Sum up the total for each year
+            for (const year in yearlyTotals) {
+                regionTotalIncomes[region] += yearlyTotals[year][region];
+            }
+        }
+
+        // Convert to an array, sort it, and get the top 5 names
+        const sortedRegions = Object.entries(regionTotalIncomes)
+            .sort(([, totalA], [, totalB]) => totalB - totalA) // Sort descending
+            .slice(0, 5) // Get the top 5
+            .map(([name]) => name); // Get just the names
+
+        const top5Regions = new Set(sortedRegions);
+
+        // --- 5. Format data for Chart.js ---
+        const labels = Object.keys(yearlyTotals).sort();
+
+        // The 'index' is provided by the .map() function
+        const datasets = regions.map((region, index) => {
+            const dataForRegion = labels.map(year => yearlyTotals[year][region]);
+
+            // Pick color from the new dark list
+            const color = DISTINCT_COLORS[index % DISTINCT_COLORS.length];
+
+            // Check if this region is NOT in the top 5
+            const isHidden = !top5Regions.has(region);
+
+            return {
+                label: region,
+                data: dataForRegion,
+                borderColor: color,
+                backgroundColor: color,
+                fill: false,
+                tension: 0.1,
+                borderWidth: 2,
+                pointRadius: 3,
+                hidden: isHidden
+            };
+        });
+
+        // --- 6. Render the chart ---
+        const ctx = document.getElementById('chart');
+        if (!ctx) {
+            throw new Error("Could not find canvas element with id 'chart'");
+        }
+
+        // Define the title text
+        const chartTitle = 'Total Annual Income by Region (2014-2024)';
+
+        new Chart(ctx.getContext('2d'), {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: datasets
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        // --- UPDATED: Disable the built-in title ---
+                        display: false,
+                        text: chartTitle
+                    },
+                    legend: {
+                        position: 'right',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    label += new Intl.NumberFormat('it-IT', {
+                                        style: 'currency',
+                                        currency: 'EUR'
+                                    }).format(context.parsed.y);
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Year'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Total Income'
+                        },
+                        ticks: {
+                            callback: function (value) {
+                                return '€' + new Intl.NumberFormat('it-IT').format(value);
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // --- UPDATED: Find the new title element and set its text ---
+        const titleElement = document.querySelector('.chart-title');
+        if (titleElement) {
+            titleElement.textContent = chartTitle;
+        } else {
+            console.warn("Could not find element with id 'map-title' to set the chart title.");
+        }
+        // --- -------------------------------------------------- ---
+
+    } catch (error) {
+        console.error("Failed to create chart:", error);
+        const container = document.getElementById('chart')?.parentElement;
+        if (container) {
+            container.innerHTML = `<p style="color: red; text-align: center;">Could not load chart: ${error.message}</p>`;
+        }
     }
 
-    const tracePubblico = {
-        x: dataset.map(d => d.year),
-        y: dataset.map(d => d.pubblico),
-        name: "Finanziamento Pubblico", // Updated name for clarity
-        type: "bar",
-        marker: { color: "#1976d2" },
-        hovertemplate: "<b>%{x}</b><br>Pubblico: €%{y:.2f} M<extra></extra>"
-    };
-
-
-
-    const desiredYears = dataset.map(d => d.year);
-
-    const layout = {
-        // No need for barmode: "stack" since there's only one trace
-        title: "Fig.1.2: Total Funding Per Year",
-        xaxis: {
-            title: "Year",
-            type: 'category',
-            tickmode: "array",
-            tickvals: desiredYears,
-            tickangle: -90
-        },
-        yaxis: { title: "Funding (Million €)" },
-        margin: { t: 40, l: 80, r: 30, b: 100 }
-    };
-
-
-    Plotly.newPlot("chart", [tracePubblico], layout, { responsive: true });
-});
+})();

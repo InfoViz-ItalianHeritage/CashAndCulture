@@ -1023,6 +1023,16 @@ section,
   font-family: var(--heading-font);
   color: var(--heading-color);
 }
+.chart-title {
+  display: flex;
+  gap: 50px;
+  justify-content: space-around;
+  flex-direction: row;
+  font-size: 25px;
+  font-weight: 700;
+  font-family: var(--heading-font);
+  color: var(--heading-color);
+}
 .map-container {
   display: flex;
   height: 50vh;
@@ -1065,10 +1075,16 @@ html {
   min-width: unset !important;
   min-height: unset !important;
 }
-.chart { flex: 1;
-  min-height: 350px;
-  
-  flex-shrink: 0;
+.chart { 
+  position: relative;
+  width: 60vw;
+  max-height: 1200px;
+  margin: 0 auto;
+}
+.chart-container{
+  height: 450px;
+  position: relative;
+  width: 90%;
 }
 .table{
   margin-left: auto;
