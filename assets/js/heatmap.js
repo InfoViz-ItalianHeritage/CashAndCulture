@@ -1,239 +1,185 @@
-const FILE_PATH = "data/open_coesione.csv"; // Assuming it's in the same folder
-const FIN_COL = "FINANZ_TOTALE_PUBBLICO";
-const SELECTED_YEARS = [2016, 2017, 2018, 2019, 2022];
-const REGION_MAP = {
-    "TRENTINO-ALTO ADIGE": "TRENTINO-ALTO ADIGE/SÜDTIROL",
-    "TRENTINO ALTO ADIGE": "TRENTINO-ALTO ADIGE/SÜDTIROL",
-    "VALLE D’AOSTA": "VALLE D'AOSTA",
-    "FRIULI VENEZIA GIULIA": "FRIULI-VENEZIA GIULIA",
-};
-const TO_DROP = ["PAESI EUROPEI", "AMBITO NAZIONALE"];
+document.addEventListener("DOMContentLoaded", function () {
+    const container = document.querySelector("#heatmap-container");
+    if (container) container.innerHTML = '';
+    createHeatmap();
+});
 
-/**
- * Executes the main data loading process using PapaParse.
- */
-function generateHeatmap() {
-    console.log("Starting data load with PapaParse...");
-    // Check for PapaParse library presence
-    if (typeof Papa === 'undefined') {
-        console.error("PapaParse library not loaded. Ensure the script tag is present in your HTML.");
-        document.getElementById('heatmap').innerHTML = `<p style="color:red;">Library Error: PapaParse is required but not loaded.</p>`;
-        return;
-    }
+function createHeatmap() {
+    const CONTAINER_ID = "#heatmap-container";
+    const DATA_PATH = "data/income&funding.csv";
+    const GRADIENT_ID = "legend-gradient-centered";
 
-    Papa.parse(FILE_PATH, {
-        download: true,
-        header: true,
-        skipEmptyLines: true,
-        complete: function (results) {
-            if (results.errors.length) {
-                console.error("PapaParse Errors:", results.errors);
-                document.getElementById('heatmap').innerHTML = `<p style="color:red;">Error parsing data. Check console for details.</p>`;
-                return;
-            }
-            console.log(`Successfully loaded ${results.data.length} rows.`);
-            processAndPlot(results.data);
-        },
-        error: function (err, file, inputElem, reason) {
-            console.error("File loading error:", reason, err);
-            document.getElementById('heatmap').innerHTML = `<p style="color:red;">File loading error. Is the CSV path correct and are you running on a web server?</p>`;
-        }
-    });
-}
+    const margin = { top: 80, right: 250, bottom: 100, left: 250 };
 
-/**
- * Performs all data cleaning, aggregation, and plotting.
- * @param {Array<Object>} rawData - The array of row objects from PapaParse.
- */
-function processAndPlot(rawData) {
+    const containerElement = document.querySelector(CONTAINER_ID);
+    const width = Math.max(100, containerElement.clientWidth - margin.left - margin.right);
 
-    // 1. Initial Cleaning and Expansion (Exploding/Mapping)
-    let processedData = rawData.flatMap(row => {
-        // --- Convert Funding to Numeric (handling IT/EU format: . for thousands, , for decimal) ---
-        let fundingString = String(row[FIN_COL] || '0');
-        let funding = parseFloat(
-            fundingString
-                .replace(/[^\d,.\-]/g, '')
-                .replace(/\./g, '')         // Remove thousand separators
-                .replace(/,/g, '.')         // Use dot as decimal separator
-        ) || 0;
+    const height = 800 - margin.top - margin.bottom;
 
-        // --- Extract Year ---
-        let year;
-        try {
-            const date = row['OC_DATA_INIZIO_PROGETTO'] ? new Date(row['OC_DATA_INIZIO_PROGETTO']) : null;
-            year = date && !isNaN(date) ? date.getFullYear() : null;
-        } catch {
-            year = null;
-        }
+    const svg = d3.select(CONTAINER_ID)
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
 
-        // --- Initial Filters ---
-        if (!row['DEN_PROVINCIA'] || row['DEN_PROVINCIA'].trim() === "" || !year || !SELECTED_YEARS.includes(year)) {
-            return [];
-        }
+    const cellLayer = svg.append("g").attr("class", "cell-layer");
+    const textLayer = svg.append("g").attr("class", "text-layer");
+    const axisLayer = svg.append("g").attr("class", "axis-layer");
 
-        // --- Handle Multi-Region (Explode Logic) ---
-        const regionsRaw = (row['DEN_REGIONE'] || '').split(':::').map(r => r.trim());
-        const numRegions = regionsRaw.length;
-        const perRegionFunding = funding / numRegions;
+    const sanitizeId = (str) => "t-" + str.replace(/[^a-zA-Z0-9]/g, "");
 
-        return regionsRaw.map(region => {
-            const normalizedRegion = REGION_MAP[region] || region;
+    d3.csv(DATA_PATH).then(function (data) {
 
-            // --- Final Filter for Region Drops ---
-            if (TO_DROP.includes(normalizedRegion)) {
-                return null;
-            }
-
-            return {
-                REGION: normalizedRegion,
-                YEAR: year,
-                FUNDING: perRegionFunding
-            };
-        }).filter(item => item !== null);
-
-    });
-
-    if (processedData.length === 0) {
-        console.error("Processed data is empty. Check input data and filters.");
-        document.getElementById('heatmap').innerHTML = `<p style="color:red;">No data remained after processing and filtering.</p>`;
-        return;
-    }
-
-    // 2. Aggregate Funding (Group By Region x Year)
-    const aggregated = processedData.reduce((acc, row) => {
-        const key = `${row.REGION}_${row.YEAR}`;
-        acc.data[key] = (acc.data[key] || 0) + row.FUNDING;
-        acc.regions.add(row.REGION);
-        acc.years.add(row.YEAR);
-        return acc;
-    }, { data: {}, regions: new Set(), years: new Set() });
-
-    let regions = Array.from(aggregated.regions);
-    const years = Array.from(aggregated.years).sort();
-
-    // MODIFICATION 1: Custom Y-Axis Sorting (A at Top, Veneto at Bottom)
-    regions.sort((a, b) => a.localeCompare(b)); // Sort alphabetically A-Z
-
-    // Separate Veneto and the rest
-    const veneto = regions.filter(r => r === 'VENETO');
-    const otherRegions = regions.filter(r => r !== 'VENETO');
-
-    // Combine: A-Z regions, then Veneto (so Veneto is the true last element in the alphabetical list)
-    regions = otherRegions.concat(veneto);
-
-    // REVERSE for Plotly: Plotly's Y-axis starts at the bottom.
-    // Reversing puts 'A' regions at the end of the array, placing them at the TOP of the chart.
-    regions.reverse();
-    console.log("Regions sorted and reversed for A-at-Top display.");
-
-    // 3. Pivot Data (Create Z-matrix)
-    const zData = regions.map(region =>
-        years.map(year => aggregated.data[`${region}_${year}`] || 0)
-    );
-
-    // 4. Calculate Annotations (Top Region Share per Year)
-    const annotText = zData.map(row => Array(years.length).fill(""));
-    years.forEach((year, colIndex) => {
-        let total = 0;
-        let maxFunding = -1;
-        let maxRowIndex = -1;
-
-        zData.forEach((r, rowIndex) => {
-            const value = r[colIndex];
-            total += value;
-            if (value > maxFunding) {
-                maxFunding = value;
-                maxRowIndex = rowIndex;
+        const headers = data.columns;
+        const yearsSet = new Set();
+        headers.forEach(h => {
+            if (h.includes('_')) {
+                const part = h.split('_')[1];
+                if (!isNaN(parseInt(part))) yearsSet.add(part);
             }
         });
+        const years = Array.from(yearsSet).sort();
+        const regions = data.map(d => d.Regione);
 
-        if (total > 0 && maxRowIndex !== -1) {
-            const share = (maxFunding / total) * 100;
-            annotText[maxRowIndex][colIndex] = `<b>${share.toFixed(1)}%</b>`;
-        }
-    });
+        const heatmapData = [];
+        let minVal = Infinity;
+        let maxVal = -Infinity;
 
-    // 5. Plot Heatmap using Plotly.js
-    const allFundings = zData.flat().filter(v => v > 0);
-    const minVal = allFundings.length > 0 ? Math.min(...allFundings) : 1;
-    const maxVal = allFundings.length > 0 ? Math.max(...allFundings) : 1000;
+        data.forEach(row => {
+            years.forEach(year => {
+                const region = row.Regione;
+                const introiti = parseFloat(row[`Introiti_${year}`]?.replace(/\./g, '').replace(',', '.') || NaN);
+                const fondi = parseFloat(row[`Fondi_${year}`]?.replace(/\./g, '').replace(',', '.') || NaN);
 
-    // Log Scale Setup
-    const logMin = Math.log10(minVal);
-    const logMax = Math.log10(maxVal);
+                let returnVal = NaN;
+                if (!isNaN(introiti) && !isNaN(fondi)) {
+                    returnVal = introiti - fondi;
+                    if (returnVal < minVal) minVal = returnVal;
+                    if (returnVal > maxVal) maxVal = returnVal;
+                }
+                heatmapData.push({ region: region, year: year, value: returnVal });
+            });
+        });
 
-    // MODIFICATION 3a: Map 0 funding values to Z_ZERO_VALUE (outside log range)
-    const Z_ZERO_VALUE = logMin - 0.1;
-    const zLogData = zData.map(row =>
-        row.map(val => val > 0 ? Math.log10(val) : Z_ZERO_VALUE)
-    );
+        if (!isFinite(minVal)) minVal = 0;
+        if (!isFinite(maxVal)) maxVal = 0;
+        if (minVal > 0) minVal = 0;
+        if (maxVal < 0) maxVal = 0;
 
-    // MODIFICATION 3b: Custom colorscale to enforce white for Z_ZERO_VALUE
-    const customColorscale = [
-        [0, 'white'],         // 0% of the scale is white
-        [0.00001, 'white'],   // Small buffer to ensure white for all zero values
-        // Start the blue gradient from the calculated logMin point
-        [(logMin - Z_ZERO_VALUE) / (logMax - Z_ZERO_VALUE), 'rgb(247,251,255)'],
-        [1, 'rgb(8,48,107)']  // Darkest blue for logMax
-    ];
+        const x = d3.scaleBand().range([0, width]).domain(years).padding(0.05);
+        const y = d3.scaleBand().range([0, height]).domain(regions).padding(0.05);
 
-    const dataPlotly = [{
-        z: zLogData,
-        x: years,
-        y: regions,
-        type: 'heatmap',
-        colorscale: customColorscale,
-        zmin: Z_ZERO_VALUE, // Set zmin to include the zero-value log point
-        zmax: logMax,
+        const colorScale = d3.scaleLinear()
+            .domain([minVal, 0, maxVal])
+            .range(["#d73027", "#f7f7f7", "#4575b4"])
+            .clamp(true);
 
-        // Combine funding value and annotation share for hover/text
-        text: zData.map((row, rIdx) =>
-            row.map((val, cIdx) => {
-                const fundingFmt = val.toLocaleString('it-IT', { style: 'currency', currency: 'EUR', minimumFractionDigits: 0, maximumFractionDigits: 0 });
-                const annot = annotText[rIdx][cIdx];
-                return `${fundingFmt}<br>${annot}`;
-            })
-        ),
-        hovertemplate: '%{text}<extra></extra>',
+        const rects = cellLayer.selectAll()
+            .data(heatmapData, d => d.region + ':' + d.year)
+            .enter()
+            .append("rect")
+            .attr("x", d => x(d.year))
+            .attr("y", d => y(d.region))
+            .attr("width", x.bandwidth())
+            .attr("height", y.bandwidth())
+            .style("fill", d => isNaN(d.value) ? "#fff3cd" : colorScale(d.value))
+            .style("stroke", "#ddd")
+            .style("stroke-width", 0.5);
 
-        // Custom colorbar ticks to display original funding values (not log values)
-        colorbar: {
-            title: { text: 'Total Public Funding (€)', side: 'right' },
-            tickvals: [logMin, logMin + (logMax - logMin) / 2, logMax],
-            ticktext: [minVal, Math.pow(10, logMin + (logMax - logMin) / 2), maxVal].map(v => v.toLocaleString('it-IT', { style: 'currency', currency: 'EUR', minimumFractionDigits: 0, maximumFractionDigits: 0 })),
-        }
-    }];
+        textLayer.selectAll(".cell-text")
+            .data(heatmapData)
+            .enter()
+            .append("text")
+            .attr("id", d => sanitizeId(d.region + d.year))
+            .text(d => isNaN(d.value) ? "" : "€" + d3.format(",.0f")(d.value))
+            .attr("x", d => x(d.year) + x.bandwidth() / 2)
+            .attr("y", d => y(d.region) + y.bandwidth() / 2)
+            .style("text-anchor", "middle")
+            .style("alignment-baseline", "middle")
+            .style("font-size", "11px")
+            .style("font-weight", "bold")
+            .style("font-family", "var(--heading-font)")
+            .style("fill", "black")
+            .style("text-shadow", "0px 0px 4px rgba(255,255,255,1)")
+            .style("pointer-events", "none")
+            .style("opacity", 0);
 
-    const layout = {
-        title: 'Fig.4.2: Total Public Funding per Region',
+        rects.on("mouseover", function (event, d) {
+            d3.select(this).style("stroke", "black").style("stroke-width", 2).raise();
+            d3.select("#" + sanitizeId(d.region + d.year)).style("opacity", 1);
+        })
+            .on("mouseleave", function (event, d) {
+                d3.select(this).style("stroke", "#ddd").style("stroke-width", 0.5);
+                d3.select("#" + sanitizeId(d.region + d.year)).style("opacity", 0);
+            });
 
-        // MODIFICATION 2: Set axis types to 'category' for equal spacing and sorted display
-        xaxis: {
-            title: 'Year',
-            tickvals: years,
-            ticktext: years,
-            type: 'category' // Ensures equal spacing between years
-        },
-        yaxis: {
-            title: 'Region',
-            automargin: true,
-            type: 'category' // Ensures regions are displayed in the custom sorted order
-        },
-        autosize: true,
-        height: 600,
-        margin: { l: 200, r: 50, b: 50, t: 80 }
-    };
+        axisLayer.append("g").attr("transform", `translate(0, ${height})`)
+            .call(d3.axisBottom(x))
+            .selectAll("text").style("text-anchor", "end")
+            .attr("dx", "-.8em").attr("dy", ".15em").attr("transform", "rotate(-45)")
+            .style("font-family", "var(--heading-font)");
 
-    // Check for Plotly library presence before plotting
-    if (typeof Plotly === 'undefined') {
-        console.error("Plotly library not loaded. Ensure the script tag is present in your HTML.");
-        document.getElementById('heatmap').innerHTML = `<p style="color:red;">Library Error: Plotly is required but not loaded.</p>`;
-        return;
-    }
+        axisLayer.append("g").call(d3.axisLeft(y))
+            .selectAll("text")
+            .style("font-family", "var(--heading-font)");
 
-    Plotly.newPlot('heatmap', dataPlotly, layout);
-    console.log("Heatmap rendered successfully with all requested modifications.");
+        svg.append("text")
+            .attr("x", width / 2)
+            .attr("y", -30)
+            .attr("text-anchor", "middle")
+            .style("font-size", "25px")
+            .style("font-weight", "700")
+            .style("font-family", "var(--heading-font)")
+            .style("fill", "var(--heading-color)")
+            .text("Annotated Heatmap — Return Amount (Introiti − Fondi)");
+
+        const defs = svg.append("defs");
+        const linearGradient = defs.append("linearGradient")
+            .attr("id", GRADIENT_ID)
+            .attr("x1", "0%").attr("y1", "100%")
+            .attr("x2", "0%").attr("y2", "0%");
+
+        linearGradient.append("stop").attr("offset", "0%").attr("stop-color", "#d73027");
+        linearGradient.append("stop").attr("offset", "50%").attr("stop-color", "#f7f7f7");
+        linearGradient.append("stop").attr("offset", "100%").attr("stop-color", "#4575b4");
+
+        const legendHeight = height;
+        const legendWidth = 20;
+        const legendX = width + 30;
+
+        svg.append("rect")
+            .attr("x", legendX).attr("y", 0)
+            .attr("width", legendWidth).attr("height", legendHeight)
+            .style("fill", `url(#${GRADIENT_ID})`)
+            .style("stroke", "#ccc").style("stroke-width", "1px");
+
+        const legendScale = d3.scaleLinear()
+            .domain([minVal, 0, maxVal])
+            .range([legendHeight, legendHeight / 2, 0]);
+
+        const negTicks = d3.ticks(minVal, 0, 5);
+        const posTicks = d3.ticks(0, maxVal, 5);
+        const customTicks = Array.from(new Set([...negTicks, ...posTicks])).sort((a, b) => a - b);
+
+        svg.append("g")
+            .attr("transform", `translate(${legendX + legendWidth}, 0)`)
+            .call(
+                d3.axisRight(legendScale)
+                    .tickValues(customTicks)
+                    .tickFormat(d3.format(",.0f"))
+            )
+            .selectAll("text")
+            .style("font-family", "var(--heading-font)");
+
+        svg.append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", legendX + legendWidth + 85)
+            .attr("x", 0 - (height / 2))
+            .attr("dy", "1em")
+            .style("text-anchor", "middle")
+            .style("font-family", "var(--heading-font)")
+            .text("Return (Introiti − Fondi) €");
+
+    }).catch(console.error);
 }
-
-generateHeatmap();

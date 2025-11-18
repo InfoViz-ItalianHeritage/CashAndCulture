@@ -9,6 +9,8 @@
   <meta name="keywords" content="">
   <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
   <script src="https://d3js.org/d3.v6.min.js"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
@@ -181,8 +183,7 @@
             <div class="canvas-item position-relative">
               <div class="icon"><i class="bi bi-patch-question"></i></div>
               <h4><a href="#chart" class="stretched-link">Research Question 1</a></h4>
-              <p style="text-align: justify;">Which years witnessed the highest amount of public funding allocated to
-                cultural heritage projects?</p>
+              <p style="text-align: justify;">How were funds and visitors distributed among Italian regions?</p>
             </div>
           </div>
 
@@ -319,15 +320,13 @@
                       We surveyed multiple public datasets that might provide insight into cultural funding, heritage,
                       tourism, and social or cultural participation:
                       <ul style="list-style-type:circle; margin-left:20px">
-                        <li>The ArCo Knowledge Graph (to query dati.beniculturali.it), which provides linked open data
-                          on Italian cultural heritage through ontologies and catalog records.
-                        </li>
+
                         <li>OpenCoesione _ Culture & Tourism Project Data (2014–2020, 2021–2027)</li>
                         <li>Ministero della Cultura _ Cultural income statistics (MiC Income)</li>
                         <li>Ministero della Cultura _ Visitor and Participation Statistics (MIC Visitors)</li>
-                        <li>The ISTAT “Aspects of Daily Life” (AVQ) survey, which captures household- and
-                          individual-level variables on cultural consumption, social participation, and quality-of-life
-                          metrics.</li>
+                        <li>The ISTAT “Quality of Services” survey, which captures the effeciency of the local public
+                          transportation for each Italian region. Each cell of the table represents the amount of
+                          Kilometers ran by the sum of transportation types per resident.</li>
                       </ul>
                     </div>
                   </li>
@@ -338,10 +337,6 @@
                       For each candidate dataset, we assessed whether it aligned with our project’s objectives and
                       whether we could access or extract it sufficiently:
                       <ul style="list-style-type: circle; margin-left:20px">
-                        <li>The ArCo / CIS knowledge graph is a rich semantic resource that models Italian cultural
-                          heritage with ontology modules and supports SPARQL queries. However, automatic extraction and
-                          integration were too complex for our time frame, especially given potential issues of
-                          coverage, query complexity, and alignment with our funding/visitor datasets.</li>
                         <li>
                           The MiC “income/budget” datasets were initially considered as a complementary source for
                           analysis of financial trends in the cultural sector. However, they were excluded because the
@@ -350,12 +345,7 @@
                           breakdowns. As a result, it was not possible to align them with the OpenCoesione data, which
                           is organized by project, region, and year.
                         </li>
-                        <li>
-                          The ISTAT “Aspects of Daily Life” survey is broad and includes items about cultural
-                          consumption, but it is in the form of microdata (household-level survey), which requires
-                          careful sampling treatment, potential licensing restrictions, and may not align regionally or
-                          temporally with our main funding data (open coesione).
-                        </li>
+
                       </ul>
 
                       Instead, we concentrated on OpenCoesione project/funding data and visitor/participation
@@ -627,6 +617,29 @@
       <div class="container section-title" data-aos="fade-up">
         <h2>Visualization</h2>
       </div><!-- End Section Title -->
+      <section id="canvas" class="canvas section">
+        <div class="container" data-aos="fade-up">
+
+          <div class="canvas-item position-relative">
+            <div class="icon">
+              <h4>
+                <i class="bi bi-patch-question"></i>
+                Research Question 1
+              </h4>
+            </div>
+            <p style="font-style: italic;">How were funds and visitors distributed among Italian regions?</em>
+            <p style="text-align: justify;">To answer the first research question, the OpenCoesione and MiC datasets
+              were utilized. For each region of Italy, the funding amount was extracted and displayed on the left map
+              showing which regions received the most funding through a darker color for the years (2014-2024). The same
+              was also done for the number of visitors for each region on the right map. This visualization allowed for
+              a side-by-side comparison of regions. Only the actual start year of each project was selected for the
+              funding, </p><br>
+
+          </div>
+
+        </div>
+      </section>
+
 
 
       <section id="canvas" class="canvas section">
@@ -649,18 +662,43 @@
                 <div class="icon">
                   <h4>
                     <i class="bi bi-map"></i>
-                    Fig. 2.2
+                    Visualization 1: Regional Funding and Visitors
                   </h4>
                 </div>
-                <p style="text-align: justify;">In the selected years, some regions received more funds for their
-                  cultural heritage projects. From the regional geographical map (fig.2.2) each year’s highest funded
-                  region visually stands out.</p><br>
+                <p style="text-align: justify;">The side-by-side map comparison (funding map and visitors map) shows a
+                  discrepancy between visitor numbers and funding, establishing that regions with high amount of funding
+                  don't necessarily get the highest number of visitors per year. For example Lazio as a region has
+                  consistently had the highest number of visitors even though it didn't
+                  receive the highest amount of funding. In contrast, Campania had the highest amount of funding but
+                  didn't receive nearly as many visitors as other regions. </p><br>
 
               </div>
 
             </div>
           </div>
 
+      </section>
+      <section id="canvas" class="canvas section">
+        <div class="container" data-aos="fade-up">
+
+          <div class="canvas-item position-relative">
+            <div class="icon">
+              <h4>
+                <i class="bi bi-patch-question"></i>
+                Research Question 2
+              </h4>
+            </div>
+            <p style="font-style: italic;">What's the return on the projects' funding for each region?</em>
+            <p style="text-align: justify;">To answer the second research question, the OpenCoesione and MiC datasets
+              were utilized. For each region of Italy, the income generated from cultural heritage institutions and
+              museums by selling tickets to the public was graphed in a line graph to highlight income fluctuations
+              during the years (2014-2024) at a first stage. Then a heatmap of profit for each region was plotted
+              calculating the profit as the difference between the income and funding of each region.
+            </p><br>
+
+          </div>
+
+        </div>
       </section>
       <section id="canvas" class="canvas section">
         <div class="container">
@@ -670,13 +708,16 @@
               <canvas id="chart"></canvas>
             </div>
             <div id="synchronized-slider-container"></div>
+            <div id="heatmap-container">
+              <div id="heatmap-tooltip"></div>
+            </div>
             <div class="container" data-aos="fade-up">
               <h2></h2>
               <div class="canvas-item position-relative">
                 <div class="icon">
                   <h4>
-                    <i class="bi bi-map"></i>
-                    Fig. 2.2
+                    <i class="bi bi-graph-up"></i>
+                    Visualization 2:
                   </h4>
                 </div>
                 <p style="text-align: justify;">In the selected years, some regions received more funds for their
@@ -1025,13 +1066,13 @@
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="https://d3js.org/d3.v6.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
   <script src="https://unpkg.com/leaflet"></script>
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
   <script src='https://unpkg.com/@turf/turf/turf.min.js'></script>
   <script src="assets/js/map.js"></script>
-  <script src="assets/js/map1.js"></script>
+
   <script src="assets/js/heatmap.js"></script>
   <script src="assets/js/chart.js"></script>
   <script src="assets/js/piechart.js"></script>

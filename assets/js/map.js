@@ -353,6 +353,21 @@ function createVisitorMap() {
 
 // --------------------------------------------------------------------------------
 
-// --- 3. Initialize maps ---
-createFundingMap();
-createVisitorMap();
+// --- 3. Initialize maps (SAFE MODE) ---
+// We wait for the DOM to be ready, and check for D3/Leaflet to avoid errors.
+document.addEventListener("DOMContentLoaded", function () {
+
+    // Safety check: Are libraries loaded?
+    if (typeof d3 === 'undefined' || typeof L === 'undefined') {
+        console.error("CRITICAL ERROR: D3.js or Leaflet.js are not loaded yet. Check your script tags.");
+        return;
+    }
+
+    // Check if containers exist before running to avoid "Map container not found"
+    if (document.getElementById('map') && document.getElementById('map1')) {
+        createFundingMap();
+        createVisitorMap();
+    } else {
+        console.warn("Map containers (#map or #map1) missing. Skipping map initialization.");
+    }
+});
