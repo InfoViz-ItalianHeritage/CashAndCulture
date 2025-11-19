@@ -1096,12 +1096,8 @@ font-family: var(--heading-font);
 margin-left: auto;
 margin-right: auto;
 }
-#heatmap-container{
-  
-  margin: 0, auto;
-  display: block;
-  
-}
+
+
 .center{
   border: 2px, solid #ccc;
 font-family: var(--heading-font);

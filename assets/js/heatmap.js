@@ -9,12 +9,12 @@ function createHeatmap() {
     const DATA_PATH = "data/income&funding.csv";
     const GRADIENT_ID = "legend-gradient-centered";
 
-    const margin = { top: 80, right: 250, bottom: 100, left: 250 };
+    const margin = { top: 80, right: 150, bottom: 100, left: 150 };
 
     const containerElement = document.querySelector(CONTAINER_ID);
-    const width = Math.max(100, containerElement.clientWidth - margin.left - margin.right);
+    const width = Math.max(900, containerElement.clientWidth - margin.left - margin.right);
 
-    const height = 800 - margin.top - margin.bottom;
+    const height = 700 - margin.top - margin.bottom;
 
     const svg = d3.select(CONTAINER_ID)
         .append("svg")
@@ -98,7 +98,7 @@ function createHeatmap() {
             .style("text-anchor", "middle")
             .style("alignment-baseline", "middle")
             .style("font-size", "11px")
-            .style("font-weight", "bold")
+            .style("font-weight", "normal")
             .style("font-family", "var(--heading-font)")
             .style("fill", "black")
             .style("text-shadow", "0px 0px 4px rgba(255,255,255,1)")
