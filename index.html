@@ -11,6 +11,9 @@
   <script src="https://d3js.org/d3.v6.min.js"></script>
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
@@ -183,7 +186,8 @@
             <div class="canvas-item position-relative">
               <div class="icon"><i class="bi bi-patch-question"></i></div>
               <h4><a href="#chart" class="stretched-link">Research Question 1</a></h4>
-              <p style="text-align: justify;">How were funds and visitors distributed among Italian regions?</p>
+              <p style="text-align: justify;">How evenly have public funds been distributed across Italian regions, and
+                does this distribution match visitor participation?</p>
             </div>
           </div>
 
@@ -191,7 +195,8 @@
             <div class="canvas-item position-relative">
               <div class="icon"><i class="bi bi-patch-question"></i></div>
               <h4><a href="#map" class="stretched-link">Research Question 2</a></h4>
-              <p style="text-align: justify;">Which regions received the highest share of funding each year?</p>
+              <p style="text-align: justify;">Do current funding policies succeed in driving financial self-sufficiency
+                across these regions?</p>
             </div>
           </div>
 
@@ -199,8 +204,8 @@
             <div class="canvas-item position-relative">
               <div class="icon"><i class="bi bi-patch-question"></i></div>
               <h4><a href="#map1" class="stretched-link">Research Question 3</a></h4>
-              <p style="text-align: justify;">How were the regional visitors' participation in cultural heritage
-                events/activities?</p>
+              <p style="text-align: justify;">Does infrastructure accessibility act as a bottleneck for regions with
+                high cultural appeal?</p>
             </div>
           </div>
 
@@ -271,29 +276,25 @@
 
         <ul class="nav nav-tabs row  g-2 d-flex" data-aos="fade-up" data-aos-delay="100">
 
-          <li class="nav-item col-3">
+          <li class="nav-item col-4">
             <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#features-tab-1">
-              <h4>Data Preparation</h4>
+              <h4>OpenCoesione</h4>
             </a>
           </li>
 
-          <li class="nav-item col-3">
+          <li class="nav-item col-4">
             <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-2">
-              <h4>Data Extraction</h4>
+              <h4>Ministero della Cultura</h4>
             </a>
 
           </li>
-          <li class="nav-item col-3">
+          <li class="nav-item col-4">
             <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-3">
-              <h4>Data Visualization</h4>
+              <h4>IstatData</h4>
             </a>
           </li>
 
-          <li class="nav-item col-3">
-            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-4">
-              <h4>Analysis</h4>
-            </a>
-          </li>
+
 
         </ul>
 
@@ -536,73 +537,7 @@
             </div>
           </div>
 
-          <div class="tab-pane fade" id="features-tab-4">
-            <div class="row">
-              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
-                <h3>Observations</h3>
 
-                <ul>
-                  <li>
-                    <i class="bi bi-check2-all"></i>
-                    <span class="dynamic-link" onclick="toggleDetails(this)">Top 5 Funded Years (Overall)</span>
-                    <div class="details-text">
-                      <ul style="list-style-type:circle; margin-left:20px">
-                        <li>2016, 2017, 2018, 2019, 2022</li>
-                        <li>
-                          These years record the highest total public funding for cultural heritage projects according
-                          to OpenCoesione, which tracks public investments at project level.
-                          The sharp decline in 2020–2021 corresponds to the COVID-19 pandemic, when cultural
-                          institutions were closed or operating under restrictions, leading to a temporary suspension of
-                          new projects and disbursements..
-
-                        </li>
-
-                      </ul>
-                    </div>
-
-                  </li>
-
-                  <li>
-                    <i class="bi bi-check2-all"></i>
-                    <span class="dynamic-link" onclick="toggleDetails(this)">Top 5 Funded Regions in each Top 5 year
-
-                    </span>
-                    <div class="details-text">
-                      <ul style="list-style-type:circle; margin-left:20px">
-                        <li>CAMPANIA(2016) - CAMPANIA(2017) - PUGLIA(2018) - MOLISE(2019) - CAMPANIA(2022)</li>
-                        <li>
-                          These annual peaks correspond to specific funding cycles or project completions visible in the
-                          OpenCoesione dataset, which aggregates values based on project start and completion dates.
-                        </li>
-
-                      </ul>
-                    </div>
-
-                  </li>
-                  <li>
-                    <i class="bi bi-check2-all"></i>
-                    <span class="dynamic-link" onclick="toggleDetails(this)">Top 5 Visited Regions in each Top 5 year
-
-                    </span>
-                    <div class="details-text">
-                      <ul style="list-style-type:circle; margin-left:20px">
-                        <li>LAZIO - CAMPANIA - TOSCANA - PIEMONTE - LOMBARDIA</li>
-                        <li>
-                          Data from MiC_Visitors (Ministero della Cultura) show that visitor flows are concentrated in
-                          regions with well-established cultural tourism circuits and major cities, particularly Lazio
-                          (Rome) and Toscana (Florence).
-                        </li>
-
-                      </ul>
-                    </div>
-
-                  </li>
-              </div>
-              <div class="col-lg-6 order-1 order-lg-2 text-center">
-                <img src="assets/img/working-3.png" alt="" class="img-fluid">
-              </div>
-            </div>
-          </div>
 
         </div>
 
@@ -688,7 +623,8 @@
                 Research Question 2
               </h4>
             </div>
-            <p style="font-style: italic;">What's the return on the projects' funding for each region?</em>
+            <p style="font-style: italic;">Do current funding policies succeed in driving financial self-sufficiency
+              across these regions?</em>
             <p style="text-align: justify;">To answer the second research question, the OpenCoesione and MiC datasets
               were utilized. For each region of Italy, the income generated from cultural heritage institutions and
               museums by selling tickets to the public was graphed in a line graph to highlight income fluctuations
@@ -732,18 +668,33 @@
       </section>
     </section>
     <section id="canvas" class="canvas section">
+      <div class="container" data-aos="fade-up">
+
+        <div class="canvas-item position-relative">
+          <div class="icon">
+            <h4>
+              <i class="bi bi-patch-question"></i>
+              Research Question 3
+            </h4>
+          </div>
+          <p style="font-style: italic;">Does infrastructure accessibility act as a bottleneck for regions with
+            high cultural appeal?</em>
+          <p style="text-align: justify;">To answer the second research question, the OpenCoesione and MiC datasets
+            were utilized. For each region of Italy, the income generated from cultural heritage institutions and
+            museums by selling tickets to the public was graphed in a line graph to highlight income fluctuations
+            during the years (2014-2024) at a first stage. Then a heatmap of profit for each region was plotted
+            calculating the profit as the difference between the income and funding of each region.
+          </p><br>
+
+        </div>
+
+      </div>
+    </section>
+    <section id="canvas" class="canvas section">
       <div class="container">
         <div class="row gy-4" style="justify-content: center;">
-          <div class="heatmap" id="heatmap"></div>
-          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
-            <div class="canvas-item position-relative">
-              <h4>
-                <div class="icon"><i class="bi bi-thermometer-half"></i><a href="" class="stretched-link"> Fig. 4.2</a>
-                </div>
-              </h4>
-              <p style="text-align: justify;">The heatmap shows the regions that received the highest share of
-                funding each year within the selected years.</p>
-            </div>
+          <div class="scatterplot-container">
+            <div id="scatterplot"></div>
           </div>
 
         </div>
@@ -781,17 +732,7 @@
       <div class="container">
         <div class="row gy-4" style="justify-content: center;">
           <div class="piechart" id="piechart"></div>
-          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
-            <div class="canvas-item position-relative">
-              <h4>
-                <div class="icon"><i class="bi bi-pie-chart-fill"></i><a href="" class="stretched-link"> Fig. 10</a>
-                </div>
-              </h4>
-              <p style="text-align: justify;">The piechart shows the projects in opencoesione dataset divided in terms
-                of their start time compared with the estimated date of project initiation. </p>
-            </div>
 
-          </div>
           <div class="container" data-aos="fade-up">
             <h2></h2>
             <div class="canvas-item position-relative">
@@ -1075,7 +1016,7 @@
 
   <script src="assets/js/heatmap.js"></script>
   <script src="assets/js/chart.js"></script>
-  <script src="assets/js/piechart.js"></script>
+  <script src="assets/js/scatterplot.js"></script>
 
 
   <!-- Main JS File -->

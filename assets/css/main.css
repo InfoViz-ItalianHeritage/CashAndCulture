@@ -1096,6 +1096,18 @@ font-family: var(--heading-font);
 margin-left: auto;
 margin-right: auto;
 }
+.scatterplot-container{
+  width: 90% !important;
+  display:flex !important;
+  justify-content: center !important;
+  
+}
+#scatterplot{
+  width: 110% !important;
+  height: 55vh !important;
+  min-height: 700px !important;
+  
+}
 
 
 .center{
