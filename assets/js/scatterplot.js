@@ -93,20 +93,20 @@ Promise.all([
                 "anchor": "middle",     // Matches .attr("text-anchor", "middle")
                 "offset": 20            // Adds space similar to y = -30
             },
-            "axis": { "labelFont": customFont, "titleFont": customFont, "titleFontSize": 12, "labelFontSize": 10 },
-            "legend": { "labelFont": customFont, "titleFont": customFont, "titleFontSize": 12, "labelFontSize": 10 },
+            "axis": { "labelFont": customFont, "titleFont": customFont, "titleFontSize": 15, "labelFontSize": 10, "titleFontWeight": "normal" },
+            "legend": { "labelFont": customFont, "titleFont": customFont, "titleFontSize": 15, "labelFontSize": 10 },
             "header": { "labelFont": customFont, "titleFont": customFont },
-            "text": { "font": customFont, "fontSize": 10 }
+            "text": { "font": customFont, "fontSize": 12 }
         },
 
         "title": "Local Public Transportation VS. Cultural Appeal Index",
         "data": { "values": averageData },
         "layer": [
             {
-                "mark": { "type": "circle", "size": 200 },
+                "mark": { "type": "circle", "size": 150 },
                 "encoding": {
-                    "x": { "field": "TPL_Index", "type": "quantitative", "title": "Local Public Transportation (Number of seats and Kilometers for each resident)" },
-                    "y": { "field": "Cult_Index", "type": "quantitative", "title": "Cultural Appeal Index" },
+                    "x": { "field": "TPL_Index", "type": "quantitative", "title": "Public Transport Supply (Seat-Km per Inhabitant)" },
+                    "y": { "field": "Cult_Index", "type": "quantitative", "title": "Weighted Cultural Density (Weighted Visitors count per 100km²)" },
                     "color": {
                         "field": "Regione",
                         "type": "nominal",
