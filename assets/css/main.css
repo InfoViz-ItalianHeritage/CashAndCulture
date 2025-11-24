@@ -1152,6 +1152,16 @@ flex: 1;
     min-height: 250px;
   }
 }
+#ranked-barchart .vega-embed{
+  display: flex !important;
+  flex-direction: column !important;
+}
+#ranked-barchart .vega-bindings{
+  order: -1 !important;
+  margin-bottom: 15px !important;
+  margin-top: 0px !important;
+  justify-content: flex-start !important;
+}
 
 .canvas .canvas-item .icon i {
   color: var(--accent-color);
@@ -1364,7 +1374,19 @@ flex: 1;
   font-family: var(--heading-font);
   font-weight: 400;
 }
-
+#chart-title{
+  font-family: var(--heading-font);
+  color:var(--heading-color);
+  font-weight: 700;
+  margin-bottom: 5px;
+  font-size: 25px;
+  text-align: center;
+}
+#chart-controls{
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
 .visualization h4 sup {
   font-size: 28px;
 }

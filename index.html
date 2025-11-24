@@ -41,6 +41,7 @@
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <script src='https://unpkg.com/@turf/turf/turf.min.js'></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
 
   <!-- =======================================================
   * Template Name: Scaffold
@@ -592,10 +593,10 @@
     </section>
     <section id="canvas" class="canvas section">
       <div class="container" data-aos="fade-up">
-        <h2></h2>
+
         <div class="canvas-item position-relative">
           <div class="icon">
-            <h4>
+            <h4 style="color: var(--accent-color);">
               <i class="bi bi-patch-question"></i>
               Research Question 3
             </h4>
@@ -623,41 +624,47 @@
           <div class="scatterplot-container">
             <div id="scatterplot"></div>
           </div>
-
+          <div id="chart-title">Regional Classification of TPL Efficiency per Year</div>
+          <div id="chart-controls"></div>
+          <div id="ranked-barchart"></div>
         </div>
-      </div>
-      <div class="container" data-aos="fade-up">
-        <h2></h2>
-        <div class="canvas-item position-relative">
-          <div class="icon">
-            <h4>
-              <i class="bi bi-graph-up"></i>
-              Visualization 3:
-            </h4>
+        <div class="container" data-aos="fade-up">
+
+          <div class="canvas-item position-relative">
+            <div class="icon">
+              <h4 style="color: var(--accent-color)">
+                <i class="bi bi-graph-up"></i>
+                Visualization 3:
+              </h4>
+            </div>
+            <p style="text-align: justify;">By tracking the regional TPL index over the decade, the chart reveals the
+              structural stability of transport efficiency. High TPL scores (indicating better public transport
+              accessibility) are often concentrated in structurally strong Northern regions, which tend to maintain
+              their
+              high rankings consistently. Conversely, culturally significant regions that frequently rank lower (such
+              as
+              Lazio or Campania, depending on the year) highlight a potential infrastructure disparity. This lagging
+              performance in TPL for regions with historically high cultural appeal suggests that inadequate transport
+              infrastructure may indeed be acting as a bottleneck, hindering their ability to efficiently handle
+              tourist
+              flow and fully capitalize on their cultural assets.</p><br>
+
+            <p>In the scatterplot regions are categorized into quadrants that reveal their strategic challenges or
+              strengths: those falling into the Top-Left quadrant (High Cultural Index / Low TPL Index) are
+              immediately
+              identified as areas where infrastructure acts as a critical bottleneck. These regions possess strong
+              cultural appeal but their poor transport efficiency severely limits their capacity to handle visitor
+              flow,
+              potentially suppressing their full economic and experiential value. Conversely, regions in the Top-Right
+              quadrant demonstrate synergy, where high infrastructure quality successfully supports and capitalizes on
+              high cultural appeal, providing a benchmark for policy success.
+            </p><br>
+
+
           </div>
-          <p style="text-align: justify;">By tracking the regional TPL index over the decade, the chart reveals the
-            structural stability of transport efficiency. High TPL scores (indicating better public transport
-            accessibility) are often concentrated in structurally strong Northern regions, which tend to maintain their
-            high rankings consistently. Conversely, culturally significant regions that frequently rank lower (such as
-            Lazio or Campania, depending on the year) highlight a potential infrastructure disparity. This lagging
-            performance in TPL for regions with historically high cultural appeal suggests that inadequate transport
-            infrastructure may indeed be acting as a bottleneck, hindering their ability to efficiently handle tourist
-            flow and fully capitalize on their cultural assets.</p><br>
-
-          <p>In the scatterplot regions are categorized into quadrants that reveal their strategic challenges or
-            strengths: those falling into the Top-Left quadrant (High Cultural Index / Low TPL Index) are immediately
-            identified as areas where infrastructure acts as a critical bottleneck. These regions possess strong
-            cultural appeal but their poor transport efficiency severely limits their capacity to handle visitor flow,
-            potentially suppressing their full economic and experiential value. Conversely, regions in the Top-Right
-            quadrant demonstrate synergy, where high infrastructure quality successfully supports and capitalizes on
-            high cultural appeal, providing a benchmark for policy success.
-          </p><br>
 
 
         </div>
-
-
-      </div>
     </section>
 
 
@@ -901,6 +908,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
   <script src='https://unpkg.com/@turf/turf/turf.min.js'></script>
   <script src="assets/js/map.js"></script>
+  <script src="assets/js/ranked-barchart.js"></script>
 
   <script src="assets/js/heatmap.js"></script>
   <script src="assets/js/chart.js"></script>
