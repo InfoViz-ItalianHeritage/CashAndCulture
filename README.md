@@ -1,17 +1,17 @@
 # Cash & Culture: Who Gets Funded, Who Gets Visited
 Final project for the course of Information Visualization 2024-2025 held at University of Bologna by professor D'Aquino.
 
-This project analyzes how public funding for cultural-heritage and tourism projects has been distributed across Italian regions and compares those investments with the number of visitors each region received in the same years (2014 → 2024). The goal is to identify regional mismatches (e.g. high funding / low visitation or vice versa), temporal trends, and possible explanations that can inform policy discussion and further research.
+This project analyzes how public funding for cultural-heritage and tourism projects has been distributed across Italian regions and compares those investments with the number of visitors each region received in the years 2014 → 2024. The goal is to identify regional mismatches (e.g. high funding / low visitation or vice versa), temporal trends, and possible explanations that can inform policy discussion and further research.
 
 # Research Questions
 RQ1
-In the time scope of the project, 2014-2024, which years witnessed the highest amount of public funding allocated to cultural heritage?
+How evenly have public funds been distributed across Italian regions, and does this distribution match visitor participation?
 
 RQ2
-Which regions received the highest share of funding each year?
+Do current funding policies succeed in driving financial self-sufficiency across these regions?
 
 RQ3
-How were regional visitors’ participation in cultural heritage events/activities?
+Does infrastructure accessibility act as a bottleneck for regions with high cultural appeal?
 
 # Libraries Used
 - pandas
@@ -46,4 +46,6 @@ Furthermore, Molise appears as the top-funded region in 2019, despite being one 
 - The website is published under a Free Licence: Designed by BootstrapMade; credits for icons and external images are shown in the footer of the website.
 - [OpenCoesione](https://opencoesione.gov.it/en/opendata/dataset/progetti_esteso_cultura_turismo_2014-2020/) datasource is published under CC BY 4.0 licence.
 - [Ministero della Cultura](https://statistica.cultura.gov.it/?page_id=500) datasource is published under CC BY 3.0 licence.
+- [Istat - Qualità dei servizi](https://esploradati.istat.it/databrowser/#/it/dw/categories/IT1,Z0930TER,1.0/BES_T/IT1,DF_BES_TERRIT_12,1.0) datasource is published under CC BY 4.0 licence.
+- [Istat - Paesaggio e Patrimonio culturale](https://esploradati.istat.it/databrowser/#/it/dw/categories/IT1,Z0930TER,1.0/BES_T/IT1,DF_BES_TERRIT_9,1.0) datasource is published under CC BY 4.0 licence.
 - Our csv files [open_coesione.csv](data/open_coesione.csv), [mic_visitors.csv](data/mic_visitors.csv), [mic_income.csv](data/mic_visitors.csv) are published under CC BY 4.0 licence.
