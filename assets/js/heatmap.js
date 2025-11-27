@@ -12,8 +12,10 @@ function createHeatmap() {
     const margin = { top: 80, right: 150, bottom: 100, left: 150 };
 
     const containerElement = document.querySelector(CONTAINER_ID);
-    const width = Math.max(900, containerElement.clientWidth - margin.left - margin.right);
+    // Ensure container exists to avoid errors
+    if (!containerElement) return;
 
+    const width = Math.max(900, containerElement.clientWidth - margin.left - margin.right);
     const height = 700 - margin.top - margin.bottom;
 
     const svg = d3.select(CONTAINER_ID)
@@ -49,8 +51,17 @@ function createHeatmap() {
         data.forEach(row => {
             years.forEach(year => {
                 const region = row.Regione;
-                const introiti = parseFloat(row[`Introiti_${year}`]?.replace(/\./g, '').replace(',', '.') || NaN);
-                const fondi = parseFloat(row[`Fondi_${year}`]?.replace(/\./g, '').replace(',', '.') || NaN);
+
+                // --- CHANGE STARTS HERE ---
+                // We parse the value directly. 
+                // We only remove spaces or currency symbols if necessary, but we do NOT swap dots/commas.
+                let introitiStr = row[`Introiti_${year}`];
+                let fondiStr = row[`Fondi_${year}`];
+
+                // Optional: Check if values exist, otherwise default to NaN string
+                const introiti = parseFloat(introitiStr || NaN);
+                const fondi = parseFloat(fondiStr || NaN);
+                // --- CHANGE ENDS HERE ---
 
                 let returnVal = NaN;
                 if (!isNaN(introiti) && !isNaN(fondi)) {
