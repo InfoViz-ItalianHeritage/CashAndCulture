@@ -67,18 +67,16 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="#home" class="active">Home</a></li>
           <li><a href="#canvas">Research Questions</a></li>
           <li><a href="#workflow">Workflow</a></li>
+          <li><a href="#data-sources">Data Sources</a></li>
           <li><a href="#visualization">Visualization</a></li>
           <li><a href="#interpretation">Interpretation</a></li>
-          <li><a href="#team">Team</a></li>
-
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
       <div class="header-social-links">
-        <a href="https://github.com/InfoViz-ItalianHeritage/CashAndCulture.git" class="twitter"><i
+        <a href="https://github.com/InfoViz-ItalianHeritage/CashAndCulture.git" target="_blank" class="twitter"><i
             class="bi bi-github"></i></a>
       </div>
 
@@ -154,8 +152,8 @@
           </div>
           <div class="col-md-3 col-sm-6 mb-4">
             <div class="counter-box">
-              <div class="counter-number" data-target="46">0</div>
-              <div class="counter-label">% of projects on time</div>
+              <div class="counter-number" data-target="75">0</div>
+              <div class="counter-label">% Of Regions with potential for improvement</div>
             </div>
           </div>
           <div class="col-md-3 col-sm-6 mb-4">
@@ -247,7 +245,7 @@
               <h4><a href="#features-tab-1" class="stretched-link">Extraction</a></h4>
               <p style="text-align: justify;">Ingested the raw data, cleaned the rows of any duplicate or empty values,
                 normalized the variable
-                names, and saved a clean CSV file for visualization.</p>
+                names, and saved clean CSV files for visualization.</p>
             </div>
           </div>
 
@@ -277,9 +275,12 @@
     </section>
 
     <!--features section-->
-    <section id="features" class="features section">
+    <section id="data-sources" class="features section">
 
       <div class="container">
+        <div class="container section-title" data-aos="fade-up">
+          <h2>Data Sources</h2>
+        </div>
 
         <ul class="nav nav-tabs row  g-2 d-flex" data-aos="fade-up" data-aos-delay="100">
 
@@ -313,8 +314,8 @@
                 class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
                 <h3>Data Preparation</h3>
                 <p>
-                  <a
-                    href="https://opencoesione.gov.it/en/opendata/dataset/progetti_esteso_cultura_turismo_2014-2020/">OpenCoesione</a>
+                  <a href="https://opencoesione.gov.it/en/opendata/dataset/progetti_esteso_cultura_turismo_2014-2020/"
+                    target="_blank">OpenCoesione</a>
                   is Italy’s open-government initiative on cohesion policies. The portal provides navigable
                   data on planned resources and expenditures, locations, thematic areas, implementing bodies,
                   timelines,
@@ -340,7 +341,7 @@
                   OC_DATA_INIZIO_PROGETTO, keeping only projects with an actual start date between 2014 and 2024,
                   assuming that funding allocation becomes effective once the project begins.
                   The filtered dataset is available on our GitHub under the name <code><a
-                    href="https://github.com/InfoViz-ItalianHeritage/CashAndCulture/blob/main/data/open_coesione.csv">open_coesione.csv</a>
+                    href="https://github.com/InfoViz-ItalianHeritage/CashAndCulture/blob/main/data/open_coesione.csv" target="_blank">open_coesione.csv</a>
                 </code>.
                 </p>
               </div>
@@ -357,7 +358,8 @@
                 <h3>Data Preparation </h3>
                 <p>
                   The Statistics Office (<i>Ufficio Statistica</i>) of the <i><a
-                      href="https://statistica.cultura.gov.it/?page_id=500">Ministero della Cultura</a></i> – as part of
+                      href="https://statistica.cultura.gov.it/?page_id=500" target="_blank">Ministero della
+                      Cultura</a></i> – as part of
                   the
                   National
                   Statistical System (Sistan) – aims to provide accurate, timely, and freely accessible information on
@@ -373,7 +375,7 @@
                   where each file contains two sheets – one for visitors and one for revenues – organized by region and
                   by month.
                   Information for <strong>Sicilia</strong>, <strong>Valle d’Aosta</strong>, and <strong>Trentino-Alto
-                    Adige</strong> is missing. Revenue values do not
+                    Adige</strong> is <strong>missing</strong>. Revenue values do not
                   include additional services such as bookshops, merchandise sales, cafés and restaurants, guided tours,
                   audio guides, or ticket-reservation services.
                 </p>
@@ -381,12 +383,14 @@
                 <p>
                   The tables were split by topic and merged into two separate CSV files, with regions as columns and
                   monthly chronological data as rows:
-                  <code><a href="https://github.com/InfoViz-ItalianHeritage/CashAndCulture/blob/main/data/mic_visitors.csv">mic_visitors.csv</a></code>
+                  <code><a href="https://github.com/InfoViz-ItalianHeritage/CashAndCulture/blob/main/data/mic_visitors.csv" target="_blank">mic_visitors.csv</a></code>
                   and
-                  <code><a href="https://github.com/InfoViz-ItalianHeritage/CashAndCulture/blob/main/data/mic_income.csv">mic_income.csv</a></code>.
+                  <code><a href="https://github.com/InfoViz-ItalianHeritage/CashAndCulture/blob/main/data/mic_income.csv" target="_blank">mic_income.csv</a></code>.
                   For further analysis, we compared income data with funding allocation. We aggregated yearly funding
-                  from open_coesione.csv and merged it with the yearly totals of museum income, producing the file
-                  <code><a href="https://github.com/InfoViz-ItalianHeritage/CashAndCulture/blob/main/data/income%26funding.csv">income&funding.csv</a></code>,
+                  from
+                  <code><a href="https://github.com/InfoViz-ItalianHeritage/CashAndCulture/blob/main/data/open_coesione.csv" target="_blank">open_coesione.csv</a></code>
+                  and merged it with the yearly totals of museum income, producing the file
+                  <code><a href="https://github.com/InfoViz-ItalianHeritage/CashAndCulture/blob/main/data/income%26funding.csv" target="_blank">income&funding.csv</a></code>,
                   organized by region.
                 </p>
               </div>
@@ -406,7 +410,8 @@
                   offering
                   aggregated statistical data enriched with charts, maps, and thematic summaries.
                   In the dataset <i><a
-                      href="https://esploradati.istat.it/databrowser/#/it/dw/categories/IT1,Z0930TER,1.0/BES_T/IT1,DF_BES_TERRIT_12,1.0">“Qualità
+                      href="https://esploradati.istat.it/databrowser/#/it/dw/categories/IT1,Z0930TER,1.0/BES_T/IT1,DF_BES_TERRIT_12,1.0"
+                      target="_blank">“Qualità
                       dei servizi”</a></i>, the section <i>“Posti-km offerti dal Tpl”</i> provides
                   the
                   product of
@@ -416,7 +421,8 @@
                   (including automated people-mover systems), and waterborne transport. This serves as an indicator of
                   public-transport efficiency and helps assess the accessibility of cultural institutions.
                   In the dataset <i><a
-                      href="https://esploradati.istat.it/databrowser/#/it/dw/categories/IT1,Z0930TER,1.0/BES_T/IT1,DF_BES_TERRIT_9,1.0">“Paesaggio
+                      href="https://esploradati.istat.it/databrowser/#/it/dw/categories/IT1,Z0930TER,1.0/BES_T/IT1,DF_BES_TERRIT_9,1.0"
+                      target="_blank">“Paesaggio
                       e Patrimonio Culturale”</a></i>, the section <i>“Densità e rilevanza del
                     patrimonio
                     museale”</i> reports the number of permanent exhibition facilities per 100 km² (museums,
@@ -433,9 +439,9 @@
                   <strong>2015</strong> for the
                   cultural index and from <strong>2014</strong> for the TPL indicator.
                   The processed data were saved as
-                  <code><a href="https://github.com/InfoViz-ItalianHeritage/CashAndCulture/blob/main/data/tpl_efficiency.csv">tpl_efficiency.csv</a></code>
+                  <code><a href="https://github.com/InfoViz-ItalianHeritage/CashAndCulture/blob/main/data/tpl_efficiency.csv" target="_blank">tpl_efficiency.csv</a></code>
                   and
-                  <code><a href="https://github.com/InfoViz-ItalianHeritage/CashAndCulture/blob/main/data/index_cult.csv">index_cult.csv</a></code>.
+                  <code><a href="https://github.com/InfoViz-ItalianHeritage/CashAndCulture/blob/main/data/index_cult.csv" target="_blank">index_cult.csv</a></code>.
 
                 </p>
               </div>
@@ -479,7 +485,8 @@
             <p>The same was also done for the number of visitors for each region on the right map. This visualization
               allowed for a side-by-side comparison of regions.
 
-              It must be taken into account that for the funding map the actual start year of each project was selected.
+              It must be taken into account that for the funding map the actual start year of each project was
+              selected (OC_DATA_INIZIO_PROGETTO).
             </p><br>
 
           </div>
@@ -512,13 +519,21 @@
                     Visualization 1: Regional Funding and Visitors
                   </h4>
                 </div>
-                <p style="text-align: justify;">The side-by-side comparison of the funding and the visitors map shows a
-                  discrepancy between visitor numbers and funding, establishing that regions with high amounts of
-                  project funding don't necessarily get the highest number of visitors per year.</p><br>
-                <p>For example Lazio has consistently received the highest number of visitors even though it didn't
-                  receive the highest amount of funding. In contrast, Campania had the highest amount of funding but
-                  didn't receive nearly as many visitors as other regions.
+                <p style="text-align: justify;">The side-by-side comparison of the funding map and the visitors map
+                  reveals a clear mismatch between financial investment and annual visitor numbers. Regions receiving
+                  high levels of project funding do not necessarily attract the most visitors.</p><br>
+                <p>The maps show that the largest share of funding was allocated between 2015 and 2019. Although the
+                  total number of visitors increased over the ten-year period, the relative proportions among regions
+                  remained stable. Lazio consistently recorded the highest number of visitors despite not receiving the
+                  largest amount of funding. Conversely, Campania obtained the highest funding but did not reach
+                  comparable visitor levels. Toscana experienced a similar rise in visitors as Campania, yet the funding
+                  it received was significantly lower.
                 </p><br>
+                <p>Puglia and Sicilia received notable - though less consistent - amounts of funding in some years, but
+                  this investment did not translate into a proportional share of visitors.</p><br>
+                <p>It is important to note that, since our analysis considers only the actual starting year of each
+                  project, the expected outcomes of the investments - such as increased visitor numbers - may require
+                  additional time to appear in the data.</p>
 
               </div>
 
@@ -538,10 +553,11 @@
             <p style="font-style: italic;">Do current funding policies succeed in driving financial self-sufficiency
               across these regions?</em></p>
             <br>
-            <p style="text-align: justify;">To do a preliminary analysis on the income received through tickets we
-              plotted a <strong>line graph</strong> to establish the baseline revenue trend and visitor participation
+            <p style="text-align: justify;">To do a preliminary analysis on the income received through tickets a
+              <strong>line graph</strong> was plotted to establish the baseline revenue trend and visitor participation
               performance for
-              each region.</p>
+              each region.
+            </p>
             <p>The <strong>heatmap</strong> visualizes the net financial return (Introiti - Fondi) for each Italian
               region over time,
               instantly revealing periods of self-sufficiency (blue) or dependency (red).
@@ -659,6 +675,9 @@
               quadrant demonstrate synergy, where high infrastructure quality successfully supports and capitalizes on
               high cultural appeal, providing a benchmark for policy success.
             </p><br>
+            <p>The presence and composition of regions in the Bottleneck Quadrant (Top-Left) provide the direct,
+              data-driven answer to the research question, confirming that transport constraints are a significant
+              limiting factor for Italy's most appealing cultural destinations.</p>
 
 
           </div>
@@ -682,42 +701,86 @@
 
           <div class="canvas-item position-relative">
 
-            <p style="text-align: justify;">A direct comparison between the OpenCoesione and MiC_Visitors datasets
-              reveals a <span style="color:#009cea;">misalignment between regions receiving the highest funding and
-                those with the highest visitor numbers</span>. </p>
-            <p style="text-align: justify;">In other words, there is no direct correlation between high funding and high
-              visitor numbers. </p>
-            <p>The following regions stood out as the result of the analysis:</p>
+            <p style="text-align: justify;">The analysis performed in the project <strong>Cash & Culture: Who Gets
+                Funded, Who Gets Visited</strong> reveals that the relationship between public investment and regional
+              cultural success is complex, characterized by structural inefficiencies and stark geographic disparities.
+            </p><br>
+            <p style="text-align: justify;">The findings synthesize three key conclusions regarding funding strategy,
+              financial outcomes, and transportation challenges for visitors. </p><br>
+            <p style="text-align: justify;">In the recent decade the visitor jackpot has been overwhelmingly won by a
+              very small number of regions : Lazio and Toscana.</p>
+
+            <ul>
+              <li>
+                <p style="text-align: justify;">
+                  <strong>Lazio as the Outlier</strong>: The financial dominance of Lazio (generating 343% of its public
+                  funds from income) creates a national funding dynamic that is heavily skewed. This single outlier
+                  needs
+                  to be examined closely to understand if its success is replicable, or purely driven by unique factors
+                  (like Rome’s global appeal).
+                </p>
+              </li>
+              <li>
+                <p style="text-align: justify;">
+                  <strong>The Funding Efficiency Gap (RQ2)</strong>: The data shows that for most regions, current
+                  funding policies do
+                  not succeed in driving financial self-sufficiency (as the ratio is well below 100%). The majority of
+                  public funds appear to be directed toward essential maintenance and services rather than generating
+                  immediate financial autonomy, validating the need for the <strong>Net Return Heatmap</strong> (RQ2
+                  visualization).
+                </p>
+              </li>
+              <li>
+                <p style="text-align:justify;">
+                  <strong>The Funding Concentration</strong>: While Lazio dominates income, <strong>Campania</strong>
+                  receives the
+                  highest total public
+                  funding overall, yet its self-sufficiency ratio remains relatively low (32%). This immediately sets up
+                  a key comparison for the project: Is the funding being allocated where the <strong>financial
+                    return</strong> is highest
+                  (Lazio/Toscana), or where the <strong>development need</strong> is greatest (Campania)?
+                </p>
+              </li>
+            </ul>
           </div>
           <br>
           <div class="canvas-item position-relative">
-            <p style="text-align: justify;"><span style="color:#009cea;">Campania</span> is the highest-funded region
-              for three years within the selected five years, making it the region that received the highest funding.
-              Considering visitors, it hosted a moderate amount of visitors in the years in question. Observation on
-              this situation is that major restoration and infrastructure projects, often outside main tourist circuits
-              might have been where the funds were directed towards.</p>
-
-            <br>
-
-            <p style="text-align: justify;"><span style="color:#009cea;">Lazio</span> received a low to moderate level
-              of funding during the selected years, yet it ranked highest overall in visitor numbers. This suggests that
-              the region’s cultural appeal, particularly Rome’s well-established heritage and tourism infrastructure,
-              continues to attract visitors independently of new public funding initiatives.</p>
-
-            <br>
-
-            <p style="text-align: justify;"><span style="color:#009cea;">Molise</span> recorded its highest funding
-              level in 2019, despite having a low ranking in visitor numbers. This pattern reflects the region’s focus
-              on targeted heritage restoration and regional development projects rather than tourism-driven investment,
-              with a few high-value initiatives contributing to the temporary funding spike.</p>
-
-            <br>
-
-            <p style="text-align: justify;"><span style="color:#009cea;">Toscana</span>, <span
-                style="color:#009cea;">Piemonte</span>, and <span style="color:#009cea;">Lombardia</span> show moderate
-              funding levels paired with high visitor rankings. These regions demonstrate a stable flow of cultural
-              tourism that does not rely heavily on recent public funding, likely due to their already consolidated
-              heritage infrastructure and sustained appeal among both domestic and international visitors.</p>
+            <table style="text-align:center">
+              <tr>
+                <th>Metric</th>
+                <th>Leader</th>
+                <th>Value (Approx.)</th>
+                <th>Interpretation</th>
+              </tr>
+              <tr>
+                <td><strong>Total Income</strong>(Visitor Jackpot)</td>
+                <td><strong>Lazio</strong></td>
+                <td>€846 Million</td>
+                <td>Lazio leads the visitor jackpot by a significant margin, confirming visitor success is highly
+                  concentrated.</td>
+              </tr>
+              <tr>
+                <td><strong>Self-Sufficiency Ratio</strong>(Introiti - Fondi)</td>
+                <td><strong>Lazio</strong></td>
+                <td>343%</td>
+                <td>Lazio generates over three times the revenue it receives in public funding, demonstrating
+                  exceptional financial self-sufficiency.</td>
+              </tr>
+              <tr>
+                <td><strong>Breakeven</strong></td>
+                <td><strong>Toscana</strong></td>
+                <td>100.4%</td>
+                <td>Toscana is the only other large region to successfully break even, proving its investments are
+                  self-sustaining.</td>
+              </tr>
+              <tr>
+                <td><strong>Extreme Dependency</strong></td>
+                <td><strong>Sicilia, Trentino-Alto Adige, Valle d'Aosta</strong></td>
+                <td>--</td>
+                <td>These regions show virtually no recorded income against multi-million euro funding totals,
+                  highlighting either severe dependency or significant data gaps that must be investigated (RQ2)</td>
+              </tr>
+            </table>
           </div>
         </div><!-- End Section Title -->
       </div>
