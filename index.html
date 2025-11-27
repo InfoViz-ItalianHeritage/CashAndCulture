@@ -575,6 +575,12 @@
               <canvas id="chart"></canvas>
             </div>
             <div id="synchronized-slider-container"></div>
+            <div style="margin-bottom: 20px; font-family: var(--heading-font);">
+              <label for="view-selector" style="font-weight: bold; margin-right: 10px;">Select View:</label>
+              <select id="view-selector" style="padding: 5px; border-radius: 4px; border: 1px solid #ccc;">
+                <option value="ALL" selected>Show Full Heatmap (All Regions)</option>
+              </select>
+            </div>
             <div id="heatmap-container">
               <div id="heatmap-tooltip"></div>
             </div>
@@ -637,7 +643,7 @@
     <section id="canvas" class="canvas section">
       <div class="container">
         <div class="row gy-4" style="justify-content: center;">
-          
+
           <div id="chart-title">Regional Classification of TPL Efficiency per Year</div>
           <div id="chart-controls"></div>
           <div id="ranked-barchart"></div>
