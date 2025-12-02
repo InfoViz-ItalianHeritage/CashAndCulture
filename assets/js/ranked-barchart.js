@@ -1,6 +1,3 @@
-// chart.js
-
-// --- CONFIGURATION ---
 const CSV_PATH = 'data/tpl_efficiency.csv';
 const CHART_DIV_ID = '#ranked-barchart';
 const CONTROLS_DIV_ID = '#chart-controls';
@@ -30,14 +27,13 @@ const regionNormalizationMap = {
 
 async function renderChart() {
     try {
-        // 1. GET FONT FROM CSS (For axis labels, etc.)
         const style = getComputedStyle(document.body);
         const customFont = style.getPropertyValue('--heading-font').trim() || 'sans-serif';
 
-        // 2. LOAD DATA
+
         const data = await d3.csv(CSV_PATH);
 
-        // 3. PROCESS DATA
+
         const meltedData = [];
         const years = new Set();
 
@@ -61,7 +57,7 @@ async function renderChart() {
 
         const sortedYears = Array.from(years).sort((a, b) => a - b);
 
-        // 4. DEFINE SPEC (REMOVED 'TITLE' BLOCK)
+
         const spec = {
             $schema: "https://vega.github.io/schema/vega-lite/v5.json",
             description: "Regional TPL Efficiency Ranking",
@@ -118,13 +114,13 @@ async function renderChart() {
             ]
         };
 
-        // 5. RENDER AND MOVE CONTROLS
+
         vegaEmbed(CHART_DIV_ID, spec).then(function (result) {
 
             const bindings = document.querySelector(CHART_DIV_ID + ' .vega-bindings');
             const controlsContainer = document.querySelector(CONTROLS_DIV_ID);
 
-            // Move the bindings to the new Right-Aligned Container
+
             if (bindings && controlsContainer) {
                 controlsContainer.appendChild(bindings);
             }

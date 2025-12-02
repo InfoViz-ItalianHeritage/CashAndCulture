@@ -16,9 +16,6 @@ function createHeatmap() {
 
     d3.csv(DATA_PATH).then(function (data) {
 
-        // ============================================
-        // 1. DATA PROCESSING
-        // ============================================
 
         const headers = data.columns;
         const yearsSet = new Set();
@@ -72,25 +69,20 @@ function createHeatmap() {
         if (minVal > 0) minVal = 0;
         if (maxVal < 0) maxVal = 0;
 
-        // ============================================
-        // 2. POPULATE DROPDOWN (SIMPLIFIED)
-        // ============================================
         const dropdown = d3.select(SELECTOR_ID);
         dropdown.selectAll("option").remove(); // Clear all
 
-        // Option 1: Default view
+        // Default view
         dropdown.append("option")
             .attr("value", "ALL")
             .text("Show Full Heatmap (Yearly)");
 
-        // Option 2: Average view
+        // Average view
         dropdown.append("option")
             .attr("value", "AVG_SUMMARY")
             .text("Show Average per Region (All Years)");
 
-        // ============================================
-        // 3. RENDER FUNCTION
-        // ============================================
+
 
         function renderChart(selectedView) {
             const containerEl = document.querySelector(CONTAINER_ID);
@@ -106,7 +98,7 @@ function createHeatmap() {
                 .append("g")
                 .attr("transform", `translate(${margin.left},${margin.top})`);
 
-            // --- Common Elements (Color Scale & Legend) ---
+
             const colorScale = d3.scaleLinear()
                 .domain([minVal, 0, maxVal])
                 .range(["#d73027", "#f7f7f7", "#4575b4"])
@@ -150,12 +142,9 @@ function createHeatmap() {
                 .text("Return (Introiti − Fondi) €");
 
 
-            // =========================
-            // VIEW LOGIC
-            // =========================
 
             if (selectedView === "ALL") {
-                // --- 1. FULL HEATMAP (YEARLY) ---
+
 
                 const x = d3.scaleBand().range([0, width]).domain(years).padding(0.05);
                 const y = d3.scaleBand().range([0, height]).domain(regions).padding(0.05);
@@ -206,14 +195,13 @@ function createHeatmap() {
                 });
 
             } else {
-                // --- 2. AVERAGE SUMMARY VIEW ---
+
 
                 const avgData = regions.map(r => ({
                     region: r,
                     value: regionStats[r].average
                 }));
 
-                // X Axis has only one "Year" called "Average"
                 const x = d3.scaleBand().range([0, width]).domain(["Average Return"]).padding(0.05);
                 const y = d3.scaleBand().range([0, height]).domain(regions).padding(0.05);
 

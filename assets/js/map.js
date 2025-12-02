@@ -1,4 +1,3 @@
-// Global variables to store the essential components for synchronization
 let fundingDrawMap = null;
 let visitorDrawMap = null;
 let fundingYears = [];
@@ -6,12 +5,11 @@ let visitorYears = [];
 let mapInstance1 = null; // Map 1 (Funding)
 let mapInstance2 = null; // Map 2 (Visitor)
 
-// Function to create a single slider that controls both maps
+
 function initializeSynchronizedSlider() {
-    // Check if both maps have successfully loaded and defined their drawing functions
     if (fundingDrawMap && visitorDrawMap && fundingYears.length > 0 && visitorYears.length > 0) {
 
-        // 1. Combine and Filter Years
+
         const allYears = [...fundingYears, ...visitorYears];
         const allowedYears = Array.from({ length: 2024 - 2014 + 1 }, (_, i) => 2014 + i);
 
@@ -24,17 +22,16 @@ function initializeSynchronizedSlider() {
             return;
         }
 
-        // 2. Create the Master Callback
+
         const masterDrawCallback = (selectedYear) => {
             fundingDrawMap(selectedYear);
             visitorDrawMap(selectedYear);
         };
 
-        // 3. Create a Single Slider in the external container
+
         const CONTAINER_ID = 'synchronized-slider-container';
         if (document.getElementById(CONTAINER_ID)) {
             console.log(`Creating single synchronized slider for Maps 1 and 2 in external container.`);
-            // Pass the container ID instead of the map instance
             createYearSliderControl(CONTAINER_ID, years, masterDrawCallback);
         } else {
             console.error(`Map synchronization failed: Cannot find HTML container ID: ${CONTAINER_ID}. Please ensure this ID exists below your map divs.`);
@@ -42,7 +39,7 @@ function initializeSynchronizedSlider() {
     }
 }
 
-// --- Shared Helper: Normalize region names ---
+
 function normalizeRegionName(name) {
     if (typeof name !== 'string') return '';
     let normalized = name.toLowerCase()
@@ -52,7 +49,6 @@ function normalizeRegionName(name) {
     return normalized;
 }
 
-// --- Shared Helper: Create the Slider Control (EXTERNAL HTML ELEMENT) ---
 function createYearSliderControl(containerId, yearsArray, onChangeCallback) {
     if (yearsArray.length === 0) {
         console.warn(`Cannot create slider: No valid years found for container ${containerId}.`);
@@ -66,7 +62,7 @@ function createYearSliderControl(containerId, yearsArray, onChangeCallback) {
 
     parentContainer.innerHTML = '';
 
-    // Create the slider UI within a standard HTML div
+
     const container = document.createElement('div');
     container.className = 'year-slider-standalone-control';
     container.style.backgroundColor = 'white';
@@ -94,7 +90,7 @@ function createYearSliderControl(containerId, yearsArray, onChangeCallback) {
     container.appendChild(slider);
     parentContainer.appendChild(container);
 
-    // Event Listener
+
     slider.addEventListener('input', function (e) {
         const yearIndex = parseInt(e.target.value);
         const selectedYear = yearsArray[yearIndex];
@@ -102,27 +98,22 @@ function createYearSliderControl(containerId, yearsArray, onChangeCallback) {
         onChangeCallback(selectedYear);
     });
 
-    // Initial load
+
     onChangeCallback(yearsArray[0]);
 }
 
-// --------------------------------------------------------------------------------
-// --- 1. FUNDING MAP (OpenCoesione) - CHOROPLETH ---
-// --------------------------------------------------------------------------------
 function createFundingMap() {
     const MAP_CONTAINER_ID = 'map';
-    // --- UPDATED: Define IDs for your HTML elements ---
-    const TITLE_CONTAINER_ID = 'funding-map-title'; // <-- ID for your title div
+    const TITLE_CONTAINER_ID = 'funding-map-title';
     const TITLE_TEXT = 'Public Funding Per Region';
 
-    // --- UPDATED: Find title container and set text ---
     const titleContainer = document.getElementById(TITLE_CONTAINER_ID);
     if (titleContainer) {
         titleContainer.innerHTML = `<div class="map-title">${TITLE_TEXT}</div>`;
     } else {
         console.warn(`Title container not found: #${TITLE_CONTAINER_ID}`);
     }
-    // --- End of update ---
+
 
     const map = L.map(MAP_CONTAINER_ID).setView([41.87194, 12.56738], 5);
     mapInstance1 = map;
@@ -207,8 +198,6 @@ function createFundingMap() {
         const years = Array.from(new Set(longData.map(d => d.Year)))
             .filter(year => allowedYears.includes(year))
             .sort((a, b) => a - b);
-
-        // Store globals and initialize synchronization check
         fundingDrawMap = drawMap;
         fundingYears = years;
         initializeSynchronizedSlider();
@@ -216,23 +205,17 @@ function createFundingMap() {
     }).catch(err => console.error("Error loading funding data:", err));
 }
 
-// --------------------------------------------------------------------------------
-// --- 2. VISITOR MAP (MiC data) - REVISED TO CHOROPLETH (SAME COLOR) ---
-// --------------------------------------------------------------------------------
 function createVisitorMap() {
     const MAP_CONTAINER_ID = 'map1';
-    // --- UPDATED: Define IDs for your HTML elements ---
-    const TITLE_CONTAINER_ID = 'visitor-map-title'; // <-- ID for your title div
+    const TITLE_CONTAINER_ID = 'visitor-map-title';
     const TITLE_TEXT = 'Visitors Per Region';
-
-    // --- UPDATED: Find title container and set text ---
     const titleContainer = document.getElementById(TITLE_CONTAINER_ID);
     if (titleContainer) {
         titleContainer.innerHTML = `<div class="map-title">${TITLE_TEXT}</div>`;
     } else {
         console.warn(`Title container not found: #${TITLE_CONTAINER_ID}`);
     }
-    // --- End of update ---
+
 
     const map1 = L.map(MAP_CONTAINER_ID).setView([41.87194, 12.56738], 5);
     mapInstance2 = map1;
@@ -343,7 +326,6 @@ function createVisitorMap() {
             .filter(year => allowedYears.includes(year))
             .sort((a, b) => a - b);
 
-        // Store globals and initialize synchronization check
         visitorDrawMap = drawMap;
         visitorYears = years;
         initializeSynchronizedSlider();
@@ -351,19 +333,11 @@ function createVisitorMap() {
     }).catch(err => console.error("Error loading visitor data:", err));
 }
 
-// --------------------------------------------------------------------------------
-
-// --- 3. Initialize maps (SAFE MODE) ---
-// We wait for the DOM to be ready, and check for D3/Leaflet to avoid errors.
 document.addEventListener("DOMContentLoaded", function () {
-
-    // Safety check: Are libraries loaded?
     if (typeof d3 === 'undefined' || typeof L === 'undefined') {
         console.error("CRITICAL ERROR: D3.js or Leaflet.js are not loaded yet. Check your script tags.");
         return;
     }
-
-    // Check if containers exist before running to avoid "Map container not found"
     if (document.getElementById('map') && document.getElementById('map1')) {
         createFundingMap();
         createVisitorMap();

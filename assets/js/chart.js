@@ -1,50 +1,43 @@
-// This is an IIFE (Immediately Invoked Function Expression)
-// It runs automatically as soon as the file is loaded.
 (async function () {
 
-    // --- A predefined list of darker, distinct colors ---
+
     const DISTINCT_COLORS = [
-        'rgba(170, 0, 0, 0.9)',    // Dark Red
-        'rgba(0, 100, 0, 0.9)',    // Dark Green
-        'rgba(0, 0, 128, 0.9)',    // Navy
-        'rgba(128, 0, 128, 0.9)',  // Purple
-        'rgba(230, 120, 0, 0.9)',  // Dark Orange
-        'rgba(0, 128, 128, 0.9)',  // Teal
-        'rgba(128, 0, 0, 0.9)',    // Maroon
-        'rgba(75, 0, 130, 0.9)',   // Indigo
-        'rgba(139, 69, 19, 0.9)',  // Saddle Brown
-        'rgba(0, 0, 0, 0.9)',      // Black
-        'rgba(100, 100, 100, 0.9)',// Dark Grey
-        'rgba(0, 200, 150, 0.9)',  // Dark Cyan/Green
-        'rgba(210, 0, 210, 0.9)',  // Dark Magenta
-        'rgba(128, 128, 0, 0.9)',  // Olive
-        'rgba(180, 180, 0, 0.9)',  // Dark Yellow
-        'rgba(0, 150, 255, 0.9)',  // Strong Blue
-        'rgba(190, 0, 90, 0.9)',   // Dark Pink
-        'rgba(90, 130, 0, 0.9)',   // Dark Lime
-        'rgba(255, 0, 0, 0.9)',    // Bright Red
-        'rgba(0, 200, 0, 0.9)'     // Bright Green
+        'rgba(170, 0, 0, 0.9)',
+        'rgba(0, 100, 0, 0.9)',
+        'rgba(0, 0, 128, 0.9)',
+        'rgba(128, 0, 128, 0.9)',
+        'rgba(230, 120, 0, 0.9)',
+        'rgba(0, 128, 128, 0.9)',
+        'rgba(128, 0, 0, 0.9)',
+        'rgba(75, 0, 130, 0.9)',
+        'rgba(139, 69, 19, 0.9)',
+        'rgba(0, 0, 0, 0.9)',
+        'rgba(100, 100, 100, 0.9)',
+        'rgba(0, 200, 150, 0.9)',
+        'rgba(210, 0, 210, 0.9)',
+        'rgba(128, 128, 0, 0.9)',
+        'rgba(180, 180, 0, 0.9)',
+        'rgba(0, 150, 255, 0.9)',
+        'rgba(190, 0, 90, 0.9)',
+        'rgba(90, 130, 0, 0.9)',
+        'rgba(255, 0, 0, 0.9)',
+        'rgba(0, 200, 0, 0.9)'
     ];
 
-    // --- Helper function to parse the specific currency format ---
-    // "1.234,50" -> 1234.50
     function parseCurrency(str) {
         if (!str) return 0;
-        // Remove thousands dots, replace decimal comma with a dot
         return parseFloat(
             str.replace(/\./g, '').replace(',', '.')
-        ) || 0; // Return 0 if parsing fails
+        ) || 0;
     }
 
     try {
-        // --- 1. Fetch the CSV data ---
         const response = await fetch('data/mic_income.csv');
         if (!response.ok) {
             throw new Error(`Failed to fetch CSV: ${response.statusText}`);
         }
         const csvText = await response.text();
 
-        // --- 2. Parse the CSV text ---
         const parsed = Papa.parse(csvText, {
             header: true,
             skipEmptyLines: true
@@ -56,8 +49,6 @@
         }
 
         const data = parsed.data;
-
-        // --- 3. Process and Aggregate Data ---
         const yearlyTotals = {};
 
         const regions = parsed.meta.fields.filter(field =>
@@ -65,10 +56,10 @@
         );
 
         for (const row of data) {
-            const period = row[""]; // The first column
+            const period = row[""];
 
             if (!period || !period.includes('_')) {
-                continue; // Skip invalid rows
+                continue;
             }
 
             const year = parseInt(period.split('_')[1], 10);
@@ -89,35 +80,26 @@
             }
         }
 
-        // --- 4. Identify Top 5 Regions ---
         const regionTotalIncomes = {};
         for (const region of regions) {
             regionTotalIncomes[region] = 0;
-            // Sum up the total for each year
             for (const year in yearlyTotals) {
                 regionTotalIncomes[region] += yearlyTotals[year][region];
             }
         }
 
-        // Convert to an array, sort it, and get the top 5 names
         const sortedRegions = Object.entries(regionTotalIncomes)
-            .sort(([, totalA], [, totalB]) => totalB - totalA) // Sort descending
-            .slice(0, 5) // Get the top 5
-            .map(([name]) => name); // Get just the names
+            .sort(([, totalA], [, totalB]) => totalB - totalA)
+            .slice(0, 5)
+            .map(([name]) => name);
 
         const top5Regions = new Set(sortedRegions);
-
-        // --- 5. Format data for Chart.js ---
         const labels = Object.keys(yearlyTotals).sort();
 
-        // The 'index' is provided by the .map() function
         const datasets = regions.map((region, index) => {
             const dataForRegion = labels.map(year => yearlyTotals[year][region]);
-
-            // Pick color from the new dark list
             const color = DISTINCT_COLORS[index % DISTINCT_COLORS.length];
 
-            // Check if this region is NOT in the top 5
             const isHidden = !top5Regions.has(region);
 
             return {
@@ -133,13 +115,13 @@
             };
         });
 
-        // --- 6. Render the chart ---
+
         const ctx = document.getElementById('chart');
         if (!ctx) {
             throw new Error("Could not find canvas element with id 'chart'");
         }
 
-        // Define the title text
+
         const chartTitle = 'Total Annual Income by Region (2014-2024)';
 
         new Chart(ctx.getContext('2d'), {
@@ -153,7 +135,6 @@
                 maintainAspectRatio: false,
                 plugins: {
                     title: {
-                        // --- UPDATED: Disable the built-in title ---
                         display: false,
                         text: chartTitle
                     },
@@ -200,14 +181,13 @@
             }
         });
 
-        // --- UPDATED: Find the new title element and set its text ---
         const titleElement = document.querySelector('.chart-title');
         if (titleElement) {
             titleElement.textContent = chartTitle;
         } else {
             console.warn("Could not find element with id 'map-title' to set the chart title.");
         }
-        // --- -------------------------------------------------- ---
+
 
     } catch (error) {
         console.error("Failed to create chart:", error);

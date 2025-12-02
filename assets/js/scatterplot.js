@@ -1,4 +1,3 @@
-// 1. Data Normalization Helpers
 const regionMap = {
     "'Valle d\"'Aosta / Vallée d\"'Aoste'": "Valle d'Aosta",
     "Trentino Alto Adige / Südtirol": "Trentino-Alto Adige",
@@ -30,19 +29,18 @@ function meltData(data, valueName) {
     return melted;
 }
 
-// 2. Style Logic: Get Font AND Color from CSS variables
+
 const style = getComputedStyle(document.body);
 const customFont = style.getPropertyValue('--heading-font').trim() || 'sans-serif';
-// Extract the color variable, default to black if missing
 const customColor = style.getPropertyValue('--heading-color').trim() || '#000000';
 
-// 3. Main Data Pipeline
+
 Promise.all([
     d3.csv("data/tpl_efficiency.csv"),
     d3.csv("data/index_cult.csv")
 ]).then(([tplRaw, cultRaw]) => {
 
-    // --- DATA PROCESSING START ---
+
     const tplMelted = meltData(tplRaw, 'TPL_Index');
     const cultMelted = meltData(cultRaw, 'Cult_Index');
     const mergedData = [];
@@ -66,7 +64,7 @@ Promise.all([
         }),
         d => d.Regione
     );
-    // --- DATA PROCESSING END ---
+
 
     const averageData = Array.from(groupedData, ([Regione, values]) => ({
         Regione: Regione,
@@ -74,7 +72,7 @@ Promise.all([
         Cult_Index: values.Cult_Index
     }));
 
-    // 4. Vega-Lite Specification
+
     const spec = {
         "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 
@@ -86,12 +84,11 @@ Promise.all([
             "font": customFont,
             "title": {
                 "font": customFont,
-                // MATCHING YOUR D3 CODE HERE:
-                "fontSize": 25,         // Matches .style("font-size", "25px")
-                "fontWeight": 700,      // Matches .style("font-weight", "700")
-                "color": customColor,   // Matches .style("fill", "var(--heading-color)")
-                "anchor": "middle",     // Matches .attr("text-anchor", "middle")
-                "offset": 20            // Adds space similar to y = -30
+                "fontSize": 25,
+                "fontWeight": 700,
+                "color": customColor,
+                "anchor": "middle",
+                "offset": 20
             },
             "axis": { "labelFont": customFont, "titleFont": customFont, "titleFontSize": 15, "labelFontSize": 10, "titleFontWeight": "normal" },
             "legend": { "labelFont": customFont, "titleFont": customFont, "titleFontSize": 15, "labelFontSize": 10 },
