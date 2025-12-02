@@ -93,7 +93,7 @@ async function renderChart() {
                 {
                     mark: "bar",
                     encoding: {
-                        x: { field: "TPL_Index", type: "quantitative", title: "Indice TPL (Efficienza)" },
+                        x: { field: "TPL_Index", type: "quantitative", title: "Public Transportation Supply (Seat-Km per Inhabitant)" },
                         y: { field: "Regione", type: "nominal", sort: "-x", title: null },
                         color: { field: "Regione", type: "nominal", legend: null, scale: { scheme: "tableau20" } },
                         tooltip: [

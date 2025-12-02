@@ -108,7 +108,7 @@ Promise.all([
                         "field": "Regione",
                         "type": "nominal",
                         "scale": { "scheme": "tableau20" },
-                        "legend": { "title": "Regione" }
+                        "legend": { "title": "Regions" }
                     },
                     "tooltip": [
                         { "field": "Regione", "type": "nominal" },
