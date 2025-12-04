@@ -190,7 +190,7 @@
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
             <div class="canvas-item position-relative">
               <div class="icon"><i class="bi bi-patch-question"></i></div>
-              <h4><a href="" class="stretched-link">Research Question 1</a></h4>
+              <h4><a href="#rq1-viz" class="stretched-link">Research Question 1</a></h4>
               <p style="text-align: justify;">How evenly have public funds been distributed across Italian regions, and
                 does this distribution match visitor participation?</p>
             </div>
@@ -199,7 +199,7 @@
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
             <div class="canvas-item position-relative">
               <div class="icon"><i class="bi bi-patch-question"></i></div>
-              <h4><a href="" class="stretched-link">Research Question 2</a></h4>
+              <h4><a href="#rq2-viz" class="stretched-link">Research Question 2</a></h4>
               <p style="text-align: justify;">Do current funding policies result in financial self-sufficiency
                 across these regions?</p>
             </div>
@@ -208,7 +208,7 @@
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
             <div class="canvas-item position-relative">
               <div class="icon"><i class="bi bi-patch-question"></i></div>
-              <h4><a href="" class="stretched-link">Research Question 3</a></h4>
+              <h4><a href="#rq3-viz" class="stretched-link">Research Question 3</a></h4>
               <p style="text-align: justify;">Does infrastructure accessibility act as a bottleneck for regions with
                 high cultural appeal?</p>
             </div>
@@ -471,7 +471,7 @@
 
           <div class="canvas-item position-relative">
             <div class="icon">
-              <h4>
+              <h4 id="rq1-viz">
                 <i class="bi bi-patch-question"></i>
                 Research Question 1
               </h4>
@@ -539,13 +539,13 @@
 
             </div>
           </div>
-
+        </div>  
       </section>
       <section id="canvas" class="canvas section">
         <div class="container" data-aos="fade-up">
           <div class="canvas-item position-relative">
             <div class="icon">
-              <h4>
+              <h4 id="rq2-viz">
                 <i class="bi bi-patch-question"></i>
                 Research Question 2
               </h4>
@@ -574,6 +574,7 @@
             <div class="chart-container">
               <canvas id="chart"></canvas>
             </div>
+            <hr>
             <div id="synchronized-slider-container"></div>
             <div style="margin-bottom: 20px; font-family: var(--heading-font);">
               <label for="view-selector" style="font-weight: bold; margin-right: 10px;">Select View:</label>
@@ -621,7 +622,7 @@
 
         <div class="canvas-item position-relative">
           <div class="icon">
-            <h4 style="color: var(--accent-color);">
+            <h4 id= "rq3-viz" style="color: var(--accent-color);">
               <i class="bi bi-patch-question"></i>
               Research Question 3
             </h4>
@@ -644,6 +645,7 @@
           <div id="chart-title">Regional Classification of TPL Efficiency per Year</div>
           <div id="chart-controls"></div>
           <div id="ranked-barchart"></div>
+          <hr>
           <div class="scatterplot-container">
             <div id="scatterplot"></div>
           </div>
@@ -681,9 +683,6 @@
 
         </div>
     </section>
-
-
-
 
     <!-- Interpretation Section -->
     <section id="interpretation" class="canvas section">
@@ -739,7 +738,7 @@
                   than reported.
                   As shown in the breakdown below, while outliers like <strong>Lazio</strong> and <strong>Toscana</strong> demonstrate that commercial
                   success is possible, the data also highlights significant reporting gaps, particularly in autonomous
-                  regions where "zero income" suggests missing data rather than a complete lack of revenue. The percentage is calculated on the regional average on return and funding.
+                  regions where "zero income" suggests missing data rather than a complete lack of revenue. The percentage is calculated on the regional average of return and funding.
                 </p>
               </li>
 
@@ -787,16 +786,15 @@
             <ul>
               <li><strong>The Constraint of Infrastructure Accessibility </strong></li>
               <p style="text-align:justify">The structural reality of transport efficiency presents a constraint that influences both visitor potential and financial outcomes. The scatterplot identifies some regional clusters, including historically significant tourist destinations like <strong>Campania</strong> and <strong>Toscana</strong>, that fall into the <strong>Bottleneck Quadrant</strong> (Top-Left). The mid-low performance in transport efficiency in these high-appeal areas suggests a structural constraint that may inhibit the flow of visitors and limit the economic scaling of cultural assets. This structural reality makes it more challenging for projects in these regions to achieve the financial autonomy necessary for self-sufficiency.</p><br>
-              <p style="text-align:justify">In the <strong>Synergy Quadrant</strong> (Top-Right) of this analysis we find
-<strong>Lazio</strong>, that is the "Star Performer": a region that has successfully balanced cultural value with modern infrastructure. This positioning indicates a strong, sustainable synergy where excellent accessibility supports and amplifies high public interest. This feature represents the benchmark for successful policy integration and should act as a model for the other regions' policies.</p><br>
+              <p style="text-align:justify">In the <strong>Synergy Quadrant</strong> (Top-Right) of this analysis we find<strong>Lazio</strong>, that is the "Star Performer": a region that has successfully balanced cultural value with modern infrastructure. This positioning indicates a strong, sustainable synergy where excellent accessibility supports and amplifies high public interest. This feature represents the benchmark for successful policy integration and should act as a model for the other regions' policies.</p><br>
               <p style="text-align: justify">At the Bottom-Right <strong>Lombardia</strong> falls into the <strong>Potential Quadrant</strong>. This region is highly efficient in its logistics and infrastructure, but its cultural offering or the public interest in it are relatively low. It possesses high growth potential, meaning the infrastructure is already in place. Policy efforts here should utilize this infrastructure to boost cultural heritage tourism, shifting the region toward the Synergy Quadrant.</p><br>
-              <p style="text-align:justify">The same type of analysis can be applied on a smaller scale to most regions. Out of the 20 total, 16 fall into the <strong>Lagging quadrant</strong> (Bottom-Left), where improvements in the TPL Index tend to coincide with increases in the Cultural Index. Within this group, clear sub-clusters emerge: <strong>Friuli-Venezia Giulia, Veneto, Trentino-Alto Adige, Liguria, and Piemonte</strong> combine well-developed TPL with a Cultural Index between 1 and 2, showing how good transport supports steady visitor flows. <strong>Valle d’Aosta, Sicilia, Umbria, Marche, and Emilia-Romagna</strong> maintain similar cultural levels despite weaker TPL performance, suggesting latent potential that improved mobility could unlock. At the other end, <strong>Molise, Basilicata, Abruzzo, Puglia, Calabria, and Sardegna</strong> score low on both indicators and thus face the greatest structural limitations.<br>
-Taken together, these patterns suggest a partial causal role for transport: while cultural appeal creates the demand, transport efficiency determines how much of that demand converts into actual visitation - regions with comparable cultural value achieve markedly different outcomes depending on their TPL performance.
+              <p style="text-align:justify">The same type of analysis can be applied on a smaller scale to most regions. Out of the 20 total, 16 fall into the <strong>Lagging quadrant</strong> (Bottom-Left), where improvements in the TPL Index tend to coincide with increases in the Cultural Index. Within this group, clear sub-clusters emerge: <strong>Friuli-Venezia Giulia, Veneto, Trentino-Alto Adige, Liguria, and Piemonte</strong> combine well-developed TPL with a Cultural Index between 1 and 2, showing how good transport supports steady visitor flows. <strong>Valle d’Aosta, Sicilia, Umbria, Marche, and Emilia-Romagna</strong> maintain similar cultural levels despite weaker TPL performance, suggesting latent potential that improved mobility could unlock. At the other end, <strong>Molise, Basilicata, Abruzzo, Puglia, Calabria, and Sardegna</strong> score low on both indicators and thus face the greatest structural limitations.
+              <br>Taken together, these patterns suggest a partial causal role for transport: while cultural appeal creates the demand, transport efficiency determines how much of that demand converts into actual visitation - regions with comparable cultural value achieve markedly different outcomes depending on their TPL performance.
 
               </p><br>
               
             </ul>
-            <p style="text-align:justify">Public investment in Italian cultural heritage over the past decade shows clear regional imbalance, with funding patterns that do not align straightforwardly with public participation levels. Instead of reflecting visitor demand, allocations appear shaped by long-term structural needs and historical policy trajectories, resulting in a landscape where engagement, financial performance, and investment often move out of sync.</p>
+            <p style="text-align:justify">This analysis reveals that cultural funding and visitor engagement rarely align perfectly. Funding distribution follows non-commercial policies, leading to a landscape where financial dependency is the norm. However, even with substantial project funding, accessibility remains the critical variable in visiting count. The data shows that regions with high cultural appeal but poor transport infrastructure struggle to convert potential interest into actual visits. This suggests that bridging the gap between <i>getting funded</i> and <i>getting visited</i> requires more than just heritage investment; it demands a holistic approach that integrates cultural assets with the transport networks needed to reach them.</p>
 
           </div><!-- End Section Title -->
         </div>
@@ -822,7 +820,7 @@ Taken together, these patterns suggest a partial causal role for transport: whil
 
               <div class="member-info">
                 <h4>Mohamed Iheb Ouerghi</h4>
-                <span>Data Visualization - Web Communication</span>
+                <span>Data Visualization<br>Web Communication</span>
                 <div class="social">
 
                   <a href="mohamediheb.ouerghi@studio.unibo.it"><i class="bi bi-bank"></i></a> <!--university email-->
@@ -837,7 +835,7 @@ Taken together, these patterns suggest a partial causal role for transport: whil
 
               <div class="member-info">
                 <h4>Anna Nicoletti</h4>
-                <span>Data Analysis - Web Communication</span>
+                <span>Data Analysis<br>Web Communication</span>
                 <div class="social">
 
                   <a href="anna.nicoletti5@studio.unibo.it"><i class="bi bi-bank"></i></a> <!--university email-->
@@ -852,7 +850,7 @@ Taken together, these patterns suggest a partial causal role for transport: whil
 
               <div class="member-info">
                 <h4>Nazanin Fakharian</h4>
-                <span>Data Visualization - Web Communication</span>
+                <span>Data Visualization<br>>Web Communication</span>
                 <div class="social">
 
                   <a href="nazanin.fakharian@studio.unibo.it"><i class="bi bi-bank"></i></a> <!--university email-->
@@ -880,8 +878,8 @@ Taken together, these patterns suggest a partial causal role for transport: whil
 
         <div class="d-flex flex-column align-items-center align-items-lg-start">
           <div>
-            <strong><span>Cash & Culture </span></strong> is published under a Free Licence,<br> credits are attributed
-            below
+            <strong><span>Cash & Culture </span></strong> is published under a Free Licence. Credits are attributed
+            below:
           </div>
           <div class="credits">
             <!-- All the links in the footer should remain intact. -->
