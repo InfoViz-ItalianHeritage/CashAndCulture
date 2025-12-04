@@ -26,14 +26,14 @@ Does infrastructure accessibility act as a bottleneck for regions with high cult
 1. Data Preparation: identify the data sources, evaluate each for its relevance and feasibility, and select the raw data for extraction.
 2. Data Extraction: ingest the raw data, clean the rows of any duplicate or empty values, normalize the variable names, and save clean CSVs file for visualization.
 3. Data Visualization: graph the funding allocated to cultural heritage projects and in each region and the visitor fluctuations within the years under study.
-4. Data Analysis: observe the graphs and interesting trends, and extract useful information.
+4. Data Interpretation: observe the graphs and interesting trends, and extract useful information.
 
 # Key Findings
 1. There is a mismatch between project funding allocation and regional visitor engagement. Lazio consistently records the highest visitor numbers, but does not receive the largest share of project funding. Campania receives the highest total project funding, yet does not achieve comparable visitor levels.
 - This disparity suggests that funding allocation is often driven by criteria other than immediate visitor demand, such as structural development needs, legacy policy, or delays in funding utilization, rather than reflecting a direct return on investment based on visitor appeal.
 2. Financial sustainability remains elusive for most regions, with the majority operating in a state of financial dependency. It must be interpreted through the lens of cultural heritage management, where the primary objective is public value (preservation and access), not commercial profit. Negative returns are often a structural necessity for maintaining non-profit assets, particularly in less central areas.
 - The calculated "return" is likely an underestimation of actual financial performance. The dataset strictly tracks ticket sales, omitting critical revenue streams (guided tours, merchandising, venue rentals) standard in modern cultural management, suggesting the actual degree of self-sufficiency is higher than reported.
-- While regions like Lazio and Toscana demonstrate that commercial success is possible, the data also highlights significant reporting gaps. Cases of "zero income" in autonomous regions suggest missing data rather than a complete lack of revenue.\
+- While regions like Lazio and Toscana demonstrate that commercial success is possible, the data also highlights significant reporting gaps. Cases of "zero income" in autonomous regions suggest missing data rather than a complete lack of revenue.
 3. Transport efficiency is a critical determinant of regional cultural tourism outcomes, acting as a structural constraint in some areas. 
 - Bottleneck: High-appeal regions (Campania, Toscana) show mid-low TPL efficiency, constraining visitor flow and limiting the financial viability of cultural projects.
 - Synergy Benchmark: Lazio serves as the star performer, demonstrating that high TPL amplifies high cultural appeal.
