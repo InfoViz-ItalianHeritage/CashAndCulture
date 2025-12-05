@@ -1,32 +1,37 @@
 # Cash & Culture: Who Gets Funded, Who Gets Visited
-Final project for the course of Information Visualization 2024-2025 held at University of Bologna by professor D'Aquino.
+Final project for the course of *Information Visualization*, 2024-2025, held at the **University of Bologna** by Professor *Marilena Daquino*.
 
-This project analyzes how public funding for cultural-heritage and tourism projects has been distributed across Italian regions and compares those investments with the number of visitors each region received in the years 2014 → 2024. The goal is to identify regional mismatches (e.g. high funding / low visitation or vice versa), temporal trends, and possible explanations that can inform policy discussion and further research.
+The project starts with the core question of whether regions are funded where visitor demand is highest. We use three interactive lenses to evaluate the effectiveness of these policies from 2014 to 2024:
+
+- The Allocation Gap: Mapping the balance between public investment and private income.
+- The Self-Sufficiency Test: Tracking whether regions can turn government funds into financial independence.
+- The Bottleneck Indicator: Identifying culturally rich regions where poor transportation infrastructure might be the primary limit on tourism growth.
 
 # Research Questions
-RQ1
+*RQ1*\
 How evenly have public funds been distributed across Italian regions, and does this distribution match visitor participation?
 
-RQ2
-Do current funding policies succeed in driving financial self-sufficiency across these regions?
+*RQ2*\
+Do current funding policies result in financial self-sufficiency across these regions?
 
-RQ3
+*RQ3*\
 Does infrastructure accessibility act as a bottleneck for regions with high cultural appeal?
 
 # Libraries Used
 - pandas
 - os
 - glob
-- matplotlib/seaborn
+- matplotlib
+- seaborn
 - geopandas
 - folium
 - plotly
 
 # Workflow Summary
-1. Data Preparation: identify the data sources, evaluate each for its relevance and feasibility, and select the raw data for extraction.
-2. Data Extraction: ingest the raw data, clean the rows of any duplicate or empty values, normalize the variable names, and save clean CSVs file for visualization.
-3. Data Visualization: graph the funding allocated to cultural heritage projects and in each region and the visitor fluctuations within the years under study.
-4. Data Interpretation: observe the graphs and interesting trends, and extract useful information.
+1. *Data Preparation*: identify the data sources, evaluate each for its relevance and feasibility, and select the raw data for extraction.
+2. *Data Extraction*: ingest the raw data, clean the rows of any duplicate or empty values, normalize the variable names, and save clean CSV files for visualization.
+3. *Data Visualization*: graph the funding allocated to cultural heritage projects in each region, and the visitor fluctuations within the years under study.
+4. *Data Interpretation*: observe the graphs and interesting trends, and extract useful information.
 
 # Key Findings
 1. There is a mismatch between project funding allocation and regional visitor engagement. Lazio consistently records the highest visitor numbers, but does not receive the largest share of project funding. Campania receives the highest total project funding, yet does not achieve comparable visitor levels.
